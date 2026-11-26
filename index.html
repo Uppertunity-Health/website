@@ -127,13 +127,8 @@ em{font-style:normal}
 .xbg-photo.in i{opacity:.37;transform:none}
 .xbg-grad{position:absolute;left:0;right:0;top:calc((3971px - 1305px) * var(--s));height:calc(1884px * var(--s));overflow:hidden;
   background:linear-gradient(to bottom,#e4f6f7,#fff)}
-/* the pale gradient drifts very slowly */
-.xbg-grad::before,.xbg-grad::after{content:"";position:absolute;inset:-20%;
-  background:radial-gradient(38% 30% at 30% 30%,rgba(112,190,168,.16),rgba(112,190,168,0) 70%),radial-gradient(34% 28% at 72% 62%,rgba(160,166,212,.13),rgba(160,166,212,0) 70%);
-  animation:drift 22s ease-in-out infinite alternate}
-.xbg-grad::after{background:radial-gradient(30% 26% at 60% 25%,rgba(228,228,193,.22),rgba(228,228,193,0) 70%),radial-gradient(36% 30% at 20% 75%,rgba(112,190,168,.12),rgba(112,190,168,0) 70%);animation-duration:28s;animation-direction:alternate-reverse}
-@keyframes drift{0%{transform:translate(-6%,-4%)}50%{transform:translate(5%,3%)}100%{transform:translate(-3%,6%)}}
-@media (prefers-reduced-motion:reduce){.xbg-grad::before,.xbg-grad::after{animation:none}.xbg-photo i{transition:none;opacity:.37;transform:none}}
+
+@media (prefers-reduced-motion:reduce){.xbg-photo i{transition:none;opacity:.37;transform:none}}
 #e0,#e146{display:none}
 @media (min-width:900px){.s-faq h2.tx{background:var(--navy);color:var(--ice)!important;left:249px!important;width:1360px;box-sizing:border-box;padding:44px 56px 40px;border-radius:6px}}
 @media (max-width:899px){.s-faq h2.m-h,.s-faq h2.tx{background:var(--navy);color:var(--ice)!important;padding:22px 20px;border-radius:6px}}
