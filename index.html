@@ -55,13 +55,16 @@ em{font-style:normal}
 .hx-green{position:absolute;inset:0;background:var(--teal);opacity:var(--g);pointer-events:none}
 .hx-wrap{position:relative;width:calc(1821.38 * var(--hu));height:100%;margin:0 auto}
 .hx .btn,.hx .acu{position:absolute}
-.hx-logo{position:absolute;left:calc(153 * var(--hu));top:calc(124 * var(--hu));width:calc(498 * var(--hu));height:calc(85 * var(--hu))}
+/* top bar: spans the window (wider than the hero column), with its line underneath */
+.hx-head{position:absolute;z-index:2;left:0;right:0;top:calc(124 * var(--hu));padding:0 var(--hpad);height:calc(85 * var(--hu));display:flex;align-items:center;gap:calc(14 * var(--hu));--hpad:clamp(24px,4.5vw,96px)}
+.hx-head .btn,.hx-head .acu{position:static}
+.hx-logo{position:static;flex:none;margin-right:auto;width:calc(498 * var(--hu));height:calc(85 * var(--hu))}
 .hx-logo svg{display:block;width:100%;height:100%}
-.hx-phone{left:calc(1183.4 * var(--hu));top:calc(131 * var(--hu));height:calc(51 * var(--hu));display:flex;align-items:center;font-size:calc(22.54 * var(--hu));color:var(--ice)}
-.hx .hdr{top:calc(131 * var(--hu));height:calc(51 * var(--hu));font-size:calc(22.54 * var(--hu))}
-.hx-hire{left:calc(1373 * var(--hu));width:calc(178 * var(--hu))}
-.hx-cv{left:calc(1564 * var(--hu));width:calc(155 * var(--hu))}
-.hx-head::after{content:"";position:absolute;left:calc(155 * var(--hu));top:calc(253 * var(--hu));width:calc(1565 * var(--hu));border-top:1px solid rgba(228,246,247,.55)}
+.hx-phone{height:calc(51 * var(--hu));display:flex;align-items:center;margin-right:calc(8 * var(--hu));font-size:calc(22.54 * var(--hu));color:var(--ice)}
+.hx .hdr{height:calc(51 * var(--hu));font-size:calc(22.54 * var(--hu));flex:none}
+.hx-hire{width:calc(178 * var(--hu))}
+.hx-cv{width:calc(155 * var(--hu))}
+.hx-head::after{content:"";position:absolute;left:var(--hpad);right:var(--hpad);top:calc(129 * var(--hu));border-top:1px solid rgba(228,246,247,.55)}
 .hx-main{position:absolute;left:0;right:0;top:calc(254 * var(--hu));bottom:0;display:flex;align-items:center}
 .hx-box{position:relative;width:100%;height:calc(690 * var(--hu))}
 .hx-h{position:absolute;margin:0;left:calc(246.29 * var(--hu));top:calc(88 * var(--hu));font-size:calc(103 * var(--hu));line-height:calc(87.04 * var(--hu));font-weight:inherit;color:var(--ice)}
@@ -87,7 +90,7 @@ em{font-style:normal}
 @media (max-width:899.98px){
   .hx{--hu:calc(100vw / 760);height:auto;min-height:0;padding:20px 22px 40px}
   .hx-wrap{width:auto;height:auto}
-  .hx-head{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.7);margin-bottom:30px}
+  .hx-head{position:static;height:auto;padding:0 0 16px;display:flex;flex-wrap:wrap;align-items:center;gap:8px;border-bottom:1px solid rgba(255,255,255,.7);margin-bottom:30px}
   .hx-head::after{display:none}
   .hx-logo,.hx .btn,.hx .acu{position:static;width:auto;height:auto}
   .hx-logo{flex:1 0 100%;margin-bottom:10px}.hx-logo svg{width:150px;height:auto}
@@ -509,13 +512,13 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
 <!-- ===== header + hero: flexible layout, always exactly one screen high on desktop ===== -->
 <section class="s-hero hx" id="top">
 <div class="hx-green" aria-hidden="true"></div>
-<div class="hx-wrap">
   <header class="hx-head">
     <a class="hx-logo" href="#top" aria-label="Uppertunity Health home"><svg viewBox="203 124 498 85" aria-hidden="true"><use href="#mLogo"/></svg></a>
     <a class="acu hx-phone" href="tel:18008773788">1-800-UPP-ERTU</a>
     <a class="btn b-ice hdr hx-hire" href="#employers" data-form="hire"><span>Hire talent</span></a>
     <a class="btn b-ice hdr hx-cv" href="#next" data-form="cv"><span>Upload CV</span></a>
   </header>
+<div class="hx-wrap">
   <div class="hx-main"><div class="hx-box">
     <h1 class="f-bold hero-h hx-h"><span class="ln" data-hw="555.43">Find a role that</span><span class="ln" data-hw="421.66">values your</span><span class="ln" data-hw="641.28"><em id="clinical">clinical expertise.</em></span></h1>
     <p class="f-black lede rise d1 hx-lede"><span class="ln" data-hw="572.8">Uppertunity connects healthcare professionals with </span><span class="ln" data-hw="587.74">employers who value what they bring to patient care. </span><span class="ln" data-hw="578.87">We take the time to understand what you want from </span><span class="ln" data-hw="573.09">your career and what the employer wants from you, </span><span class="ln" data-hw="537.71">and bring both parties worthwhile opportunities. </span></p>
