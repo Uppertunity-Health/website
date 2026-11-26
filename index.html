@@ -48,7 +48,7 @@ em{font-style:normal}
 
 /* ===== header + hero (flexible) =====
    --hu is one artboard unit: never bigger than 0.75px, and small enough that the hero fits the screen's height */
-.hx{--hs:min(calc(100vw / 1821.38), .84px);--hu:min(var(--hs), calc(100svh / 1075));--hk:1;--g:0;
+.hx{--hs:min(calc(100vw / 1821.38), .76px);--hu:min(var(--hs), calc(100svh / 1150));--hk:1;--g:0;
   position:relative;height:100svh;min-height:calc(1000 * var(--hu));overflow:hidden;color:var(--ice);
   background:radial-gradient(circle calc(2062 * var(--hk) * var(--hu)) at calc(50% + 801 * var(--hu)) calc(100% + 155 * var(--hu)),
     rgb(111,187,167) 0, rgb(84,127,130) 6.25%, rgb(68,93,107) 12.5%, rgb(58,72,92) 18.75%, rgb(52,60,82) 25%, rgb(48,53,77) 31.25%, var(--navy) 100%)}
@@ -56,7 +56,7 @@ em{font-style:normal}
 .hx-wrap{position:relative;width:calc(1821.38 * var(--hs));height:100%;margin:0 auto}
 .hx .btn,.hx .acu{position:absolute}
 /* top bar: spans the window (wider than the hero column), with its line underneath */
-.hx-head{position:absolute;z-index:2;left:0;right:0;top:calc(124 * var(--hu));padding:0 var(--hpad);height:calc(85 * var(--hu));display:flex;align-items:center;gap:calc(14 * var(--hu));--hpad:clamp(24px,4.5vw,96px)}
+.hx-head{position:absolute;z-index:2;left:0;right:0;top:calc(64 * var(--hu));padding:0 var(--hpad);height:calc(85 * var(--hu));display:flex;align-items:center;gap:calc(14 * var(--hu));--hpad:clamp(24px,4.5vw,96px)}
 .hx-head .btn,.hx-head .acu{position:static}
 .hx-logo{position:static;flex:none;margin-right:auto;width:calc(498 * var(--hu));height:calc(85 * var(--hu))}
 .hx-logo svg{display:block;width:100%;height:100%}
@@ -65,7 +65,7 @@ em{font-style:normal}
 .hx-hire{width:calc(178 * var(--hu))}
 .hx-cv{width:calc(155 * var(--hu))}
 .hx-head::after{content:"";position:absolute;left:var(--hpad);right:var(--hpad);top:calc(129 * var(--hu));border-top:1px solid rgba(228,246,247,.55)}
-.hx-main{position:absolute;left:0;right:0;top:calc(254 * var(--hu));bottom:0;display:flex;align-items:center}
+.hx-main{position:absolute;left:0;right:0;top:calc(194 * var(--hu));bottom:calc(90 * var(--hu));display:flex;align-items:center}
 .hx-box{position:relative;width:100%;height:calc(690 * var(--hu))}
 .hx-h{position:absolute;margin:0;left:calc(246.29 * var(--hs));top:calc(88 * var(--hu));font-size:calc(103 * var(--hu));line-height:calc(87.04 * var(--hu));font-weight:inherit;color:var(--ice)}
 .hx-h .ln,.hx-lede .ln{white-space:nowrap;display:block;width:max-content;transform-origin:0 50%}.hx-h .ln:nth-child(3){margin-top:calc(8.96 * var(--hu))}
@@ -78,7 +78,7 @@ em{font-style:normal}
 .hx-arch img{width:100%;height:100%;object-fit:cover;object-position:46% 60%;display:block}
 .hx-tint{position:absolute;inset:0;background:linear-gradient(to top,rgba(112,190,168,.75),rgba(112,190,168,.25) 55%,rgba(112,190,168,.08) 85%);mix-blend-mode:color;pointer-events:none}
 .hx-glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(calc(430 * var(--hu)) calc(400 * var(--hu)) at var(--mx) var(--my),rgba(112,190,168,.6),rgba(112,190,168,0) 70%);mix-blend-mode:screen}
-.hx-badge{position:absolute;right:calc(86.38 * var(--hs));top:calc(-30 * var(--hu));width:calc(235 * var(--hu));height:calc(235 * var(--hu))}
+.hx-badge{position:absolute;right:calc(150 * var(--hs));top:calc(4 * var(--hu));width:calc(235 * var(--hu));height:calc(235 * var(--hu))}
 /* hero gone green: hovers stay visible */
 .s-hero.green .b-ice:hover{background:var(--navy);color:var(--ice)}
 .s-hero.green .b-teal:hover{background:var(--ice);color:var(--navy)}
@@ -1999,7 +1999,7 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
   });
 
   /* ---- fit the artboard to the window, put text on its baselines ---- */
-  const PAGE_MAX = .84;
+  const PAGE_MAX = .76;
   let HU = 1;
   let DY = 0;
   /* the stage's box as the sections below the hero see it (they sit DY artboard units lower) */
@@ -2027,7 +2027,7 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
     }
     /* page scale: the artboard fills the window, but never more than 0.84 (on wide screens it sits centered) */
     const S = Math.min(innerWidth / 1821.38, PAGE_MAX);
-    HU = Math.min(S, innerHeight / 1075);
+    HU = Math.min(S, innerHeight / 1150);
     document.documentElement.style.setProperty('--hun', HU);
     document.documentElement.style.setProperty('--s', S);
     document.documentElement.style.setProperty('--sx', ((innerWidth - 1821.38 * S) / 2).toFixed(2) + 'px');
