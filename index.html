@@ -139,20 +139,20 @@ em{font-style:normal}
 
 .stage{position:absolute;left:var(--sx,0px);top:0;width:1821.38px;height:10043.5px;transform:scale(var(--s));transform-origin:0 0}
 /* the page's own edges: each side repeats the outermost sliver of the artwork, so backgrounds run edge to edge */
-.edge{position:absolute;top:0;bottom:0;width:calc(var(--sx,0px) + 40px);pointer-events:none}
+.edge{position:absolute;top:0;bottom:0;width:calc(var(--sx,0px) + 2px);pointer-events:none}
 .edge.l{left:0}.edge.r{right:0}
 .xbg{position:absolute;left:0;right:0;top:0;pointer-events:none}
 .xbg-photo{position:absolute;left:0;right:0;top:calc((3006px - 1305px) * var(--s));height:calc(985px * var(--s));background:#e4f6f7;overflow:hidden}
-.xbg-photo i{position:absolute;inset:-60px 0 -60px 0;background:url(/images/art-5.jpg) no-repeat;opacity:0;
-  background-size:calc(2375px * var(--s)) auto;
-  background-position:calc(var(--sx,0px) - 435.87px * var(--s)) calc(60px - 1220.07px * var(--s) + var(--po,0) * 1px * var(--s));
-  transform:translate(-90px,-70px) scale(1.04);transition:opacity 1.6s ease,transform 2.2s cubic-bezier(.2,.75,.15,1)}
-.xbg-photo.in i{opacity:.37;transform:none}
+.xbg-photo i{position:absolute;inset:-60px -90px -60px -90px;background:url(/images/art-5.jpg) center 38%/cover no-repeat;opacity:0;
+  transform:translate(-90px,-70px) scale(1.04);transition:opacity 1.6s ease,transform 2.2s cubic-bezier(.2,.75,.15,1);translate:0 calc(var(--po,0) * .5px * var(--s))}
+.xbg-photo.in i{opacity:1;transform:none}
+/* an even light veil over the whole photo keeps the heading readable */
+.xbg-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(228,246,247,.62),rgba(228,246,247,.45) 55%,rgba(228,246,247,.7))}
 .xbg-grad{position:absolute;left:0;right:0;top:calc((3971px - 1305px) * var(--s));height:calc(1884px * var(--s));overflow:hidden;
   background:linear-gradient(to bottom,#e4f6f7,#fff)}
 
-@media (prefers-reduced-motion:reduce){.xbg-photo i{transition:none;opacity:.37;transform:none}}
-#e0,#e146{display:none}
+@media (prefers-reduced-motion:reduce){.xbg-photo i{transition:none;opacity:1;transform:none}}
+#e0{display:none!important}#e146,#e103{display:none}
 /* "Before we work together": the navy box wipes open from the left, then the words rise in */
 @media (min-width:900px){
   .s-faq h2.tx{background:transparent!important;isolation:isolate}
@@ -169,7 +169,7 @@ em{font-style:normal}
 #faqArt{display:none}
 .edge svg{position:absolute;left:0;width:100%;display:block}
 .edge .eB{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 calc(120px * var(--s)));mask-image:linear-gradient(to bottom,transparent 0,#000 calc(120px * var(--s)))}
-@media (max-width:899px){.edge,.xbg{display:none}#e0,#e146{display:inline}}
+@media (max-width:899px){.edge,.xbg{display:none}#e146,#e103{display:inline}}
 .art{position:absolute;left:0;top:0;width:1821.38px;height:10343.5px;display:block}
 .sec,.fcol,.ncard,.tags,.tags li{display:contents}
 .tx,.btn,.hit,.rl,.faq,.cards-scroll,.stage input{position:absolute;margin:0}
@@ -590,7 +590,7 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
 </div>
 </section>
 <div class="page" id="page">
-<div class="xbg" aria-hidden="true"><div class="xbg-photo" id="xPhoto"><i></i></div><div class="xbg-grad"></div></div>
+<div class="xbg" aria-hidden="true"><div class="xbg-photo" id="xPhoto"><i></i></div></div>
 <div class="edge l" aria-hidden="true"><svg viewBox="6 1305 2 3645" preserveAspectRatio="none" style="top:0;height:calc(3645px * var(--s))"><use href="#artAll"/></svg><svg class="eB" viewBox="6 5130 2 5213.5" preserveAspectRatio="none" style="top:calc(3525px * var(--s));height:calc(5213.5px * var(--s))"><use href="#artAll"/></svg><svg viewBox="6 8290 2 2053.5" preserveAspectRatio="none" style="top:calc(6685px * var(--s));height:calc(2053.5px * var(--s))"><g clip-path="url(#nextClip)"><use href="#artAll"/></g></svg></div><div class="edge r" aria-hidden="true"><svg viewBox="1813 1305 2 3645" preserveAspectRatio="none" style="top:0;height:calc(3645px * var(--s))"><use href="#artAll"/></svg><svg class="eB" viewBox="1813 5130 2 5213.5" preserveAspectRatio="none" style="top:calc(3525px * var(--s));height:calc(5213.5px * var(--s))"><use href="#artAll"/></svg><svg viewBox="1813 8290 2 2053.5" preserveAspectRatio="none" style="top:calc(6685px * var(--s));height:calc(2053.5px * var(--s))"><g clip-path="url(#nextClip)"><use href="#artAll"/></g></svg></div>
 <div class="stage" id="stage">
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1821.38 10343.5" id="art" class="art" aria-hidden="true">
