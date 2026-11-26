@@ -154,19 +154,10 @@ em{font-style:normal}
 
 @media (prefers-reduced-motion:reduce){.xbg-photo i{transition:none;opacity:1;transform:none}}
 #e0{display:none!important}#e146,#e103{display:none}
-/* "Before we work together": the navy box wipes open from the left, then the words rise in */
-@media (min-width:900px){
-  .s-faq h2.tx{background:transparent!important;isolation:isolate}
-  .s-faq h2.tx::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--navy);border-radius:6px;transform-origin:0 50%}
-}
-@media (min-width:900px) and (prefers-reduced-motion:no-preference){
-  .s-faq h2.tx::before{transform:scaleX(0);transition:transform 1.1s cubic-bezier(.77,0,.18,1)}
-  .s-faq h2.tx.in::before{transform:none}
-  .s-faq h2.tx .ln{opacity:0;translate:0 .45em;transition:opacity .7s ease .55s,translate .9s cubic-bezier(.2,.75,.15,1) .55s}
-  .s-faq h2.tx.in .ln{opacity:1;translate:0 0}
-}
-@media (min-width:900px){.s-faq h2.tx{color:var(--ice)!important;left:249px!important;width:1360px;box-sizing:border-box;padding:44px 56px 40px;border-radius:6px;margin-top:-309px}}
-@media (max-width:899px){.s-faq h2.m-h,.s-faq h2.tx{background:var(--navy);color:var(--ice)!important;padding:22px 20px;border-radius:6px}}
+/* "Before we work together": pale green section, white question boxes, title in the same style and size as "What's next for you?" */
+.xbg-faq{position:absolute;left:0;right:0;background:#e3f2ec}
+@media (min-width:900px){.s-faq h2.tx{left:249px!important}}
+@media (max-width:899px){.s-faq{background:#e3f2ec;box-shadow:0 0 0 100vmax #e3f2ec;clip-path:inset(0 -100vmax);padding:32px 0}.s-faq h2.m-h,.s-faq h2.tx{color:var(--navy)!important;font-size:clamp(40px,12vw,64px)!important;line-height:1!important;margin-bottom:22px!important}}
 #faqArt{display:none}
 .edge svg{position:absolute;left:0;width:100%;display:block}
 .edge .eB{clip-path:inset(0 0 calc(2053.5px * var(--s)) 0)}
@@ -285,8 +276,8 @@ a.btn,button.btn,a.btn:hover,button.btn:hover{transform:none!important;box-shado
 
 /* FAQ accordion */
 .faq{list-style:none;padding:0}
-.qa{border:1px solid #76788a;border-radius:8px;margin-bottom:12.2px;background:#fff;transition:background-color .25s}
-.qa:hover,.qa.open{background:var(--ice)}
+.qa{border:1px solid #b9d3c9;border-radius:8px;margin-bottom:12.2px;background:#fff;transition:background-color .25s}
+.qa:hover,.qa.open{background:#cde8dd}
 .q{display:flex;align-items:center;gap:30px;width:100%;min-height:98px;padding:0 46px 0 54px;background:none;border:0;text-align:left;color:var(--navy);font-size:31px;cursor:pointer}
 div.q{cursor:inherit}
 .q a{color:var(--teal-d);text-decoration:underline;text-underline-offset:4px}
@@ -609,7 +600,7 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
 </div>
 </section>
 <div class="page" id="page">
-<div class="xbg" aria-hidden="true"><div class="xbg-photo" id="xPhoto"><i></i></div></div>
+<div class="xbg" aria-hidden="true"><div class="xbg-photo" id="xPhoto"><i></i></div><div class="xbg-faq" id="xFaq"></div></div>
 <div class="edge l" aria-hidden="true"><svg viewBox="6 1305 2 3645" preserveAspectRatio="none" style="top:0;height:calc(3645px * var(--s))"><use href="#artAll"/></svg><svg class="eB" viewBox="6 5130 2 5213.5" preserveAspectRatio="none" style="top:calc(3525px * var(--s));height:calc(5213.5px * var(--s))"><use href="#artAll"/></svg></div><div class="edge r" aria-hidden="true"><svg viewBox="1813 1305 2 3645" preserveAspectRatio="none" style="top:0;height:calc(3645px * var(--s))"><use href="#artAll"/></svg><svg class="eB" viewBox="1813 5130 2 5213.5" preserveAspectRatio="none" style="top:calc(3525px * var(--s));height:calc(5213.5px * var(--s))"><use href="#artAll"/></svg></div>
 <div class="stage" id="stage">
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1821.38 10343.5" id="art" class="art" aria-hidden="true">
@@ -1970,7 +1961,7 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
 <div class="m-only m-quarter"><img src="/images/art-4.jpg" alt="A recruiter meets with a physician"></div>
 </section>
 <section class="sec s-faq" id="faq" data-y="7118" data-h="1181">
-<h2 class="tx f-bold h-xl rv" style="left:249.13px;font-size:104px;line-height:104px;color:#2d2f47" data-bl="7294.88" ><span class="ln" style="margin-left:0.0px"><i class="bl"></i>Before we work together</span></h2>
+<h2 class="tx f-xbc upper rv" style="left:249.13px;font-size:104px;line-height:104px;color:#2d2f47" data-bl="7190.88" ><span class="ln"><i class="bl"></i>Before we</span><span class="ln">work together</span></h2>
 <ul class="faq" style="left:249px;top:7399px;width:1360px"><li class="qa"><button class="q f-black" aria-expanded="false" aria-controls="a0" id="q0"><span>Can I explore a new role while I’m still employed?</span><i class="plus" aria-hidden="true"></i></button><div class="a f-reg" id="a0" role="region" aria-labelledby="q0"><p>Yes. You can start with a private conversation, even if you’re still deciding whether to make a move. We’ll ask for your permission before sharing your CV with an employer.</p></div></li><li class="qa"><button class="q f-black" aria-expanded="false" aria-controls="a1" id="q1"><span>Can I reach out if I don’t see a role that fits?</span><i class="plus" aria-hidden="true"></i></button><div class="a f-reg" id="a1" role="region" aria-labelledby="q1"><p>Yes. Tell us what you’d consider next. We can keep you in mind as new opportunities come up.</p></div></li><li class="qa"><button class="q f-black" aria-expanded="false" aria-controls="a2" id="q2"><span>What happens after I apply for an open role?</span><i class="plus" aria-hidden="true"></i></button><div class="a f-reg" id="a2" role="region" aria-labelledby="q2"><p>A recruiter reviews your application individually. If your experience aligns with the role, we’ll reach out to discuss the position and answer your questions before arranging an interview.</p></div></li><li class="qa"><button class="q f-black" aria-expanded="false" aria-controls="a3" id="q3"><span>What do you need from us to start a hiring search?</span><i class="plus" aria-hidden="true"></i></button><div class="a f-reg" id="a3" role="region" aria-labelledby="q3"><p>Start with the role, where it’s based, and the professional responsibilities. We’ll use that first conversation to clarify which qualifications are essential and where there’s room for flexibility.</p></div></li><li class="qa"><button class="q f-black" aria-expanded="false" aria-controls="a4" id="q4"><span>Can you help us fill a role outside the categories listed?</span><i class="plus" aria-hidden="true"></i></button><div class="a f-reg" id="a4" role="region" aria-labelledby="q4"><p>Tell us what you’re hiring for. We’ll let you know whether we can take on the search and what we’d need to get started.</p></div></li><li class="qa mail"><div class="q f-black"><span>Additional questions? Email us at <a href="mailto:info@uppertunity.health">info@uppertunity.health</a></span></div></li></ul>
 </section>
 <svg class="art nbg d-only" id="nextBg" preserveAspectRatio="none" style="top:7990px;height:2053.5px" aria-hidden="true"><defs><linearGradient id="nbgFade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2d2f47" stop-opacity="0"/><stop offset="1" stop-color="#2d2f47"/></linearGradient></defs><path id="nbgPath" fill="url(#radial-pattern-1)"/><rect id="nbgFadeR" fill="url(#nbgFade)"/></svg>
@@ -2382,6 +2373,15 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
   const faqEls = [document.querySelector('.s-faq h2'), document.querySelector('.faq')], faqArt = document.getElementById('faqArt');
   const faqList = document.querySelector('.faq');
   let pinD = 0;
+  /* pale green band: starts a little above the FAQ title and runs down under the "What's next" curve */
+  const xFaq = document.getElementById('xFaq'), faqH = document.querySelector('.s-faq h2'), pageEl = document.getElementById('page');
+  function placeFaqBg() {
+    if (!xFaq || !faqH || !pageEl || !wide.matches) return;
+    const sc = lowBox().width / 1821.38, top0 = faqH.getBoundingClientRect().top - pinD * sc - pageEl.getBoundingClientRect().top;
+    const top = top0 - 120 * sc;
+    xFaq.style.top = top.toFixed(1) + 'px';
+    xFaq.style.height = ((faqList.getBoundingClientRect().bottom - pinD * sc - pageEl.getBoundingClientRect().top) - top + 2600 * sc).toFixed(1) + 'px';
+  }
   function onPin() {
     let D = 0;
     if (!reduce && wide.matches && faqList) {
@@ -2392,6 +2392,7 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
     }
     pinD = D;
     faqEls.forEach(el => el && (el.style.transform = D ? 'translateY(' + D.toFixed(1) + 'px)' : ''));
+    placeFaqBg();
     if (faqArt) faqArt.setAttribute('transform', 'translate(0 ' + D.toFixed(1) + ')');
   }
   addEventListener('scroll', onPin, { passive: true });
