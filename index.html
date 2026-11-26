@@ -70,7 +70,7 @@ em{font-style:normal}
 .hx-h{position:absolute;margin:0;left:calc(246.29 * var(--hu));top:calc(88 * var(--hu));font-size:calc(103 * var(--hu));line-height:calc(87.04 * var(--hu));font-weight:inherit;color:var(--ice)}
 .hx-h .ln,.hx-lede .ln{white-space:nowrap;display:block;width:max-content;transform-origin:0 50%}.hx-h .ln:nth-child(3){margin-top:calc(8.96 * var(--hu))}
 #clinical{color:var(--teal)}
-.hx-lede{position:absolute;margin:0;left:calc(250.3 * var(--hu));top:calc(404 * var(--hu));width:calc(600 * var(--hu));font-size:calc(26 * var(--hu));line-height:calc(30.99 * var(--hu));color:var(--ice)}
+.hx-lede{position:absolute;margin:0;left:calc(250.3 * var(--hu));top:calc(398 * var(--hu));width:calc(700 * var(--hu));font-size:calc(30 * var(--hu));line-height:calc(38 * var(--hu));color:var(--ice)}
 .hx-btns{position:absolute;left:calc(247 * var(--hu));top:calc(639 * var(--hu));width:calc(730 * var(--hu));height:calc(51 * var(--hu))}
 .hx-btns .btn{top:0;height:100%;font-size:calc(21 * var(--hu))}
 .hx-b1{left:0;width:calc(381 * var(--hu))}.hx-b2{left:calc(407 * var(--hu));width:calc(323 * var(--hu))}
@@ -521,7 +521,7 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
 <div class="hx-wrap">
   <div class="hx-main"><div class="hx-box">
     <h1 class="f-bold hero-h hx-h"><span class="ln" data-hw="555.43">Find a role that</span><span class="ln" data-hw="421.66">values your</span><span class="ln" data-hw="641.28"><em id="clinical">clinical expertise.</em></span></h1>
-    <p class="f-black lede rise d1 hx-lede"><span class="ln" data-hw="572.8">Uppertunity connects healthcare professionals with </span><span class="ln" data-hw="587.74">employers who value what they bring to patient care. </span><span class="ln" data-hw="578.87">We take the time to understand what you want from </span><span class="ln" data-hw="573.09">your career and what the employer wants from you, </span><span class="ln" data-hw="537.71">and bring both parties worthwhile opportunities. </span></p>
+    <p class="f-reg lede rise d1 hx-lede"><span class="ln">Uppertunity connects healthcare professionals with </span><span class="ln">employers who value what they bring to patient care. </span><span class="ln">We take the time to understand what you want from </span><span class="ln">your career and what the employer wants from you, </span><span class="ln">and bring both parties worthwhile opportunities. </span></p>
     <div class="hx-btns rise d2">
       <a class="btn b-teal hx-b1" href="#roles"><span>Explore healthcare openings</span></a>
       <a class="btn b-line hx-b2" href="#employers" data-form="hire"><span>Hire healthcare talent</span></a>
@@ -2362,7 +2362,10 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
     const d = document.getElementById('fm-' + a.dataset.form); if (!d || !d.showModal) return;
     e.preventDefault();
     const msg = d.querySelector('textarea');
-    if (a.dataset.role && msg && !msg.value) msg.value = 'I’m interested in the ' + a.dataset.role + ' position.';
+    /* each role link writes its own role in; it replaces an earlier auto-filled line, never the visitor's own words */
+    if (a.dataset.role && msg && (!msg.value || msg.value === msg.dataset.auto)) {
+      msg.value = msg.dataset.auto = 'I’m interested in the ' + a.dataset.role + ' position.';
+    }
     d.showModal(); d.querySelector('input,select,textarea').focus();
   }));
   document.querySelectorAll('dialog.fm').forEach(d => {
