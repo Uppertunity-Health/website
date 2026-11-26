@@ -81,6 +81,7 @@ em{font-style:normal}
 .hx-badge{position:absolute;right:calc(150 * var(--hs));top:calc(4 * var(--hu));width:calc(235 * var(--hu));height:calc(235 * var(--hu))}
 /* hero gone green: hovers stay visible */
 .s-hero.green .b-ice:hover{background:var(--navy);color:var(--ice)}
+.s-hero.green .hx-hire:hover{background:transparent;border-color:#fff;color:#fff;box-shadow:inset 0 0 0 1.5px #fff}
 .s-hero.green .b-teal:hover{background:var(--ice);color:var(--navy)}
 .s-hero.green .b-line:hover{background:var(--yel);border-color:var(--yel);color:var(--navy)}
 .s-hero.green .hx-phone{color:var(--navy)}
@@ -143,8 +144,8 @@ em{font-style:normal}
 .edge.l{left:0}.edge.r{right:0}
 .xbg{position:absolute;left:0;right:0;top:0;pointer-events:none}
 .xbg-photo{position:absolute;left:0;right:0;top:calc((3006px - 1305px) * var(--s));height:calc(985px * var(--s));background:#e4f6f7;overflow:hidden}
-.xbg-photo i{position:absolute;inset:-60px -90px -60px -90px;background:url(/images/art-5.jpg) center 38%/cover no-repeat;opacity:0;
-  transform:translate(-90px,-70px) scale(1.04);transition:opacity 1.6s ease,transform 2.2s cubic-bezier(.2,.75,.15,1);translate:0 calc(var(--po,0) * .5px * var(--s))}
+.xbg-photo i{position:absolute;left:var(--pl,0px);top:var(--pt,0px);width:var(--pw,100%);height:calc(var(--pw,100%) * 1.24138);background:url(/images/art-5.jpg) 0 0/100% 100% no-repeat;opacity:0;
+  transform:translate(-30px,-24px) scale(1.02);transition:opacity 1.6s ease,transform 2.2s cubic-bezier(.2,.75,.15,1);translate:0 calc(var(--po,0) * .5px * var(--s))}
 .xbg-photo.in i{opacity:1;transform:none}
 /* an even light veil over the whole photo keeps the heading readable */
 .xbg-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(228,246,247,.62),rgba(228,246,247,.45) 55%,rgba(228,246,247,.7))}
@@ -168,6 +169,8 @@ em{font-style:normal}
 @media (max-width:899px){.s-faq h2.m-h,.s-faq h2.tx{background:var(--navy);color:var(--ice)!important;padding:22px 20px;border-radius:6px}}
 #faqArt{display:none}
 .edge svg{position:absolute;left:0;width:100%;display:block}
+.edge .eN{clip-path:inset(calc((900px + var(--coff,0) * 1px) * var(--s)) 0 0 0)}
+.edge .eB{clip-path:inset(0 0 calc(2053.5px * var(--s)) 0)}
 .edge .eB{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 calc(120px * var(--s)));mask-image:linear-gradient(to bottom,transparent 0,#000 calc(120px * var(--s)))}
 @media (max-width:899px){.edge,.xbg{display:none}#e146,#e103{display:inline}}
 .art{position:absolute;left:0;top:0;width:1821.38px;height:10343.5px;display:block}
@@ -591,7 +594,7 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
 </section>
 <div class="page" id="page">
 <div class="xbg" aria-hidden="true"><div class="xbg-photo" id="xPhoto"><i></i></div></div>
-<div class="edge l" aria-hidden="true"><svg viewBox="6 1305 2 3645" preserveAspectRatio="none" style="top:0;height:calc(3645px * var(--s))"><use href="#artAll"/></svg><svg class="eB" viewBox="6 5130 2 5213.5" preserveAspectRatio="none" style="top:calc(3525px * var(--s));height:calc(5213.5px * var(--s))"><use href="#artAll"/></svg><svg viewBox="6 8290 2 2053.5" preserveAspectRatio="none" style="top:calc(6685px * var(--s));height:calc(2053.5px * var(--s))"><g clip-path="url(#nextClip)"><use href="#artAll"/></g></svg></div><div class="edge r" aria-hidden="true"><svg viewBox="1813 1305 2 3645" preserveAspectRatio="none" style="top:0;height:calc(3645px * var(--s))"><use href="#artAll"/></svg><svg class="eB" viewBox="1813 5130 2 5213.5" preserveAspectRatio="none" style="top:calc(3525px * var(--s));height:calc(5213.5px * var(--s))"><use href="#artAll"/></svg><svg viewBox="1813 8290 2 2053.5" preserveAspectRatio="none" style="top:calc(6685px * var(--s));height:calc(2053.5px * var(--s))"><g clip-path="url(#nextClip)"><use href="#artAll"/></g></svg></div>
+<div class="edge l" aria-hidden="true"><svg viewBox="6 1305 2 3645" preserveAspectRatio="none" style="top:0;height:calc(3645px * var(--s))"><use href="#artAll"/></svg><svg class="eB" viewBox="6 5130 2 5213.5" preserveAspectRatio="none" style="top:calc(3525px * var(--s));height:calc(5213.5px * var(--s))"><use href="#artAll"/></svg><svg class="eN" viewBox="6 8290 2 2053.5" preserveAspectRatio="none" style="top:calc(6685px * var(--s));height:calc(2053.5px * var(--s))"><g clip-path="url(#nextClip)"><use href="#artAll"/></g></svg><svg class="eCap" id="capL" preserveAspectRatio="none" style="top:calc(6685px * var(--s));height:calc(1000px * var(--s))"><path fill="#2d2f47"/></svg></div><div class="edge r" aria-hidden="true"><svg viewBox="1813 1305 2 3645" preserveAspectRatio="none" style="top:0;height:calc(3645px * var(--s))"><use href="#artAll"/></svg><svg class="eB" viewBox="1813 5130 2 5213.5" preserveAspectRatio="none" style="top:calc(3525px * var(--s));height:calc(5213.5px * var(--s))"><use href="#artAll"/></svg><svg class="eN" viewBox="1813 8290 2 2053.5" preserveAspectRatio="none" style="top:calc(6685px * var(--s));height:calc(2053.5px * var(--s))"><g clip-path="url(#nextClip)"><use href="#artAll"/></g></svg><svg class="eCap" id="capR" preserveAspectRatio="none" style="top:calc(6685px * var(--s));height:calc(1000px * var(--s))"><path fill="#2d2f47"/></svg></div>
 <div class="stage" id="stage">
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1821.38 10343.5" id="art" class="art" aria-hidden="true">
 <defs>
@@ -2066,6 +2069,15 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
     document.documentElement.style.setProperty('--hun', HU);
     document.documentElement.style.setProperty('--s', S);
     document.documentElement.style.setProperty('--sx', ((innerWidth - 1821.38 * S) / 2).toFixed(2) + 'px');
+    /* What to expect photo: the designed framing (both faces near the top), enlarged around the faces just enough to cover the full width */
+    { const SX = (innerWidth - 1821.38 * S) / 2, W0 = 2375 * S, L0 = SX - 435.87 * S, T0 = -1220.07 * S,
+        cx = SX + 858 * S, cy = 280 * S, pad = 45;
+      const k = Math.max(1, (innerWidth + 2 * pad) / W0), W = W0 * k;
+      const L = Math.min(-pad, Math.max(innerWidth + pad - W, cx - (cx - L0) * k));
+      const st = document.documentElement.style;
+      st.setProperty('--pw', W.toFixed(1) + 'px');
+      st.setProperty('--pl', L.toFixed(1) + 'px');
+      st.setProperty('--pt', (cy - (cy - T0) * k + 70 * S).toFixed(1) + 'px'); }
     document.documentElement.style.setProperty('--ex', Math.max(0, (innerWidth - 1821.38 * S) / 2 / 2 + .5).toFixed(3));
     /* the hero is its own flexible block above; the artboard starts at the career section (y 1305) */
     DY = -1305;
@@ -2281,12 +2293,29 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
     curve.setAttribute('d', 'M 0 ' + y(8387.83) + ' L 0 9450.4 L 1820.76 9450.4 L 1820.76 ' + y(8362.32) +
       ' C 1582.46 ' + y(8321.04) + ' 1290.77 ' + y(8296.75) + ' 975.72 ' + y(8296.75) +
       ' C 600.41 ' + y(8296.75) + ' 258.25 ' + y(8331.22) + ' 0 ' + y(8387.83));
+    /* the curve keeps bending down past the artboard edges, so it reaches the screen edges fully round */
+    const sx = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--sx')) || 0;
+    const S2 = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--s')) || 1;
+    const ext = (sx + 2) / S2, bot = 8290 + 1000;
+    document.documentElement.style.setProperty('--coff', off.toFixed(1));
+    const cap = (id, x0, x1, ex, ey, slope) => {
+      const svg = document.getElementById(id); if (!svg) return;
+      svg.setAttribute('viewBox', x0.toFixed(2) + ' 8290 ' + (x1 - x0).toFixed(2) + ' 1000');
+      let d = '', n = 24;
+      for (let i = 0; i <= n; i++) {
+        const x = x0 + (x1 - x0) * i / n, dx = Math.abs(x - ex), yy = ey + off + slope * dx + .00004 * dx * dx;
+        d += (i ? ' L ' : 'M ') + x.toFixed(2) + ' ' + yy.toFixed(2);
+      }
+      svg.firstChild.setAttribute('d', d + ' L ' + x1.toFixed(2) + ' ' + bot + ' L ' + x0.toFixed(2) + ' ' + bot + ' Z');
+    };
+    cap('capL', -sx / S2, 2 / S2, 0, 8387.83, .2192);
+    cap('capR', 1821.38 - 2 / S2, 1821.38 - 2 / S2 + ext, 1820.76, 8362.32, .1732);
     const nc = document.getElementById('nextClipPath');
     if (nc) nc.setAttribute('d', 'M 0 ' + y(8387.83) + ' L 0 10344 L 1821.38 10344 L 1821.38 ' + y(8362.32) +
       ' C 1582.46 ' + y(8321.04) + ' 1290.77 ' + y(8296.75) + ' 975.72 ' + y(8296.75) +
       ' C 600.41 ' + y(8296.75) + ' 258.25 ' + y(8331.22) + ' 0 ' + y(8387.83));
   }
-  addEventListener('scroll', onCurve, { passive: true });
+  addEventListener('scroll', onCurve, { passive: true }); addEventListener('resize', onCurve);
   onCurve();
   /* employers paragraph: a soft mint highlighter sweeps across each line as you scroll */
   const hlLines = [...document.querySelectorAll('.hl .ln')], hlBox = document.querySelector('.hl');
