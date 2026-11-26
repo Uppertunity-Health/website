@@ -45,13 +45,72 @@ a{color:inherit;text-decoration:none}
 .upper{text-transform:uppercase}
 em{font-style:normal}
 
+
+/* ===== header + hero (flexible) =====
+   --hu is one artboard unit: never bigger than 0.75px, and small enough that the hero fits the screen's height */
+.hx{--hu:min(calc(100vw / 1821.38), .75px, calc(100svh / 1075));--hk:1;--g:0;
+  position:relative;height:100svh;min-height:calc(1000 * var(--hu));overflow:hidden;color:var(--ice);
+  background:radial-gradient(circle calc(2062 * var(--hk) * var(--hu)) at calc(50% + 801 * var(--hu)) calc(100% + 155 * var(--hu)),
+    rgb(111,187,167) 0, rgb(84,127,130) 6.25%, rgb(68,93,107) 12.5%, rgb(58,72,92) 18.75%, rgb(52,60,82) 25%, rgb(48,53,77) 31.25%, var(--navy) 100%)}
+.hx-green{position:absolute;inset:0;background:var(--teal);opacity:var(--g);pointer-events:none}
+.hx-wrap{position:relative;width:calc(1821.38 * var(--hu));height:100%;margin:0 auto}
+.hx .btn,.hx .acu{position:absolute}
+.hx-logo{position:absolute;left:calc(153 * var(--hu));top:calc(124 * var(--hu));width:calc(498 * var(--hu));height:calc(85 * var(--hu))}
+.hx-logo svg{display:block;width:100%;height:100%}
+.hx-phone{left:calc(1183.4 * var(--hu));top:calc(131 * var(--hu));height:calc(51 * var(--hu));display:flex;align-items:center;font-size:calc(22.54 * var(--hu));color:var(--ice)}
+.hx .hdr{top:calc(131 * var(--hu));height:calc(51 * var(--hu));font-size:calc(22.54 * var(--hu))}
+.hx-hire{left:calc(1373 * var(--hu));width:calc(178 * var(--hu))}
+.hx-cv{left:calc(1564 * var(--hu));width:calc(155 * var(--hu))}
+.hx-head::after{content:"";position:absolute;left:calc(155 * var(--hu));top:calc(253 * var(--hu));width:calc(1565 * var(--hu));border-top:1px solid rgba(228,246,247,.55)}
+.hx-main{position:absolute;left:0;right:0;top:calc(254 * var(--hu));bottom:0;display:flex;align-items:center}
+.hx-box{position:relative;width:100%;height:calc(690 * var(--hu))}
+.hx-h{position:absolute;margin:0;left:calc(246.29 * var(--hu));top:calc(88 * var(--hu));font-size:calc(103 * var(--hu));line-height:calc(87.04 * var(--hu));font-weight:inherit;color:var(--ice)}
+.hx-h .ln,.hx-lede .ln{white-space:nowrap;display:block;width:max-content;transform-origin:0 50%}.hx-h .ln:nth-child(3){margin-top:calc(8.96 * var(--hu))}
+#clinical{color:var(--teal)}
+.hx-lede{position:absolute;margin:0;left:calc(250.3 * var(--hu));top:calc(404 * var(--hu));width:calc(600 * var(--hu));font-size:calc(26 * var(--hu));line-height:calc(30.99 * var(--hu));color:var(--ice)}
+.hx-btns{position:absolute;left:calc(247 * var(--hu));top:calc(639 * var(--hu));width:calc(730 * var(--hu));height:calc(51 * var(--hu))}
+.hx-btns .btn{top:0;height:100%;font-size:calc(21 * var(--hu))}
+.hx-b1{left:0;width:calc(381 * var(--hu))}.hx-b2{left:calc(407 * var(--hu));width:calc(323 * var(--hu))}
+.hx-arch{position:absolute;left:calc(1066 * var(--hu));top:0;width:calc(538 * var(--hu));height:calc(682 * var(--hu));border-radius:calc(269 * var(--hu)) calc(269 * var(--hu)) 0 0;overflow:hidden;--mx:85%;--my:95%}
+.hx-arch img{width:100%;height:100%;object-fit:cover;object-position:46% 60%;display:block}
+.hx-tint{position:absolute;inset:0;background:linear-gradient(to top,rgba(112,190,168,.75),rgba(112,190,168,.25) 55%,rgba(112,190,168,.08) 85%);mix-blend-mode:color;pointer-events:none}
+.hx-glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(calc(430 * var(--hu)) calc(400 * var(--hu)) at var(--mx) var(--my),rgba(112,190,168,.6),rgba(112,190,168,0) 70%);mix-blend-mode:screen}
+.hx-badge{position:absolute;left:calc(434 * var(--hu) + 1066 * var(--hu));top:calc(-30 * var(--hu));width:calc(235 * var(--hu));height:calc(235 * var(--hu))}
+/* hero gone green: hovers stay visible */
+.s-hero.green .b-ice:hover{background:var(--navy);color:var(--ice)}
+.s-hero.green .b-teal:hover{background:var(--ice);color:var(--navy)}
+.s-hero.green .b-line:hover{background:var(--navy);border-color:var(--navy);color:var(--ice)}
+.s-hero.green .hx-phone{color:var(--navy)}
+.s-hero.green .hx-head::after{border-top-color:rgba(45,47,71,.45)}
+.s-hero.green .hx-h,.s-hero.green .hx-lede{color:var(--navy)}
+.hx-h,.hx-lede,.hx-phone{transition:color .4s}
+@media (max-width:899.98px){
+  .hx{--hu:calc(100vw / 760);height:auto;min-height:0;padding:20px 22px 40px}
+  .hx-wrap{width:auto;height:auto}
+  .hx-head{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.7);margin-bottom:30px}
+  .hx-head::after{display:none}
+  .hx-logo,.hx .btn,.hx .acu{position:static;width:auto;height:auto}
+  .hx-logo{flex:1 0 100%;margin-bottom:10px}.hx-logo svg{width:150px;height:auto}
+  .hx-phone{display:none}
+  .hx .hdr{height:40px;padding:0 14px;font-size:14px}
+  .hx-main,.hx-box{position:static;height:auto;display:block}
+  .hx-h,.hx-lede,.hx-btns{position:static;width:auto;height:auto}
+  .hx-h{font-size:clamp(40px,11.5vw,64px);line-height:1.04;margin:0 0 20px}
+  .hx-h .ln,.hx-lede .ln{white-space:normal;display:inline;transform:none!important}.hx-h .ln:nth-child(3){margin-top:0}
+  .hx-lede{font-size:17px;line-height:1.45}
+  .hx-btns{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 28px}
+  .hx-btns .btn{position:static;height:48px;padding:0 22px;font-size:16px;width:auto}
+  .hx-arch{position:relative;left:auto;width:100%;height:auto;aspect-ratio:538/682;max-width:420px;border-radius:999px 999px 0 0}
+  .hx-badge{display:none}
+}
+
 /* ---------- desktop: the artboard ---------- */
 .page{position:relative;width:100%;height:calc((10043.5px + var(--dy,0) * 1px) * var(--s));overflow:hidden}
 /* header + hero fill exactly one screen: the hero art is cut (or extended in navy) at the screen's bottom,
    and everything below sits in #lower, moved up or down by --dy artboard units (set in layout()) */
 #art{clip-path:inset(0 0 calc(10343.5px - var(--hc,1305) * 1px) 0)}
 #lower{position:absolute;left:0;top:calc(var(--dy,0) * 1px);width:1821.38px;height:10043.5px}
-#heroFill{position:absolute;left:0;top:1305px;width:1821.38px;height:calc(max(0, var(--dy,0)) * 1px);background:var(--navy)}
+
 .stage{position:absolute;left:0;top:0;width:1821.38px;height:10043.5px;transform:scale(var(--s));transform-origin:0 0}
 .art{position:absolute;left:0;top:0;width:1821.38px;height:10343.5px;display:block}
 .sec,.fcol,.ncard,.tags,.tags li{display:contents}
@@ -313,7 +372,6 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
   .page{height:auto;overflow:visible}
   .stage{position:static;transform:none;width:auto;height:auto}
   #lower{display:contents}
-  #heroFill{display:none}
   .art,.d-only,.hit{display:none!important}
   .m-only{display:block}
   .stage .tx,.stage .btn,.stage .rl,.stage .faq,.stage .cards-scroll,.stage input{position:static!important;left:auto!important;top:auto!important;width:auto!important;height:auto!important}
@@ -448,6 +506,28 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
       <path class="cls-122" d="M268.01,127.86c-2.05-.29-4.09-.39-6.11-.44v27.97c13.81.7,24.82,11.87,25.13,25.78h27.35c.04-26.45-19.44-49.55-46.38-53.31"/></g>
 </defs></svg>
 
+<!-- ===== header + hero: flexible layout, always exactly one screen high on desktop ===== -->
+<section class="s-hero hx" id="top">
+<div class="hx-green" aria-hidden="true"></div>
+<div class="hx-wrap">
+  <header class="hx-head">
+    <a class="hx-logo" href="#top" aria-label="Uppertunity Health home"><svg viewBox="203 124 498 85" aria-hidden="true"><use href="#mLogo"/></svg></a>
+    <a class="acu hx-phone" href="tel:18008773788">1-800-UPP-ERTU</a>
+    <a class="btn b-ice hdr hx-hire" href="#employers" data-form="hire"><span>Hire talent</span></a>
+    <a class="btn b-ice hdr hx-cv" href="#next" data-form="cv"><span>Upload CV</span></a>
+  </header>
+  <div class="hx-main"><div class="hx-box">
+    <h1 class="f-bold hero-h hx-h"><span class="ln" data-hw="555.43">Find a role that</span><span class="ln" data-hw="421.66">values your</span><span class="ln" data-hw="641.28"><em id="clinical">clinical expertise.</em></span></h1>
+    <p class="f-black lede rise d1 hx-lede"><span class="ln" data-hw="572.8">Uppertunity connects healthcare professionals with </span><span class="ln" data-hw="587.74">employers who value what they bring to patient care. </span><span class="ln" data-hw="578.87">We take the time to understand what you want from </span><span class="ln" data-hw="573.09">your career and what the employer wants from you, </span><span class="ln" data-hw="537.71">and bring both parties worthwhile opportunities. </span></p>
+    <div class="hx-btns rise d2">
+      <a class="btn b-teal hx-b1" href="#roles"><span>Explore healthcare openings</span></a>
+      <a class="btn b-line hx-b2" href="#employers" data-form="hire"><span>Hire healthcare talent</span></a>
+    </div>
+    <div class="hx-arch" id="hxArch"><img src="/images/art-0.jpg" alt="A recruiter reviews a CV with a nurse and a physician"><i class="hx-tint"></i><i class="hx-glow"></i></div>
+    <svg class="hx-badge" viewBox="1500 345 235 235" aria-hidden="true"><use href="#e36"/><use href="#badgeSpin"/><use href="#e70"/><use href="#e71"/><use href="#e72"/></svg>
+  </div></div>
+</div>
+</section>
 <div class="page" id="page">
 <div class="stage" id="stage">
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1821.38 10343.5" id="art" class="art" aria-hidden="true">
@@ -1758,19 +1838,7 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
 </g></g></g></svg>
 <!-- the art below the "What to expect" panel, drawn 300 units higher to close the gap -->
 
-<section class="sec s-hero" id="top" data-y="0" data-h="1305">
-<div class="m-only mtop"><svg viewBox="203 124 498 85" aria-label="Uppertunity Health"><use href="#mLogo"/></svg></div>
-<a class="hit logo-hit" href="#top" style="left:155px;top:125px;width:455px;height:82px" aria-label="Uppertunity Health home"></a>
-<a class="tx acu phone d-only" href="tel:18008773788" style="left:1183.4px;top:131px;height:51px;display:flex;align-items:center;font-size:22.54px;color:#e4f6f7">1-800-UPP-ERTU</a>
-<a class="btn b-ice hdr" href="#employers" data-form="hire" style="left:1373px;top:131px;width:178px;height:51px"><span>Hire talent</span></a>
-<a class="btn b-ice hdr" href="#next" data-form="cv" style="left:1564px;top:131px;width:155px;height:51px"><span>Upload CV</span></a>
-<h1 class="tx f-bold h-xl hero-h" style="left:246.29px;font-size:103px;line-height:87.04px;color:#e4f6f7" data-bl="533.14" ><span class="ln" style="margin-left:0.0px" data-w="555.43"><i class="bl"></i>Find a role that</span><span class="ln" style="margin-left:0.0px" data-w="421.66">values your</span><span class="ln" style="margin-left:0.0px;margin-top:8.96px" data-w="641.28"><em id="clinical" style="color:#70bea8">clinical expertise.</em></span></h1>
-<p class="tx f-black lede rise d1" style="left:250.3px;font-size:26px;line-height:30.99px;color:#e4f6f7" data-bl="802.08" ><span class="ln" style="margin-left:0.0px" data-w="572.8"><i class="bl"></i>Uppertunity connects healthcare professionals with </span><span class="ln" style="margin-left:0.0px" data-w="587.74">employers who value what they bring to patient care. </span><span class="ln" style="margin-left:0.0px" data-w="578.87">We take the time to understand what you want from </span><span class="ln" style="margin-left:0.0px" data-w="573.09">your career and what the employer wants from you, </span><span class="ln" style="margin-left:0.0px" data-w="537.71">and bring both parties worthwhile opportunities.</span></p>
-<a class="btn b-teal rise d2" href="#roles" style="left:247px;top:1014px;width:381px;height:51px"><span>Explore healthcare openings</span></a>
-<a class="btn b-line rise d2" href="#employers" data-form="hire" style="left:654px;top:1014px;width:323px;height:51px"><span>Hire healthcare talent</span></a>
-<div class="m-only m-arch"><img src="/images/art-0.jpg" alt="A recruiter reviews a CV with a nurse and a physician"></div>
-</section>
-<div id="heroFill" class="d-only" aria-hidden="true"></div>
+
 <div id="lower">
 <svg class="art" viewBox="0 1305 1821.38 3645" style="top:1305px;height:3645px" aria-hidden="true"><use href="#artAll"/></svg>
 <svg class="art artB" viewBox="0 5130 1821.38 5213.5" style="top:4830px;height:5213.5px" aria-hidden="true"><use href="#artAll"/><g id="faqArt"><path fill="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="round" stroke="rgb(63.699341%, 63.334656%, 84.858704%)" stroke-opacity="1" stroke-miterlimit="4" d="M 0.0000432839 0.000867922 L 1360.341854 0.000867922 " transform="matrix(0.99966, 0, 0, -0.99966, 249.042925, 7304.934461)" id="e149"/><path id="faqLine" d="M 0 0 L 1360.34 0" transform="matrix(0.99966, 0, 0, -0.99966, 249.042925, 7304.934461)" fill="none" stroke="#70bea8" stroke-width="2" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></g></svg>
@@ -1902,11 +1970,21 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
   });
 
   /* ---- fit the artboard to the window, put text on its baselines ---- */
-  const HERO_MIN = 1125;
   let DY = 0;
   /* the stage's box as the sections below the hero see it (they sit DY artboard units lower) */
   function lowBox() { const r = stage.getBoundingClientRect(), s = r.width / 1821.38; return { left: r.left, top: r.top + DY * s, width: r.width }; }
+  /* hero lines keep the width they have in the design, whatever font is loading */
+  function fitHero() {
+    const on = wide.matches, hu = document.querySelector('.hx').offsetWidth ? parseFloat(getComputedStyle(document.querySelector('.hx-wrap')).width) / 1821.38 : 0;
+    document.querySelectorAll('.hx [data-hw]').forEach(l => {
+      l.style.transform = 'none';
+      if (!on || !hu) return;
+      const nat = l.offsetWidth;
+      if (nat) l.style.transform = 'scaleX(' + Math.min(1.35, Math.max(.7, +l.dataset.hw * hu / nat)).toFixed(4) + ')';
+    });
+  }
   function layout() {
+    fitHero();
     const all = document.querySelectorAll('[data-bl]');
     if (!wide.matches) {
       DY = 0; document.documentElement.style.setProperty('--dy', 0); document.documentElement.style.setProperty('--hc', 1305);
@@ -1916,12 +1994,10 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
       return;
     }
     document.documentElement.style.setProperty('--s', innerWidth / 1821.38);
-    /* header + hero = one screen high: never shorter than HERO_MIN (keeps the buttons and photo whole),
-       never taller than the artboard's hero (on very tall screens the next section starts a little early) */
-    const H = Math.min(1305, Math.max(HERO_MIN, innerHeight / (innerWidth / 1821.38)));
-    DY = H - 1305;
-    document.documentElement.style.setProperty('--dy', DY.toFixed(2));
-    document.documentElement.style.setProperty('--hc', Math.min(1305, H).toFixed(2));
+    /* the hero is its own flexible block above; the artboard starts at the career section (y 1305) */
+    DY = -1305;
+    document.documentElement.style.setProperty('--dy', DY);
+    document.documentElement.style.setProperty('--hc', 0);
     document.querySelectorAll('.ln[data-w]').forEach(l => {
       l.style.transform = 'none';
       const nat = l.offsetWidth;
@@ -2007,17 +2083,17 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
   addEventListener('scroll', onPx, { passive: true });
   onPx();
   /* hero photo: the green glow follows the mouse anywhere on the page, but stays inside the arch */
-  const ag = document.getElementById('archGlow');
-  let gx = 1520, gy = 1040, gxT = 1520, gyT = 1040, agRun = false;
+  const ag = document.getElementById('hxArch');
+  let gx = 85, gy = 95, gxT = 85, gyT = 95, agRun = false;
   function agTick() {
     gx += (gxT - gx) * .07; gy += (gyT - gy) * .07;
-    ag.setAttribute('cx', gx.toFixed(1)); ag.setAttribute('cy', gy.toFixed(1));
-    if (Math.abs(gxT - gx) + Math.abs(gyT - gy) > .5) requestAnimationFrame(agTick); else agRun = false;
+    ag.style.setProperty('--mx', gx.toFixed(1) + '%'); ag.style.setProperty('--my', gy.toFixed(1) + '%');
+    if (Math.abs(gxT - gx) + Math.abs(gyT - gy) > .1) requestAnimationFrame(agTick); else agRun = false;
   }
   addEventListener('pointermove', e => {
     if (e.pointerType !== 'mouse' || reduce || !wide.matches) return;
-    gxT = 1080 + (e.clientX / innerWidth) * 560;
-    gyT = 420 + (e.clientY / innerHeight) * 640;
+    gxT = 3 + (e.clientX / innerWidth) * 104;
+    gyT = 7 + (e.clientY / innerHeight) * 94;
     if (!agRun) { agRun = true; requestAnimationFrame(agTick); }
   }, { passive: true });
   /* hero: the green corner glow grows as you scroll */
@@ -2031,18 +2107,16 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
   }
   function onHg() {
     if (reduce || !wide.matches) return;
-    const s = stage.getBoundingClientRect().width / 1821.38;
-    const p = Math.max(0, Math.min(1, scrollY / (1305 * s)));
-    hkT = 1 + p * 1.6;
+    const p = Math.max(0, Math.min(1, scrollY / heroSec.offsetHeight));
+    heroSec.style.setProperty('--hk', (1 + p * 1.6).toFixed(3));
     /* once you're past the glow, the whole hero fills with its green and "clinical expertise." turns navy */
     const g = Math.max(0, Math.min(1, (p - .22) / .45)), e = g * g * (3 - 2 * g);
-    heroGreen.setAttribute('opacity', e.toFixed(3));
+    heroSec.style.setProperty('--g', e.toFixed(3));
     /* the words go navy ahead of the green so they never blend in mid-way */
     const tt = Math.max(0, Math.min(1, (p - .16) / .18)), te = tt * tt * (3 - 2 * tt);
     const mix = (a, b) => Math.round(a + (b - a) * te);
     heroSec.classList.toggle('green', e > .5);
     clinical.style.color = 'rgb(' + mix(112, 45) + ',' + mix(190, 47) + ',' + mix(168, 71) + ')';
-    if (!hkRun) { hkRun = true; requestAnimationFrame(hgTick); }
   }
   addEventListener('scroll', onHg, { passive: true });
   /* what's next: cards glow while the mouse is over them */
