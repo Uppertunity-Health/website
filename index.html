@@ -46,7 +46,12 @@ a{color:inherit;text-decoration:none}
 em{font-style:normal}
 
 /* ---------- desktop: the artboard ---------- */
-.page{position:relative;width:100%;height:calc(10043.5px * var(--s));overflow:hidden}
+.page{position:relative;width:100%;height:calc((10043.5px + var(--dy,0) * 1px) * var(--s));overflow:hidden}
+/* header + hero fill exactly one screen: the hero art is cut (or extended in navy) at the screen's bottom,
+   and everything below sits in #lower, moved up or down by --dy artboard units (set in layout()) */
+#art{clip-path:inset(0 0 calc(10343.5px - var(--hc,1305) * 1px) 0)}
+#lower{position:absolute;left:0;top:calc(var(--dy,0) * 1px);width:1821.38px;height:10043.5px}
+#heroFill{position:absolute;left:0;top:1305px;width:1821.38px;height:calc(max(0, var(--dy,0)) * 1px);background:var(--navy)}
 .stage{position:absolute;left:0;top:0;width:1821.38px;height:10043.5px;transform:scale(var(--s));transform-origin:0 0}
 .art{position:absolute;left:0;top:0;width:1821.38px;height:10343.5px;display:block}
 .sec,.fcol,.ncard,.tags,.tags li{display:contents}
@@ -307,6 +312,8 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
 @media (max-width:899px){
   .page{height:auto;overflow:visible}
   .stage{position:static;transform:none;width:auto;height:auto}
+  #lower{display:contents}
+  #heroFill{display:none}
   .art,.d-only,.hit{display:none!important}
   .m-only{display:block}
   .stage .tx,.stage .btn,.stage .rl,.stage .faq,.stage .cards-scroll,.stage input{position:static!important;left:auto!important;top:auto!important;width:auto!important;height:auto!important}
@@ -1750,7 +1757,7 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
 <path fill="none" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(54.91333%, 80.865479%, 73.153687%)" stroke-opacity="1" stroke-miterlimit="10" d="M 0.00117399 0.000746067 L -18.798192 0.000746067 C -26.785285 0.000746067 -33.260144 6.475606 -33.260144 14.462699 C -33.260144 22.449791 -26.785285 28.924651 -18.798192 28.924651 L 0.00117399 28.924651 " transform="matrix(0.99966, 0, 0, -0.99966, 1491.893358, 3871.531996)" id="e163"/>
 </g></g></g></svg>
 <!-- the art below the "What to expect" panel, drawn 300 units higher to close the gap -->
-<svg class="art artB" viewBox="0 5130 1821.38 5213.5" style="top:4830px;height:5213.5px" aria-hidden="true"><use href="#artAll"/><g id="faqArt"><path fill="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="round" stroke="rgb(63.699341%, 63.334656%, 84.858704%)" stroke-opacity="1" stroke-miterlimit="4" d="M 0.0000432839 0.000867922 L 1360.341854 0.000867922 " transform="matrix(0.99966, 0, 0, -0.99966, 249.042925, 7304.934461)" id="e149"/><path id="faqLine" d="M 0 0 L 1360.34 0" transform="matrix(0.99966, 0, 0, -0.99966, 249.042925, 7304.934461)" fill="none" stroke="#70bea8" stroke-width="2" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></g></svg>
+
 <section class="sec s-hero" id="top" data-y="0" data-h="1305">
 <div class="m-only mtop"><svg viewBox="203 124 498 85" aria-label="Uppertunity Health"><use href="#mLogo"/></svg></div>
 <a class="hit logo-hit" href="#top" style="left:155px;top:125px;width:455px;height:82px" aria-label="Uppertunity Health home"></a>
@@ -1763,6 +1770,10 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
 <a class="btn b-line rise d2" href="#employers" data-form="hire" style="left:654px;top:1014px;width:323px;height:51px"><span>Hire healthcare talent</span></a>
 <div class="m-only m-arch"><img src="/images/art-0.jpg" alt="A recruiter reviews a CV with a nurse and a physician"></div>
 </section>
+<div id="heroFill" class="d-only" aria-hidden="true"></div>
+<div id="lower">
+<svg class="art" viewBox="0 1305 1821.38 3645" style="top:1305px;height:3645px" aria-hidden="true"><use href="#artAll"/></svg>
+<svg class="art artB" viewBox="0 5130 1821.38 5213.5" style="top:4830px;height:5213.5px" aria-hidden="true"><use href="#artAll"/><g id="faqArt"><path fill="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="round" stroke="rgb(63.699341%, 63.334656%, 84.858704%)" stroke-opacity="1" stroke-miterlimit="4" d="M 0.0000432839 0.000867922 L 1360.341854 0.000867922 " transform="matrix(0.99966, 0, 0, -0.99966, 249.042925, 7304.934461)" id="e149"/><path id="faqLine" d="M 0 0 L 1360.34 0" transform="matrix(0.99966, 0, 0, -0.99966, 249.042925, 7304.934461)" fill="none" stroke="#70bea8" stroke-width="2" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></g></svg>
 <section class="sec s-career" id="career" data-y="1305" data-h="875">
 <div class="tx f-reg h-xl words d-only" style="left:249.15px;font-size:104px;line-height:104px;color:#2d2f47" data-bl="1594.63" ><span class="ln" style="margin-left:0.0px" data-w="329.1"><i class="bl"></i>A career</span></div>
 <div class="tx f-reg h-xl words d-only" style="left:749.9px;font-size:104px;line-height:104px;color:#2d2f47" data-bl="1594.63" ><span class="ln" style="margin-left:0.0px" data-w="822.3"><i class="bl"></i>move should improve</span></div>
@@ -1828,6 +1839,7 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
 <form class="fcol alerts frv d3" id="alerts" novalidate><h3 class="tx f-heavy " style="left:1308.11px;font-size:26px;line-height:26px;color:#fff" data-bl="9664.59" ><span class="ln" style="margin-left:0.0px" data-w="296.43"><i class="bl"></i>Get Healthcare Job Alerts</span></h3><p class="tx f-bold " style="left:1305.04px;font-size:24px;line-height:27.0px;color:#70bea8" data-bl="9742.55" ><span class="ln" style="margin-left:0.0px" data-w="250.01"><i class="bl"></i>Get new openings in your </span><span class="ln" style="margin-left:0.0px" data-w="182.25">specialty by email.</span></p><div class="notify" id="notify" style="left:1302px;top:9796px;width:150px;height:41px"><span class="nlabel f-black" aria-hidden="true">Notify Me</span><input id="alertEmail" type="email" placeholder="Your email here" autocomplete="email" aria-label="Email address for job alerts"><button class="ngo" type="submit" aria-label="Notify me"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div><p class="tx f-bold formmsg" id="alertMsg" role="status" style="left:1305px;top:9852px;font-size:18px"></p></form>
 <div class="m-only m-biglogo"><svg viewBox="203 124 498 85" aria-hidden="true"><use href="#mLogo"/></svg></div>
 </footer>
+</div><!-- /lower -->
 </div>
 </div>
 
@@ -1890,15 +1902,26 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
   });
 
   /* ---- fit the artboard to the window, put text on its baselines ---- */
+  const HERO_MIN = 1125;
+  let DY = 0;
+  /* the stage's box as the sections below the hero see it (they sit DY artboard units lower) */
+  function lowBox() { const r = stage.getBoundingClientRect(), s = r.width / 1821.38; return { left: r.left, top: r.top + DY * s, width: r.width }; }
   function layout() {
     const all = document.querySelectorAll('[data-bl]');
     if (!wide.matches) {
+      DY = 0; document.documentElement.style.setProperty('--dy', 0); document.documentElement.style.setProperty('--hc', 1305);
       all.forEach(el => el.style.top = '');
       document.querySelectorAll('.ln').forEach(l => l.style.transform = '');
       document.querySelectorAll('.btn>span').forEach(s => s.style.fontSize = '');
       return;
     }
     document.documentElement.style.setProperty('--s', innerWidth / 1821.38);
+    /* header + hero = one screen high: never shorter than HERO_MIN (keeps the buttons and photo whole),
+       never taller than the artboard's hero (on very tall screens the next section starts a little early) */
+    const H = Math.min(1305, Math.max(HERO_MIN, innerHeight / (innerWidth / 1821.38)));
+    DY = H - 1305;
+    document.documentElement.style.setProperty('--dy', DY.toFixed(2));
+    document.documentElement.style.setProperty('--hc', Math.min(1305, H).toFixed(2));
     document.querySelectorAll('.ln[data-w]').forEach(l => {
       l.style.transform = 'none';
       const nat = l.offsetWidth;
@@ -1957,7 +1980,7 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
   }
   function onGlow() {
     if (reduce || !wide.matches) return;
-    const b = stage.getBoundingClientRect(), s = b.width / 1821.38;
+    const b = lowBox(), s = b.width / 1821.38;
     const top = b.top + 7999 * s, h = 1152 * s;
     const p = Math.max(0, Math.min(1, (innerHeight - top) / (h + innerHeight * .4)));
     gkT = .7 + p * .7;
@@ -1975,7 +1998,7 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
   }
   function onPx() {
     if (reduce || !wide.matches || !px) return;
-    const b = stage.getBoundingClientRect(), s = b.width / 1821.38;
+    const b = lowBox(), s = b.width / 1821.38;
     const top = b.top + 3009 * s, h = 977 * s;
     const p = Math.max(0, Math.min(1, (innerHeight - top) / (innerHeight + h)));
     poT = (p - .5) * 260;
@@ -2027,7 +2050,7 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
   const cardBoxes = [[484, 8413, 412, 522], [927, 8413, 412, 522]];
   addEventListener('pointermove', e => {
     if (e.pointerType !== 'mouse' || !wide.matches) return;
-    const b = stage.getBoundingClientRect(), s = b.width / 1821.38;
+    const b = lowBox(), s = b.width / 1821.38;
     const x = (e.clientX - b.left) / s, y = (e.clientY - b.top) / s;
     cardBoxes.forEach((c, i) => glows[i].classList.toggle('on', x > c[0] && x < c[0] + c[2] && y > c[1] && y < c[1] + c[3]));
   }, { passive: true });
@@ -2036,7 +2059,7 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
   function onQ() {
     if (!qShape) return;
     if (reduce || !wide.matches) { qShape.removeAttribute('transform'); qShape.removeAttribute('opacity'); return; }
-    const b = stage.getBoundingClientRect(), sc = b.width / 1821.38;
+    const b = lowBox(), sc = b.width / 1821.38;
     const top = b.top + 5923 * sc;
     const t = Math.max(0, Math.min(1, (innerHeight * .95 - top) / (innerHeight * .55)));
     const e = 1 - Math.pow(1 - t, 3), k = .35 + .65 * e, cx = 941, cy = 6907;
@@ -2049,7 +2072,7 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
   function onArc() {
     if (!arc) return;
     if (reduce || !wide.matches) { arc.setAttribute('stroke-dashoffset', 0); return; }
-    const b = stage.getBoundingClientRect(), sc = b.width / 1821.38;
+    const b = lowBox(), sc = b.width / 1821.38;
     const top = b.top + 6284 * sc;
     const p = Math.max(0, Math.min(1, (innerHeight * .9 - top) / (innerHeight * .6)));
     arc.setAttribute('stroke-dashoffset', (1 - p).toFixed(3));
@@ -2061,7 +2084,7 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
   function onFaqLine() {
     if (!faqLine) return;
     if (reduce || !wide.matches) { faqLine.setAttribute('stroke-dashoffset', 0); return; }
-    const b = stage.getBoundingClientRect(), sc = b.width / 1821.38;
+    const b = lowBox(), sc = b.width / 1821.38;
     const top = b.top + 7005 * sc;
     const p = Math.max(0, Math.min(1, (innerHeight * .95 - top) / (innerHeight * .5)));
     faqLine.setAttribute('stroke-dashoffset', (1 - p).toFixed(3));
@@ -2074,7 +2097,7 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
     if (!curve) return;
     let off = 0;
     if (!reduce && wide.matches) {
-      const b = stage.getBoundingClientRect(), sc = b.width / 1821.38;
+      const b = lowBox(), sc = b.width / 1821.38;
       const top = b.top + 7996 * sc;
       const p = Math.max(0, Math.min(1, (innerHeight - top) / (innerHeight * .7)));
       off = (1 - p) * 160;
@@ -2116,7 +2139,7 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
   function onPin() {
     let D = 0;
     if (!reduce && wide.matches) {
-      const b = stage.getBoundingClientRect(), sc = b.width / 1821.38;
+      const b = lowBox(), sc = b.width / 1821.38;
       D = Math.max(0, Math.min(1181, -b.top / sc - 6818));
     }
     faqEls.forEach(el => el && (el.style.transform = D ? 'translateY(' + D.toFixed(1) + 'px)' : ''));
@@ -2160,8 +2183,8 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
     e.preventDefault();
     let y;
     if (getComputedStyle(t).display === 'contents' && t.dataset.y) {
-      const st = stage.getBoundingClientRect(), sc = st.width / 1821.38;
       let py = +t.dataset.y; if (py > 4830) py -= 300;
+      const st = py > 0 ? lowBox() : stage.getBoundingClientRect(), sc = st.width / 1821.38;
       y = scrollY + st.top + py * sc;
     } else y = scrollY + t.getBoundingClientRect().top;
     scrollTo({ top: Math.max(0, y), behavior: reduce ? 'auto' : 'smooth' });
@@ -2219,7 +2242,7 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
   }
   addEventListener('pointermove', e => {
     if (e.pointerType !== 'mouse' || !wide.matches) return;
-    const b = stage.getBoundingClientRect(), s = b.width / 1821.38;
+    const b = lowBox(), s = b.width / 1821.38;
     const x = (e.clientX - b.left) / s, y = (e.clientY - b.top) / s;
     const inside = y > 1305 && y < 2180;
     if (inside) { dot.setAttribute('cx', x.toFixed(1)); dot.setAttribute('cy', y.toFixed(1)); }
