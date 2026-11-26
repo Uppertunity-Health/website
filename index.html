@@ -204,7 +204,7 @@ a.btn,button.btn,a.btn:hover,button.btn:hover{transform:none!important;box-shado
 .more{transition:color .2s}.more:hover{color:var(--ice)!important}
 
 /* what to expect: scrolling cards inside the panel */
-.cards-scroll{overflow-y:auto;scrollbar-width:none;overscroll-behavior:contain}
+.cards-scroll{overflow-y:auto;scrollbar-width:none;overscroll-behavior:auto}
 .cards-glow{position:absolute;pointer-events:none;
   background:radial-gradient(520px 400px at 30% 22%,rgba(112,190,168,.5),rgba(112,190,168,0) 72%),radial-gradient(480px 380px at 66% 58%,rgba(160,166,212,.42),rgba(160,166,212,0) 72%),radial-gradient(440px 340px at 34% 82%,rgba(228,228,193,.26),rgba(228,228,193,0) 72%)}
 .cards-scroll::-webkit-scrollbar{display:none}
@@ -1957,7 +1957,7 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
     return '<li style="--i:' + i + '">' +
       '<span class="t f-black" data-bl="' + (first ? 109.77 : 60.77) + '"><i class="bl"></i>' + esc(r.title) + '</span>' +
       '<span class="loc f-reg" data-bl="' + (first ? 109.77 : 60.77) + '"><i class="bl"></i>' + esc(r.location) + '</span>' +
-      '<a class="go f-bold" href="' + esc(r.url && r.url !== '#' ? r.url : roleMail(r)) + '" data-bl="' + (first ? 103.68 : 51.69) + '"><i class="bl"></i>View Role Details</a></li>';
+      '<a class="go f-bold" href="' + esc(r.url && r.url !== '#' ? r.url : '#roles') + '"' + (r.url && r.url !== '#' ? '' : ' data-form="talk" data-role="' + esc(r.title + (r.location ? ' (' + r.location + ')' : '')) + '"') + ' data-bl="' + (first ? 103.68 : 51.69) + '"><i class="bl"></i>View Role Details</a></li>';
   }).join('') : '<li><span class="t f-black" data-bl="109.77"><i class="bl"></i>New roles are posted here soon.</span></li>';
   if (roles.length > 4) document.getElementById('moreRoles').hidden = false;
 
@@ -2130,15 +2130,25 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
   }, { passive: true });
   /* recruit-for photo: the quarter-circle shape grows out from its corner as you scroll to it */
   const qShape = document.getElementById('e115');
+  const Q_CX = 941, Q_CY = 6907;
+  let qT0 = 0, qDone = false;
+  function qSet(t) {
+    const e = 1 - Math.pow(1 - t, 3), k = .35 + .65 * e;
+    qShape.setAttribute('transform', 'matrix(' + [k, 0, 0, k, Q_CX * (1 - k), Q_CY * (1 - k)].map(v => v.toFixed(4)).join(' ') + ')');
+    qShape.setAttribute('opacity', Math.min(1, e * 1.3).toFixed(3));
+  }
+  function qTick(now) {
+    const t = Math.min(1, (now - qT0) / 2200);
+    qSet(t);
+    if (t < 1) requestAnimationFrame(qTick);
+  }
   function onQ() {
-    if (!qShape) return;
+    if (!qShape || qDone) return;
     if (reduce || !wide.matches) { qShape.removeAttribute('transform'); qShape.removeAttribute('opacity'); return; }
     const b = lowBox(), sc = b.width / 1821.38;
     const top = b.top + 5923 * sc;
-    const t = Math.max(0, Math.min(1, (innerHeight * .95 - top) / (innerHeight * .55)));
-    const e = 1 - Math.pow(1 - t, 3), k = .35 + .65 * e, cx = 941, cy = 6907;
-    qShape.setAttribute('transform', 'matrix(' + [k, 0, 0, k, cx * (1 - k), cy * (1 - k)].map(v => v.toFixed(4)).join(' ') + ')');
-    qShape.setAttribute('opacity', Math.min(1, e * 1.4).toFixed(3));
+    if (top < innerHeight * .75) { qDone = true; qT0 = performance.now(); requestAnimationFrame(qTick); }
+    else qSet(0);
   }
   addEventListener('scroll', onQ, { passive: true }); addEventListener('resize', onQ); onQ();
   /* recruit-for arc line turns green as you scroll through the section */
@@ -2210,12 +2220,17 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
   onQa();
   /* FAQ section holds still (sticky) while "What's next" slides up over it */
   const faqEls = [document.querySelector('.s-faq h2'), document.querySelector('.faq')], faqArt = document.getElementById('faqArt');
+  const faqList = document.querySelector('.faq');
+  let pinD = 0;
   function onPin() {
     let D = 0;
-    if (!reduce && wide.matches) {
-      const b = lowBox(), sc = b.width / 1821.38;
-      D = Math.max(0, Math.min(1181, -b.top / sc - 6818));
+    if (!reduce && wide.matches && faqList) {
+      const sc = lowBox().width / 1821.38;
+      /* where the bottom of the FAQ would be without the hold; hold it once it's fully on screen */
+      const natBottom = faqList.getBoundingClientRect().bottom - pinD * sc;
+      D = Math.max(0, Math.min(1181, (innerHeight - 48 - natBottom) / sc));
     }
+    pinD = D;
     faqEls.forEach(el => el && (el.style.transform = D ? 'translateY(' + D.toFixed(1) + 'px)' : ''));
     if (faqArt) faqArt.setAttribute('transform', 'translate(0 ' + D.toFixed(1) + ')');
   }
@@ -2294,6 +2309,7 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
   /* the cards always start at the top */
   const cardsTop = () => { cards.scrollTop = 0; onCards(); };
   cardsTop(); addEventListener('load', cardsTop); addEventListener('pageshow', cardsTop);
+  if ('IntersectionObserver' in window) new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) cardsTop(); })).observe(cards);
   /* badge: turns slowly the whole time, and a little more as you scroll */
   let ang = 0, angT = 0, idle = 0, last = performance.now();
   function spinTick(now) {
@@ -2341,7 +2357,10 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
   const showToast = () => { toastEl.classList.add('on'); clearTimeout(toastEl._h); toastEl._h = setTimeout(() => toastEl.classList.remove('on'), 3200); };
   document.querySelectorAll('[data-form]').forEach(a => a.addEventListener('click', e => {
     const d = document.getElementById('fm-' + a.dataset.form); if (!d || !d.showModal) return;
-    e.preventDefault(); d.showModal(); d.querySelector('input,select,textarea').focus();
+    e.preventDefault();
+    const msg = d.querySelector('textarea');
+    if (a.dataset.role && msg && !msg.value) msg.value = 'I’m interested in the ' + a.dataset.role + ' position.';
+    d.showModal(); d.querySelector('input,select,textarea').focus();
   }));
   document.querySelectorAll('dialog.fm').forEach(d => {
     const f = d.querySelector('form'), err = f.querySelector('.fm-err'), go = f.querySelector('.fm-go');
