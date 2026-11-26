@@ -2467,7 +2467,13 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
     stage.classList.toggle('sw-on', on);
   });
   const empH = document.querySelector('.s-emp h2');
-  onIn(empH, () => { document.getElementById('rule').classList.add('on'); document.querySelectorAll('.beat').forEach(b => b.classList.add('on')); }, () => { document.getElementById('rule').classList.remove('on'); document.querySelectorAll('.beat').forEach(b => b.classList.remove('on')); });
+  onIn(empH, () => document.querySelectorAll('.beat').forEach(b => b.classList.add('on')), () => document.querySelectorAll('.beat').forEach(b => b.classList.remove('on')));
+  /* the line beside the HEALTHCARE EMPLOYERS pill draws in from the left as soon as the pill comes on screen */
+  { const rule = document.getElementById('rule');
+    if (rule) { if (reduce || !('IntersectionObserver' in window)) rule.classList.add('on');
+      else { const pillY = () => { const b = lowBox(); return b.top + 4979 * b.width / 1821.38; };
+        const onRule = () => { const y = pillY(); if (y < innerHeight * .9 && y > -40) rule.classList.add('on'); else if (y > innerHeight + 40 || y < -innerHeight) rule.classList.remove('on'); };
+        addEventListener('scroll', onRule, { passive: true }); addEventListener('resize', onRule); onRule(); } } }
   if (reduce) { document.querySelectorAll('.words').forEach(w => w.classList.add('in')); }
 
   /* ---- badge turns as you scroll (person stays still) ---- */
