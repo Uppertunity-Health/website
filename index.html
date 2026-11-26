@@ -169,7 +169,6 @@ em{font-style:normal}
 @media (max-width:899px){.s-faq h2.m-h,.s-faq h2.tx{background:var(--navy);color:var(--ice)!important;padding:22px 20px;border-radius:6px}}
 #faqArt{display:none}
 .edge svg{position:absolute;left:0;width:100%;display:block}
-.edge .eN{clip-path:inset(calc((900px + var(--coff,0) * 1px) * var(--s)) 0 0 0)}
 .edge .eB{clip-path:inset(0 0 calc(2053.5px * var(--s)) 0)}
 .edge .eB{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 calc(120px * var(--s)));mask-image:linear-gradient(to bottom,transparent 0,#000 calc(120px * var(--s)))}
 @media (max-width:899px){.edge,.xbg{display:none}#e146,#e103{display:inline}}
@@ -255,9 +254,9 @@ a.btn,button.btn,a.btn:hover,button.btn:hover{transform:none!important;box-shado
 .rl .t,.rl .loc,.rl .go{position:absolute;white-space:nowrap}
 .rl .t{left:0;font-size:31px;color:var(--ice)}
 .rl .loc{left:604.56px;font-size:31px;color:var(--ice)}
-.rl .go{left:1168.17px;font-family:"acumin-variable","Barlow Semi Condensed","Arial Narrow",sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.01em;font-size:calc(21px * var(--hun,1) / var(--s,1));color:var(--teal);transition:color .2s,translate .2s}
+.rl .go{right:0;font-family:"acumin-variable","Barlow Semi Condensed","Arial Narrow",sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.01em;font-size:calc(21px * var(--hun,1) / var(--s,1));color:var(--teal);transition:color .2s,translate .2s}
 .rl .go:hover{color:var(--ice)}
-.rl .go::after{content:"\2192";display:inline-block;margin-left:12px;opacity:0;translate:-10px 0;transition:opacity .25s ease,translate .25s ease}
+.rl .go::after{content:"\2192";position:absolute;left:100%;display:inline-block;margin-left:12px;opacity:0;translate:-10px 0;transition:opacity .25s ease,translate .25s ease}
 .rl li:hover .go::after,.rl .go:focus-visible::after{opacity:1;translate:0 0}
 .rl li:hover .go,.rl .go:focus-visible{translate:-42px 0}
 .rl .t,.rl .loc{transition:translate .3s ease}
@@ -325,6 +324,8 @@ a,button,.tgl,.pillhit,label[for],.rl .go,button.q{cursor:pointer}
 
 /* FAQ stays put while "What's next" rides up over it */
 .art2{z-index:2;pointer-events:none}
+.nbg{z-index:2;pointer-events:none}
+@media (min-width:900px){#e90{display:none}}
 .s-next .tx,.s-next .btn,.s-next .nglow,.s-foot .tx,.s-foot .btn,.s-foot input,.s-foot .formmsg{z-index:3}
 .faq,.s-faq .tx{will-change:transform}
 
@@ -470,7 +471,7 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
   .s-roles h2{font-size:24px!important;padding-bottom:14px;border-bottom:1px solid var(--ice);margin:0!important}
   .rl li,.rl li:first-child{height:auto;padding:18px 0;border-top:1px solid rgba(228,246,247,.5)}
   .rl li:first-child{border-top:0}
-  .rl .t,.rl .loc,.rl .go{position:static;display:block;white-space:normal}
+  .rl .t,.rl .loc,.rl .go{position:static;display:block;white-space:normal}.rl .go::after{position:static}
   .rl .t{font-size:21px}.rl .loc{font-size:16px;margin-top:4px;opacity:.9}.rl .go{font-size:16px!important;margin-top:10px;padding:6px 0}
   .more{display:block;margin-top:16px;font-size:16px!important}
 
@@ -594,7 +595,7 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
 </section>
 <div class="page" id="page">
 <div class="xbg" aria-hidden="true"><div class="xbg-photo" id="xPhoto"><i></i></div></div>
-<div class="edge l" aria-hidden="true"><svg viewBox="6 1305 2 3645" preserveAspectRatio="none" style="top:0;height:calc(3645px * var(--s))"><use href="#artAll"/></svg><svg class="eB" viewBox="6 5130 2 5213.5" preserveAspectRatio="none" style="top:calc(3525px * var(--s));height:calc(5213.5px * var(--s))"><use href="#artAll"/></svg><svg class="eN" viewBox="6 8290 2 2053.5" preserveAspectRatio="none" style="top:calc(6685px * var(--s));height:calc(2053.5px * var(--s))"><g clip-path="url(#nextClip)"><use href="#artAll"/></g></svg><svg class="eCap" id="capL" preserveAspectRatio="none" style="top:calc(6685px * var(--s));height:calc(1000px * var(--s))"><path fill="#2d2f47"/></svg></div><div class="edge r" aria-hidden="true"><svg viewBox="1813 1305 2 3645" preserveAspectRatio="none" style="top:0;height:calc(3645px * var(--s))"><use href="#artAll"/></svg><svg class="eB" viewBox="1813 5130 2 5213.5" preserveAspectRatio="none" style="top:calc(3525px * var(--s));height:calc(5213.5px * var(--s))"><use href="#artAll"/></svg><svg class="eN" viewBox="1813 8290 2 2053.5" preserveAspectRatio="none" style="top:calc(6685px * var(--s));height:calc(2053.5px * var(--s))"><g clip-path="url(#nextClip)"><use href="#artAll"/></g></svg><svg class="eCap" id="capR" preserveAspectRatio="none" style="top:calc(6685px * var(--s));height:calc(1000px * var(--s))"><path fill="#2d2f47"/></svg></div>
+<div class="edge l" aria-hidden="true"><svg viewBox="6 1305 2 3645" preserveAspectRatio="none" style="top:0;height:calc(3645px * var(--s))"><use href="#artAll"/></svg><svg class="eB" viewBox="6 5130 2 5213.5" preserveAspectRatio="none" style="top:calc(3525px * var(--s));height:calc(5213.5px * var(--s))"><use href="#artAll"/></svg></div><div class="edge r" aria-hidden="true"><svg viewBox="1813 1305 2 3645" preserveAspectRatio="none" style="top:0;height:calc(3645px * var(--s))"><use href="#artAll"/></svg><svg class="eB" viewBox="1813 5130 2 5213.5" preserveAspectRatio="none" style="top:calc(3525px * var(--s));height:calc(5213.5px * var(--s))"><use href="#artAll"/></svg></div>
 <div class="stage" id="stage">
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1821.38 10343.5" id="art" class="art" aria-hidden="true">
 <defs>
@@ -1957,6 +1958,7 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
 <h2 class="tx f-bold h-xl rv" style="left:249.13px;font-size:104px;line-height:104px;color:#2d2f47" data-bl="7294.88" ><span class="ln" style="margin-left:0.0px"><i class="bl"></i>Before we work together</span></h2>
 <ul class="faq" style="left:249px;top:7399px;width:1360px"><li class="qa"><button class="q f-black" aria-expanded="false" aria-controls="a0" id="q0"><span>Can I explore a new role while I’m still employed?</span><i class="plus" aria-hidden="true"></i></button><div class="a f-reg" id="a0" role="region" aria-labelledby="q0"><p>Yes. You can start with a private conversation, even if you’re still deciding whether to make a move. We’ll ask for your permission before sharing your CV with an employer.</p></div></li><li class="qa"><button class="q f-black" aria-expanded="false" aria-controls="a1" id="q1"><span>Can I reach out if I don’t see a role that fits?</span><i class="plus" aria-hidden="true"></i></button><div class="a f-reg" id="a1" role="region" aria-labelledby="q1"><p>Yes. Tell us what you’d consider next. We can keep you in mind as new opportunities come up.</p></div></li><li class="qa"><button class="q f-black" aria-expanded="false" aria-controls="a2" id="q2"><span>What happens after I apply for an open role?</span><i class="plus" aria-hidden="true"></i></button><div class="a f-reg" id="a2" role="region" aria-labelledby="q2"><p>A recruiter reviews your application individually. If your experience aligns with the role, we’ll reach out to discuss the position and answer your questions before arranging an interview.</p></div></li><li class="qa"><button class="q f-black" aria-expanded="false" aria-controls="a3" id="q3"><span>What do you need from us to start a hiring search?</span><i class="plus" aria-hidden="true"></i></button><div class="a f-reg" id="a3" role="region" aria-labelledby="q3"><p>Start with the role, where it’s based, and the professional responsibilities. We’ll use that first conversation to clarify which qualifications are essential and where there’s room for flexibility.</p></div></li><li class="qa"><button class="q f-black" aria-expanded="false" aria-controls="a4" id="q4"><span>Can you help us fill a role outside the categories listed?</span><i class="plus" aria-hidden="true"></i></button><div class="a f-reg" id="a4" role="region" aria-labelledby="q4"><p>Tell us what you’re hiring for. We’ll let you know whether we can take on the search and what we’d need to get started.</p></div></li><li class="qa mail"><div class="q f-black"><span>Additional questions? Email us at <a href="mailto:info@uppertunity.health">info@uppertunity.health</a></span></div></li></ul>
 </section>
+<svg class="art nbg d-only" id="nextBg" preserveAspectRatio="none" style="top:7990px;height:2053.5px" aria-hidden="true"><defs><linearGradient id="nbgFade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2d2f47" stop-opacity="0"/><stop offset="1" stop-color="#2d2f47"/></linearGradient></defs><path id="nbgPath" fill="url(#radial-pattern-1)"/><rect id="nbgFadeR" fill="url(#nbgFade)"/></svg>
 <svg class="art art2 d-only" viewBox="0 8290 1821.38 2053.5" style="top:7990px;height:2053.5px" aria-hidden="true"><g clip-path="url(#nextClip)"><use href="#artAll"/></g></svg>
 <section class="sec s-next" id="next" data-y="8299" data-h="1152">
 <div class="nglow d-only" style="left:484px;top:8713px;width:412px;height:522px"></div><div class="nglow d-only" style="left:927px;top:8713px;width:412px;height:522px"></div>
@@ -2293,23 +2295,23 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
     curve.setAttribute('d', 'M 0 ' + y(8387.83) + ' L 0 9450.4 L 1820.76 9450.4 L 1820.76 ' + y(8362.32) +
       ' C 1582.46 ' + y(8321.04) + ' 1290.77 ' + y(8296.75) + ' 975.72 ' + y(8296.75) +
       ' C 600.41 ' + y(8296.75) + ' 258.25 ' + y(8331.22) + ' 0 ' + y(8387.83));
-    /* the curve keeps bending down past the artboard edges, so it reaches the screen edges fully round */
+    /* What's next background: the glow and the curve run the full screen width, the curve bending down to both edges */
     const sx = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--sx')) || 0;
     const S2 = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--s')) || 1;
-    const ext = (sx + 2) / S2, bot = 8290 + 1000;
-    document.documentElement.style.setProperty('--coff', off.toFixed(1));
-    const cap = (id, x0, x1, ex, ey, slope) => {
-      const svg = document.getElementById(id); if (!svg) return;
-      svg.setAttribute('viewBox', x0.toFixed(2) + ' 8290 ' + (x1 - x0).toFixed(2) + ' 1000');
-      let d = '', n = 24;
-      for (let i = 0; i <= n; i++) {
-        const x = x0 + (x1 - x0) * i / n, dx = Math.abs(x - ex), yy = ey + off + slope * dx + .00004 * dx * dx;
-        d += (i ? ' L ' : 'M ') + x.toFixed(2) + ' ' + yy.toFixed(2);
-      }
-      svg.firstChild.setAttribute('d', d + ' L ' + x1.toFixed(2) + ' ' + bot + ' L ' + x0.toFixed(2) + ' ' + bot + ' Z');
-    };
-    cap('capL', -sx / S2, 2 / S2, 0, 8387.83, .2192);
-    cap('capR', 1821.38 - 2 / S2, 1821.38 - 2 / S2 + ext, 1820.76, 8362.32, .1732);
+    const nb = document.getElementById('nextBg');
+    if (nb) {
+      const E = sx / S2 + 6, ext = (x, ex, ey, sl) => { const dx = Math.abs(x - ex); return ey + off + sl * dx + .00004 * dx * dx; };
+      let d = 'M ' + (-E).toFixed(1) + ' 9470';
+      for (let i = 0; i <= 16; i++) { const x = -E + E * i / 16; d += ' L ' + x.toFixed(1) + ' ' + ext(x, 0, 8387.83, .2192).toFixed(1); }
+      d += ' C 258.25 ' + y(8331.22) + ' 600.41 ' + y(8296.75) + ' 975.72 ' + y(8296.75) + ' C 1290.77 ' + y(8296.75) + ' 1582.46 ' + y(8321.04) + ' 1820.76 ' + y(8362.32);
+      for (let i = 1; i <= 16; i++) { const x = 1820.76 + (E + .62) * i / 16; d += ' L ' + x.toFixed(1) + ' ' + ext(x, 1820.76, 8362.32, .1732).toFixed(1); }
+      d += ' L ' + (1821.38 + E).toFixed(1) + ' 9470 Z';
+      document.getElementById('nbgPath').setAttribute('d', d);
+      const r = document.getElementById('nbgFadeR');
+      r.setAttribute('x', -E); r.setAttribute('y', 9230); r.setAttribute('width', 1821.38 + 2 * E); r.setAttribute('height', 240);
+      nb.setAttribute('viewBox', (-E).toFixed(1) + ' 8290 ' + (1821.38 + 2 * E).toFixed(1) + ' 2053.5');
+      nb.style.left = (-E).toFixed(1) + 'px'; nb.style.width = (1821.38 + 2 * E).toFixed(1) + 'px';
+    }
     const nc = document.getElementById('nextClipPath');
     if (nc) nc.setAttribute('d', 'M 0 ' + y(8387.83) + ' L 0 10344 L 1821.38 10344 L 1821.38 ' + y(8362.32) +
       ' C 1582.46 ' + y(8321.04) + ' 1290.77 ' + y(8296.75) + ' 975.72 ' + y(8296.75) +
