@@ -2467,7 +2467,13 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
     stage.classList.toggle('sw-on', on);
   });
   const empH = document.querySelector('.s-emp h2');
-  onIn(empH, () => document.querySelectorAll('.beat').forEach(b => b.classList.add('on')), () => document.querySelectorAll('.beat').forEach(b => b.classList.remove('on')));
+  /* the heartbeat line draws itself when it comes on screen, and resets only once it's fully off screen */
+  { const beats = [...document.querySelectorAll('.beat')];
+    if (beats.length) { if (reduce) beats.forEach(b => b.classList.add('on'));
+      else { const onBeat = () => { const b = lowBox(), sc = b.width / 1821.38, top = b.top + 5520 * sc, bot = b.top + 5700 * sc;
+          if (top < innerHeight * .85 && bot > 0) beats.forEach(x => x.classList.add('on'));
+          else if (top > innerHeight || bot < 0) beats.forEach(x => x.classList.remove('on')); };
+        addEventListener('scroll', onBeat, { passive: true }); addEventListener('resize', onBeat); onBeat(); } } }
   /* the line beside the HEALTHCARE EMPLOYERS pill draws in from the left as soon as the pill comes on screen */
   { const rule = document.getElementById('rule');
     if (rule) { if (reduce || !('IntersectionObserver' in window)) rule.classList.add('on');
