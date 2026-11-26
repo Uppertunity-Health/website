@@ -21,3 +21,4 @@ Hosted on Vercel: every change pushed to `main` goes live automatically.
 2. Re-enter the keys listed in `.env.example`.
 3. Connect the domain (registered in the client's name).
 4. Remove `noindex`, test the forms, then delete the preview project from Art&Soul's Vercel account.
+5. **Switch this GitHub repository back to Private** (Settings → General → Danger Zone → Change repository visibility). It is public only so the free Vercel plan can show previews.
