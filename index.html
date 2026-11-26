@@ -109,7 +109,7 @@ em{font-style:normal}
 
 
 /* ===== footer: full width (edge to edge), text kept at its small size ===== */
-.fx{--fp:clamp(24px,4.5vw,96px);background:radial-gradient(36% calc(300px * var(--s,1)) at 50% 0,rgba(196,189,200,.97),rgba(150,142,162,.6) 40%,rgba(62,61,86,0) 100%),linear-gradient(to bottom,rgb(62,61,86),var(--navy) calc(260px * var(--s,1)));color:var(--ice);position:relative}
+.fx{--fp:clamp(24px,4.5vw,96px);background:var(--navy);color:var(--ice);position:relative}
 .fx .tx,.fx .notify,.fx input,.fx .formmsg{position:static!important;left:auto!important;top:auto!important;margin:0!important;white-space:normal}
 .fx .ln{display:inline;transform:none!important;margin:0!important}
 .fx .ln::after{content:" "}
@@ -252,7 +252,7 @@ a.btn,button.btn,a.btn:hover,button.btn:hover{transform:none!important;box-shado
 .rl .t,.rl .loc,.rl .go{position:absolute;white-space:nowrap}
 .rl .t{left:0;font-size:31px;color:var(--ice)}
 .rl .loc{left:604.56px;font-size:31px;color:var(--ice)}
-.rl .go{left:1168.17px;font-size:30px;color:var(--teal);transition:color .2s,translate .2s}
+.rl .go{left:1168.17px;font-family:"acumin-variable","Barlow Semi Condensed","Arial Narrow",sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.01em;font-size:calc(21px * var(--hun,1) / var(--s,1));color:var(--teal);transition:color .2s,translate .2s}
 .rl .go:hover{color:var(--ice)}
 .rl .go::after{content:"\2192";display:inline-block;margin-left:12px;opacity:0;translate:-10px 0;transition:opacity .25s ease,translate .25s ease}
 .rl li:hover .go::after,.rl .go:focus-visible::after{opacity:1;translate:0 0}
@@ -468,7 +468,7 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
   .rl li,.rl li:first-child{height:auto;padding:18px 0;border-top:1px solid rgba(228,246,247,.5)}
   .rl li:first-child{border-top:0}
   .rl .t,.rl .loc,.rl .go{position:static;display:block;white-space:normal}
-  .rl .t{font-size:21px}.rl .loc{font-size:16px;margin-top:4px;opacity:.9}.rl .go{font-size:16px;margin-top:10px;padding:6px 0}
+  .rl .t{font-size:21px}.rl .loc{font-size:16px;margin-top:4px;opacity:.9}.rl .go{font-size:16px!important;margin-top:10px;padding:6px 0}
   .more{display:block;margin-top:16px;font-size:16px!important}
 
   .s-expect{background:linear-gradient(#cfe9e4,#e4f6f7);padding-top:0}
