@@ -48,12 +48,12 @@ em{font-style:normal}
 
 /* ===== header + hero (flexible) =====
    --hu is one artboard unit: never bigger than 0.75px, and small enough that the hero fits the screen's height */
-.hx{--hu:min(calc(100vw / 1821.38), .75px, calc(100svh / 1075));--hk:1;--g:0;
+.hx{--hs:min(calc(100vw / 1821.38), .84px);--hu:min(var(--hs), calc(100svh / 1075));--hk:1;--g:0;
   position:relative;height:100svh;min-height:calc(1000 * var(--hu));overflow:hidden;color:var(--ice);
   background:radial-gradient(circle calc(2062 * var(--hk) * var(--hu)) at calc(50% + 801 * var(--hu)) calc(100% + 155 * var(--hu)),
     rgb(111,187,167) 0, rgb(84,127,130) 6.25%, rgb(68,93,107) 12.5%, rgb(58,72,92) 18.75%, rgb(52,60,82) 25%, rgb(48,53,77) 31.25%, var(--navy) 100%)}
 .hx-green{position:absolute;inset:0;background:var(--teal);opacity:var(--g);pointer-events:none}
-.hx-wrap{position:relative;width:min(calc(1821.38 * var(--hu) * 1.12),calc(100vw - 2 * clamp(24px,4.5vw,96px) + 172 * var(--hu)));height:100%;margin:0 auto}
+.hx-wrap{position:relative;width:calc(1821.38 * var(--hs));height:100%;margin:0 auto}
 .hx .btn,.hx .acu{position:absolute}
 /* top bar: spans the window (wider than the hero column), with its line underneath */
 .hx-head{position:absolute;z-index:2;left:0;right:0;top:calc(124 * var(--hu));padding:0 var(--hpad);height:calc(85 * var(--hu));display:flex;align-items:center;gap:calc(14 * var(--hu));--hpad:clamp(24px,4.5vw,96px)}
@@ -61,24 +61,24 @@ em{font-style:normal}
 .hx-logo{position:static;flex:none;margin-right:auto;width:calc(498 * var(--hu));height:calc(85 * var(--hu))}
 .hx-logo svg{display:block;width:100%;height:100%}
 .hx-phone{height:calc(51 * var(--hu));display:flex;align-items:center;margin-right:calc(8 * var(--hu));font-size:calc(22.54 * var(--hu));color:var(--ice)}
-.hx .hdr{height:calc(51 * var(--hu));font-size:calc(22.54 * var(--hu));flex:none}
+.hx .hdr{height:calc(51 * var(--hu));font-size:calc(21 * var(--hu));flex:none}
 .hx-hire{width:calc(178 * var(--hu))}
 .hx-cv{width:calc(155 * var(--hu))}
 .hx-head::after{content:"";position:absolute;left:var(--hpad);right:var(--hpad);top:calc(129 * var(--hu));border-top:1px solid rgba(228,246,247,.55)}
 .hx-main{position:absolute;left:0;right:0;top:calc(254 * var(--hu));bottom:0;display:flex;align-items:center}
 .hx-box{position:relative;width:100%;height:calc(690 * var(--hu))}
-.hx-h{position:absolute;margin:0;left:calc(246.29 * var(--hu));top:calc(88 * var(--hu));font-size:calc(103 * var(--hu));line-height:calc(87.04 * var(--hu));font-weight:inherit;color:var(--ice)}
+.hx-h{position:absolute;margin:0;left:calc(246.29 * var(--hs));top:calc(88 * var(--hu));font-size:calc(103 * var(--hu));line-height:calc(87.04 * var(--hu));font-weight:inherit;color:var(--ice)}
 .hx-h .ln,.hx-lede .ln{white-space:nowrap;display:block;width:max-content;transform-origin:0 50%}.hx-h .ln:nth-child(3){margin-top:calc(8.96 * var(--hu))}
 #clinical{color:var(--teal)}
-.hx-lede{position:absolute;margin:0;left:calc(250.3 * var(--hu));top:calc(398 * var(--hu));width:calc(700 * var(--hu));font-size:calc(30 * var(--hu));line-height:calc(38 * var(--hu));color:var(--ice)}
-.hx-btns{position:absolute;left:calc(247 * var(--hu));top:calc(639 * var(--hu));width:calc(730 * var(--hu));height:calc(51 * var(--hu))}
+.hx-lede{position:absolute;margin:0;left:calc(250.3 * var(--hs));top:calc(398 * var(--hu));width:calc(700 * var(--hu));font-size:calc(30 * var(--hu));line-height:calc(38 * var(--hu));color:var(--ice)}
+.hx-btns{position:absolute;left:calc(247 * var(--hs));top:calc(639 * var(--hu));width:calc(730 * var(--hu));height:calc(51 * var(--hu))}
 .hx-btns .btn{top:0;height:100%;font-size:calc(21 * var(--hu))}
 .hx-b1{left:0;width:calc(381 * var(--hu))}.hx-b2{left:calc(407 * var(--hu));width:calc(323 * var(--hu))}
-.hx-arch{position:absolute;right:calc(217.38 * var(--hu));top:0;width:calc(538 * var(--hu));height:calc(682 * var(--hu));border-radius:calc(269 * var(--hu)) calc(269 * var(--hu)) 0 0;overflow:hidden;--mx:85%;--my:95%}
+.hx-arch{position:absolute;right:calc(217.38 * var(--hs));top:0;width:calc(538 * var(--hu));height:calc(682 * var(--hu));border-radius:calc(269 * var(--hu)) calc(269 * var(--hu)) 0 0;overflow:hidden;--mx:85%;--my:95%}
 .hx-arch img{width:100%;height:100%;object-fit:cover;object-position:46% 60%;display:block}
 .hx-tint{position:absolute;inset:0;background:linear-gradient(to top,rgba(112,190,168,.75),rgba(112,190,168,.25) 55%,rgba(112,190,168,.08) 85%);mix-blend-mode:color;pointer-events:none}
 .hx-glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(calc(430 * var(--hu)) calc(400 * var(--hu)) at var(--mx) var(--my),rgba(112,190,168,.6),rgba(112,190,168,0) 70%);mix-blend-mode:screen}
-.hx-badge{position:absolute;right:calc(86.38 * var(--hu));top:calc(-30 * var(--hu));width:calc(235 * var(--hu));height:calc(235 * var(--hu))}
+.hx-badge{position:absolute;right:calc(86.38 * var(--hs));top:calc(-30 * var(--hu));width:calc(235 * var(--hu));height:calc(235 * var(--hu))}
 /* hero gone green: hovers stay visible */
 .s-hero.green .b-ice:hover{background:var(--navy);color:var(--ice)}
 .s-hero.green .b-teal:hover{background:var(--ice);color:var(--navy)}
@@ -95,7 +95,7 @@ em{font-style:normal}
   .hx-logo,.hx .btn,.hx .acu{position:static;width:auto;height:auto}
   .hx-logo{flex:1 0 100%;margin-bottom:10px}.hx-logo svg{width:150px;height:auto}
   .hx-phone{display:none}
-  .hx .hdr{height:40px;padding:0 14px;font-size:14px}
+  .hx .hdr{height:44px;padding:0 18px;font-size:16px}
   .hx-main,.hx-box{position:static;height:auto;display:block}
   .hx-h,.hx-lede,.hx-btns{position:static;width:auto;height:auto}
   .hx-h{font-size:clamp(40px,11.5vw,64px);line-height:1.04;margin:0 0 20px}
@@ -114,7 +114,33 @@ em{font-style:normal}
 #art{clip-path:inset(0 0 calc(10343.5px - var(--hc,1305) * 1px) 0)}
 #lower{position:absolute;left:0;top:calc(var(--dy,0) * 1px);width:1821.38px;height:10043.5px}
 
-.stage{position:absolute;left:0;top:0;width:1821.38px;height:10043.5px;transform:scale(var(--s));transform-origin:0 0}
+.stage{position:absolute;left:var(--sx,0px);top:0;width:1821.38px;height:10043.5px;transform:scale(var(--s));transform-origin:0 0}
+/* the page's own edges: each side repeats the outermost sliver of the artwork, so backgrounds run edge to edge */
+.edge{position:absolute;top:0;bottom:0;width:calc(var(--sx,0px) + 40px);pointer-events:none}
+.edge.l{left:0}.edge.r{right:0}
+.xbg{position:absolute;left:0;right:0;top:0;pointer-events:none}
+.xbg-photo{position:absolute;left:0;right:0;top:calc((3006px - 1305px) * var(--s));height:calc(985px * var(--s));background:#e4f6f7;overflow:hidden}
+.xbg-photo i{position:absolute;inset:-60px 0 -60px 0;background:url(/images/art-5.jpg) no-repeat;opacity:0;
+  background-size:calc(2375px * var(--s)) auto;
+  background-position:calc(var(--sx,0px) - 435.87px * var(--s)) calc(60px - 1220.07px * var(--s) + var(--po,0) * 1px * var(--s));
+  transform:translate(-90px,-70px) scale(1.04);transition:opacity 1.6s ease,transform 2.2s cubic-bezier(.2,.75,.15,1)}
+.xbg-photo.in i{opacity:.37;transform:none}
+.xbg-grad{position:absolute;left:0;right:0;top:calc((3971px - 1305px) * var(--s));height:calc(1884px * var(--s));overflow:hidden;
+  background:linear-gradient(to bottom,#e4f6f7,#fff)}
+/* the pale gradient drifts very slowly */
+.xbg-grad::before,.xbg-grad::after{content:"";position:absolute;inset:-20%;
+  background:radial-gradient(38% 30% at 30% 30%,rgba(112,190,168,.16),rgba(112,190,168,0) 70%),radial-gradient(34% 28% at 72% 62%,rgba(160,166,212,.13),rgba(160,166,212,0) 70%);
+  animation:drift 22s ease-in-out infinite alternate}
+.xbg-grad::after{background:radial-gradient(30% 26% at 60% 25%,rgba(228,228,193,.22),rgba(228,228,193,0) 70%),radial-gradient(36% 30% at 20% 75%,rgba(112,190,168,.12),rgba(112,190,168,0) 70%);animation-duration:28s;animation-direction:alternate-reverse}
+@keyframes drift{0%{transform:translate(-6%,-4%)}50%{transform:translate(5%,3%)}100%{transform:translate(-3%,6%)}}
+@media (prefers-reduced-motion:reduce){.xbg-grad::before,.xbg-grad::after{animation:none}.xbg-photo i{transition:none;opacity:.37;transform:none}}
+#e0,#e146{display:none}
+@media (min-width:900px){.s-faq h2.tx{background:var(--navy);color:var(--ice)!important;left:249px!important;width:1360px;box-sizing:border-box;padding:44px 56px 40px;border-radius:6px}}
+@media (max-width:899px){.s-faq h2.m-h,.s-faq h2.tx{background:var(--navy);color:var(--ice)!important;padding:22px 20px;border-radius:6px}}
+#faqArt{display:none}
+.edge svg{position:absolute;left:0;width:100%;display:block}
+.edge .eB{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 calc(120px * var(--s)));mask-image:linear-gradient(to bottom,transparent 0,#000 calc(120px * var(--s)))}
+@media (max-width:899px){.edge,.xbg{display:none}#e0,#e146{display:inline}}
 .art{position:absolute;left:0;top:0;width:1821.38px;height:10343.5px;display:block}
 .sec,.fcol,.ncard,.tags,.tags li{display:contents}
 .tx,.btn,.hit,.rl,.faq,.cards-scroll,.stage input{position:absolute;margin:0}
@@ -123,7 +149,8 @@ em{font-style:normal}
 .bl{display:inline-block;width:0;height:0;vertical-align:baseline}
 .m-only{display:none}
 
-/* buttons */
+/* buttons: one text size everywhere (the hero's size) */
+.stage .btn{font-size:calc(21px * var(--hun,1) / var(--s,1))!important}
 .btn{display:flex;align-items:center;justify-content:center;border-radius:999px;font-size:21px;text-transform:uppercase;letter-spacing:.01em;white-space:nowrap;border:0;cursor:pointer;
   transition:transform .25s ease,background-color .25s,color .25s,box-shadow .25s}
 .btn>span{flex:none}
@@ -160,6 +187,7 @@ a.btn,button.btn,a.btn:hover,button.btn:hover{transform:none!important;box-shado
 
 /* art-layer motion */
 #knob{transition:transform .6s cubic-bezier(.65,0,.2,1)}
+#knob.scr{transform:translateX(var(--kx,0px));transition:transform .25s linear}
 #knob path{transition:fill .6s cubic-bezier(.65,0,.2,1)}
 #knob.peek{transform:translateX(-36px)}
 /* the knob's colour follows its travel: part-way yellow at the hover peek, fully yellow at the far side */
@@ -195,7 +223,7 @@ a.btn,button.btn,a.btn:hover,button.btn:hover{transform:none!important;box-shado
 .rl .t,.rl .loc,.rl .go{position:absolute;white-space:nowrap}
 .rl .t{left:0;font-size:31px;color:var(--ice)}
 .rl .loc{left:604.56px;font-size:31px;color:var(--ice)}
-.rl .go{left:1168.17px;font-size:28px;color:var(--teal);transition:color .2s,translate .2s}
+.rl .go{left:1168.17px;font-size:30px;color:var(--teal);transition:color .2s,translate .2s}
 .rl .go:hover{color:var(--ice)}
 .rl .go::after{content:"\2192";display:inline-block;margin-left:12px;opacity:0;translate:-10px 0;transition:opacity .25s ease,translate .25s ease}
 .rl li:hover .go::after,.rl .go:focus-visible::after{opacity:1;translate:0 0}
@@ -216,7 +244,7 @@ a.btn,button.btn,a.btn:hover,button.btn:hover{transform:none!important;box-shado
   -webkit-backdrop-filter:blur(26px) saturate(140%);backdrop-filter:blur(26px) saturate(140%);box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 12px 22px rgba(10,12,30,.18);color:var(--ice);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 56px;
   transition:background-color .3s,transform .3s}
 .card:hover{background:linear-gradient(150deg,rgba(255,255,255,.22),rgba(255,255,255,.07));transform:translateY(-6px)}
-.card h3{margin:0 0 30px;font-size:38px;line-height:1.1;text-transform:uppercase;letter-spacing:.005em}
+.card h3{margin:0 0 26px;font-size:52px;line-height:54px;font-weight:600;text-transform:uppercase;letter-spacing:.005em}
 .card p{margin:0;font-size:30px;line-height:36px}
 .outl{text-shadow:none}
 
@@ -390,6 +418,7 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
   .center{text-align:center}
   .stage .btn{min-height:46px;padding:10px 22px;height:auto}
   .stage .hdr{min-height:40px;padding:8px 14px}
+  .stage .btn{font-size:16px!important}
   .next-h{line-height:1!important}
 
   .s-hero{background:var(--navy);color:var(--ice);padding-top:20px}
@@ -532,6 +561,8 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
 </div>
 </section>
 <div class="page" id="page">
+<div class="xbg" aria-hidden="true"><div class="xbg-photo" id="xPhoto"><i></i></div><div class="xbg-grad"></div></div>
+<div class="edge l" aria-hidden="true"><svg viewBox="6 1305 2 3645" preserveAspectRatio="none" style="top:0;height:calc(3645px * var(--s))"><use href="#artAll"/></svg><svg class="eB" viewBox="6 5130 2 5213.5" preserveAspectRatio="none" style="top:calc(3525px * var(--s));height:calc(5213.5px * var(--s))"><use href="#artAll"/></svg><svg viewBox="6 8290 2 2053.5" preserveAspectRatio="none" style="top:calc(6685px * var(--s));height:calc(2053.5px * var(--s))"><g clip-path="url(#nextClip)"><use href="#artAll"/></g></svg></div><div class="edge r" aria-hidden="true"><svg viewBox="1813 1305 2 3645" preserveAspectRatio="none" style="top:0;height:calc(3645px * var(--s))"><use href="#artAll"/></svg><svg class="eB" viewBox="1813 5130 2 5213.5" preserveAspectRatio="none" style="top:calc(3525px * var(--s));height:calc(5213.5px * var(--s))"><use href="#artAll"/></svg><svg viewBox="1813 8290 2 2053.5" preserveAspectRatio="none" style="top:calc(6685px * var(--s));height:calc(2053.5px * var(--s))"><g clip-path="url(#nextClip)"><use href="#artAll"/></g></svg></div>
 <div class="stage" id="stage">
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1821.38 10343.5" id="art" class="art" aria-hidden="true">
 <defs>
@@ -1846,10 +1877,10 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
 <svg class="art" viewBox="0 1305 1821.38 3645" style="top:1305px;height:3645px" aria-hidden="true"><use href="#artAll"/></svg>
 <svg class="art artB" viewBox="0 5130 1821.38 5213.5" style="top:4830px;height:5213.5px" aria-hidden="true"><use href="#artAll"/><g id="faqArt"><path fill="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="round" stroke="rgb(63.699341%, 63.334656%, 84.858704%)" stroke-opacity="1" stroke-miterlimit="4" d="M 0.0000432839 0.000867922 L 1360.341854 0.000867922 " transform="matrix(0.99966, 0, 0, -0.99966, 249.042925, 7304.934461)" id="e149"/><path id="faqLine" d="M 0 0 L 1360.34 0" transform="matrix(0.99966, 0, 0, -0.99966, 249.042925, 7304.934461)" fill="none" stroke="#70bea8" stroke-width="2" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></g></svg>
 <section class="sec s-career" id="career" data-y="1305" data-h="875">
-<div class="tx f-reg h-xl words d-only" style="left:249.15px;font-size:104px;line-height:104px;color:#2d2f47" data-bl="1594.63" ><span class="ln" style="margin-left:0.0px" data-w="329.1"><i class="bl"></i>A career</span></div>
-<div class="tx f-reg h-xl words d-only" style="left:749.9px;font-size:104px;line-height:104px;color:#2d2f47" data-bl="1594.63" ><span class="ln" style="margin-left:0.0px" data-w="822.3"><i class="bl"></i>move should improve</span></div>
-<div class="tx f-reg h-xl words d-only" style="left:335.55px;font-size:104px;line-height:104px;color:#2d2f47" data-bl="1696.65" ><span class="ln" style="margin-left:0.0px" data-w="665.9"><i class="bl"></i>the way you work</span></div>
-<div class="tx f-reg h-xl words d-only" style="left:1173.1px;font-size:104px;line-height:104px;color:#2d2f47" data-bl="1696.65" ><span class="ln" style="margin-left:0.0px" data-w="312.8"><i class="bl"></i>and live.</span></div>
+<div class="tx f-bold h-xl words d-only" style="left:249.15px;font-size:104px;line-height:104px;color:#2d2f47" data-bl="1594.63" ><span class="ln" style="margin-left:0.0px" data-w="329.1"><i class="bl"></i>A career</span></div>
+<div class="tx f-bold h-xl words d-only" style="left:749.9px;font-size:104px;line-height:104px;color:#2d2f47" data-bl="1594.63" ><span class="ln" style="margin-left:0.0px" data-w="822.3"><i class="bl"></i>move should improve</span></div>
+<div class="tx f-bold h-xl words d-only" style="left:335.55px;font-size:104px;line-height:104px;color:#2d2f47" data-bl="1696.65" ><span class="ln" style="margin-left:0.0px" data-w="665.9"><i class="bl"></i>the way you work</span></div>
+<div class="tx f-bold h-xl words d-only" style="left:1173.1px;font-size:104px;line-height:104px;color:#2d2f47" data-bl="1696.65" ><span class="ln" style="margin-left:0.0px" data-w="312.8"><i class="bl"></i>and live.</span></div>
 <a class="pillhit d-only" id="pillHit" href="#roles" aria-label="See open positions" style="left:1016px;top:1635px;width:143px;height:69px"></a>
 <button class="tgl d-only" id="tgl" type="button" role="switch" aria-checked="false" aria-label="Switch on" style="left:594px;top:1536px;width:140px;height:69px"></button>
 <h2 class="m-only m-h f-reg" style="color:#2d2f47">A career move should improve the way you work and live.</h2>
@@ -1860,54 +1891,54 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
 <svg class="m-only m-icon" viewBox="205 126 111 57" aria-hidden="true"><use href="#mIcon"/></svg>
 <h2 class="tx f-black upper rv" style="left:381.21px;font-size:38px;line-height:38px;color:#e4f6f7" data-bl="2387.82" ><span class="ln" style="margin-left:0.0px" data-w="465.58"><i class="bl"></i>Open health care roles</span></h2>
 <ul class="rl" id="roleList" style="left:245.83px;top:2428px;width:1366px" aria-label="Open health care roles"></ul>
-<a class="tx f-bold more" id="moreRoles" href="#" hidden style="left:245.83px;top:2860px;font-size:28px;color:#70bea8">See all open roles →</a>
+<a class="tx f-reg more" id="moreRoles" href="#" hidden style="left:245.83px;top:2860px;font-size:30px;color:#70bea8">See all open roles →</a>
 </section>
 <section class="sec s-expect" id="expect" data-y="3009" data-h="2121">
 <div class="m-only m-photo"><img src="/images/art-5.jpg" alt=""></div>
-<h2 class="tx f-reg h-xl center outl rv" style="left:506.18px;font-size:104px;line-height:102.0px;color:#2d2f47" data-bl="3281.74" ><span class="ln" style="margin-left:0.0px" data-w="809.04"><i class="bl"></i>What to expect from</span><span class="ln" style="margin-left:44.25px" data-w="720.53">Uppertunity Health</span></h2>
-<div class="cards-glow d-only" style="left:249px;top:3579px;width:1360px;height:1172px" aria-hidden="true"></div><div class="cards-scroll" id="cards" style="left:319px;top:3674px;width:1140px;height:958px" tabindex="0" aria-label="What to expect"><ul class="cards"><li class="card"><h3 class="f-black">Selective Matching</h3><p class="f-reg">Each introduction starts with an individual review of the clinician’s experience and the role’s requirements.</p></li><li class="card"><h3 class="f-black">Direct Communication</h3><p class="f-reg">Reach a recruiter who knows your search and can answer your questions promptly.</p></li><li class="card"><h3 class="f-black">Clear Expectations</h3><p class="f-reg">Know what the role involves and what each party expects before setting aside time for an interview.</p></li><li class="card"><h3 class="f-black">Technical Coordination</h3><p class="f-reg">Your recruiter handles scheduling and confirms the technical details with everyone involved.</p></li><li class="card"><h3 class="f-black">Confidential Searches</h3><p class="f-reg">Explore a move privately. Your CV is shared with an employer only with your permission.</p></li><li class="card"><h3 class="f-black">Targeted Outreach</h3><p class="f-reg">Reach qualified clinicians who may be open to a move even if they’re outside the active applicant pool.</p></li><li class="card"><h3 class="f-black">Offer Support</h3><p class="f-reg">Get help working through compensation, scheduling, and other terms before an offer is accepted.</p></li><li class="card"><h3 class="f-black">Start-Date Support</h3><p class="f-reg">Your recruiter stays in touch with both parties after acceptance to help keep the start date on track.</p></li></ul></div>
+<h2 class="tx f-bold h-xl center outl rv" style="left:506.18px;font-size:104px;line-height:102.0px;color:#2d2f47" data-bl="3281.74" ><span class="ln" style="margin-left:0.0px"><i class="bl"></i>What to expect from</span><span class="ln" style="margin-left:44.25px">Uppertunity Health</span></h2>
+<div class="cards-glow d-only" style="left:249px;top:3579px;width:1360px;height:1172px" aria-hidden="true"></div><div class="cards-scroll" id="cards" style="left:319px;top:3674px;width:1140px;height:958px" tabindex="0" aria-label="What to expect"><ul class="cards"><li class="card"><h3 class="f-ken">Selective Matching</h3><p class="f-reg">Each introduction starts with an individual review of the clinician’s experience and the role’s requirements.</p></li><li class="card"><h3 class="f-ken">Direct Communication</h3><p class="f-reg">Reach a recruiter who knows your search and can answer your questions promptly.</p></li><li class="card"><h3 class="f-ken">Clear Expectations</h3><p class="f-reg">Know what the role involves and what each party expects before setting aside time for an interview.</p></li><li class="card"><h3 class="f-ken">Technical Coordination</h3><p class="f-reg">Your recruiter handles scheduling and confirms the technical details with everyone involved.</p></li><li class="card"><h3 class="f-ken">Confidential Searches</h3><p class="f-reg">Explore a move privately. Your CV is shared with an employer only with your permission.</p></li><li class="card"><h3 class="f-ken">Targeted Outreach</h3><p class="f-reg">Reach qualified clinicians who may be open to a move even if they’re outside the active applicant pool.</p></li><li class="card"><h3 class="f-ken">Offer Support</h3><p class="f-reg">Get help working through compensation, scheduling, and other terms before an offer is accepted.</p></li><li class="card"><h3 class="f-ken">Start-Date Support</h3><p class="f-reg">Your recruiter stays in touch with both parties after acceptance to help keep the start date on track.</p></li></ul></div>
 </section>
 <section class="sec s-emp" id="employers" data-y="5130" data-h="928">
 <span class="btn b-tag rv" style="left:247px;top:5248px;width:323px;height:51px"><span>Healthcare employers</span></span>
-<h2 class="tx f-bold h-xl rv" style="left:247.16px;font-size:103px;line-height:90.03px;color:#2d2f47" data-bl="5479.38" ><span class="ln" style="margin-left:0.0px" data-w="549.73"><i class="bl"></i>Hiring the right</span><span class="ln" style="margin-left:0.0px" data-w="903.14">professional is daunting.</span></h2>
+<h2 class="tx f-bold h-xl rv" style="left:247.16px;font-size:104px;line-height:90.03px;color:#2d2f47" data-bl="5479.38" ><span class="ln" style="margin-left:0.0px" data-w="549.73"><i class="bl"></i>Hiring the right</span><span class="ln" style="margin-left:0.0px" data-w="903.14">professional is daunting.</span></h2>
 <p class="tx f-reg rv hl" style="left:253.79px;font-size:30px;line-height:36.0px;color:#2d2f47" data-bl="5716.31" ><span class="ln" style="margin-left:0.0px" data-w="742.05"><i class="bl"></i>Two medical practices can hire for the same role and need </span><span class="ln" style="margin-left:0.0px" data-w="666.78">very different things from the professional who fills it. </span><span class="ln" style="margin-left:0.0px" data-w="690.75">Uppertunity Health commits to learning how your team </span><span class="ln" style="margin-left:0.0px" data-w="740.09">works and what you need your next hire to own. That gives </span><span class="ln" style="margin-left:0.0px" data-w="664.23">us a clear brief for the search and helps us bring you </span><span class="ln" style="margin-left:0.0px" data-w="707.79">candidates with experience that’s relevant to your setup.</span></p>
 </section>
 <section class="sec s-recruit" id="recruit" data-y="6058" data-h="1060">
-<h2 class="tx f-bold h-xl rv" style="left:249.04px;font-size:103px;line-height:90.03px;color:#2d2f47" data-bl="6290.09" ><span class="ln" style="margin-left:0.09px" data-w="606.28"><i class="bl"></i>Healthcare roles</span><span class="ln" style="margin-left:0.0px" data-w="510.84">we recruit for:</span></h2>
+<h2 class="tx f-bold h-xl rv" style="left:249.04px;font-size:104px;line-height:90.03px;color:#2d2f47" data-bl="6290.09" ><span class="ln" style="margin-left:0.09px" data-w="606.28"><i class="bl"></i>Healthcare roles</span><span class="ln" style="margin-left:0.0px" data-w="510.84">we recruit for:</span></h2>
 <ul class="tags">
-<li><span class="tx f-reg tag pop" style="left:248.95px;font-size:31px;line-height:31px;color:#2d2f47" data-bl="6465.09" style="--i:0"><span class="ln" style="margin-left:0.0px" data-w="143.0"><i class="bl"></i>Physicians</span></span></li>
-<li><span class="tx f-reg tag pop" style="left:419.97px;font-size:31px;line-height:31px;color:#70bea8" data-bl="6465.09" style="--i:1"><span class="ln" style="margin-left:0.0px" data-w="395.44"><i class="bl"></i>Advanced Practice Providers</span></span></li>
-<li><span class="tx f-reg tag pop" style="left:248.93px;font-size:31px;line-height:31px;color:#2d2f47" data-bl="6516.09" style="--i:2"><span class="ln" style="margin-left:0.0px" data-w="378.2"><i class="bl"></i>Behavioral Health Providers</span></span></li>
-<li><span class="tx f-reg tag pop" style="left:664.23px;font-size:31px;line-height:31px;color:#70bea8" data-bl="6516.09" style="--i:3"><span class="ln" style="margin-left:0.0px" data-w="225.16"><i class="bl"></i>Dental Providers</span></span></li>
-<li><span class="tx f-reg tag pop" style="left:248.92px;font-size:31px;line-height:31px;color:#70bea8" data-bl="6567.09" style="--i:4"><span class="ln" style="margin-left:0.0px" data-w="136.87"><i class="bl"></i>Pharmacy</span></span></li>
-<li><span class="tx f-reg tag pop" style="left:422.9px;font-size:31px;line-height:31px;color:#2d2f47" data-bl="6567.09" style="--i:5"><span class="ln" style="margin-left:0.0px" data-w="336.2"><i class="bl"></i>Rehabilitation &amp; Therapy</span></span></li>
-<li><span class="tx f-reg tag pop" style="left:248.92px;font-size:31px;line-height:31px;color:#70bea8" data-bl="6618.09" style="--i:6"><span class="ln" style="margin-left:0.0px" data-w="348.25"><i class="bl"></i>Diagnostics &amp; Laboratory</span></span></li>
-<li><span class="tx f-reg tag pop" style="left:248.92px;font-size:31px;line-height:31px;color:#2d2f47" data-bl="6669.09" style="--i:7"><span class="ln" style="margin-left:0.0px" data-w="356.47"><i class="bl"></i>Healthcare Administration</span></span></li>
-<li><span class="tx f-reg tag pop" style="left:248.95px;font-size:31px;line-height:31px;color:#70bea8" data-bl="6720.09" style="--i:8"><span class="ln" style="margin-left:0.0px" data-w="104.25"><i class="bl"></i>Nursing</span></span></li>
-<li><span class="tx f-reg tag pop" style="left:248.98px;font-size:31px;line-height:51.0px;color:#2d2f47" data-bl="6720.09" style="--i:9"><span class="ln" style="margin-left:141.32px" data-w="190.3"><i class="bl"></i>Mental Health</span><span class="ln" style="margin-left:0.0px" data-w="127.75">Providers</span></span></li>
+<li><span class="tx f-reg tag pop" style="left:248.95px;font-size:30px;line-height:31px;color:#2d2f47" data-bl="6465.09" style="--i:0"><span class="ln" style="margin-left:0.0px" data-w="143.0"><i class="bl"></i>Physicians</span></span></li>
+<li><span class="tx f-reg tag pop" style="left:419.97px;font-size:30px;line-height:31px;color:#70bea8" data-bl="6465.09" style="--i:1"><span class="ln" style="margin-left:0.0px" data-w="395.44"><i class="bl"></i>Advanced Practice Providers</span></span></li>
+<li><span class="tx f-reg tag pop" style="left:248.93px;font-size:30px;line-height:31px;color:#2d2f47" data-bl="6516.09" style="--i:2"><span class="ln" style="margin-left:0.0px" data-w="378.2"><i class="bl"></i>Behavioral Health Providers</span></span></li>
+<li><span class="tx f-reg tag pop" style="left:664.23px;font-size:30px;line-height:31px;color:#70bea8" data-bl="6516.09" style="--i:3"><span class="ln" style="margin-left:0.0px" data-w="225.16"><i class="bl"></i>Dental Providers</span></span></li>
+<li><span class="tx f-reg tag pop" style="left:248.92px;font-size:30px;line-height:31px;color:#70bea8" data-bl="6567.09" style="--i:4"><span class="ln" style="margin-left:0.0px" data-w="136.87"><i class="bl"></i>Pharmacy</span></span></li>
+<li><span class="tx f-reg tag pop" style="left:422.9px;font-size:30px;line-height:31px;color:#2d2f47" data-bl="6567.09" style="--i:5"><span class="ln" style="margin-left:0.0px" data-w="336.2"><i class="bl"></i>Rehabilitation &amp; Therapy</span></span></li>
+<li><span class="tx f-reg tag pop" style="left:248.92px;font-size:30px;line-height:31px;color:#70bea8" data-bl="6618.09" style="--i:6"><span class="ln" style="margin-left:0.0px" data-w="348.25"><i class="bl"></i>Diagnostics &amp; Laboratory</span></span></li>
+<li><span class="tx f-reg tag pop" style="left:248.92px;font-size:30px;line-height:31px;color:#2d2f47" data-bl="6669.09" style="--i:7"><span class="ln" style="margin-left:0.0px" data-w="356.47"><i class="bl"></i>Healthcare Administration</span></span></li>
+<li><span class="tx f-reg tag pop" style="left:248.95px;font-size:30px;line-height:31px;color:#70bea8" data-bl="6720.09" style="--i:8"><span class="ln" style="margin-left:0.0px" data-w="104.25"><i class="bl"></i>Nursing</span></span></li>
+<li><span class="tx f-reg tag pop" style="left:248.98px;font-size:30px;line-height:51.0px;color:#2d2f47" data-bl="6720.09" style="--i:9"><span class="ln" style="margin-left:141.32px" data-w="190.3"><i class="bl"></i>Mental Health</span><span class="ln" style="margin-left:0.0px" data-w="127.75">Providers</span></span></li>
 </ul>
 <a class="btn b-navy rv" href="#next" data-form="hire" style="left:238px;top:6863px;width:185px;height:51px"><span>Fill a role</span></a>
 <span class="qhit d-only" id="qHit" aria-hidden="true" style="left:941px;top:6223px;width:668px;height:684px"></span>
 <div class="m-only m-quarter"><img src="/images/art-4.jpg" alt="A recruiter meets with a physician"></div>
 </section>
 <section class="sec s-faq" id="faq" data-y="7118" data-h="1181">
-<h2 class="tx f-reg h-xl rv" style="left:249.13px;font-size:104px;line-height:104px;color:#2d2f47" data-bl="7294.88" ><span class="ln" style="margin-left:0.0px" data-w="942.84"><i class="bl"></i>Before we work together</span></h2>
+<h2 class="tx f-bold h-xl rv" style="left:249.13px;font-size:104px;line-height:104px;color:#2d2f47" data-bl="7294.88" ><span class="ln" style="margin-left:0.0px"><i class="bl"></i>Before we work together</span></h2>
 <ul class="faq" style="left:249px;top:7399px;width:1360px"><li class="qa"><button class="q f-black" aria-expanded="false" aria-controls="a0" id="q0"><span>Can I explore a new role while I’m still employed?</span><i class="plus" aria-hidden="true"></i></button><div class="a f-reg" id="a0" role="region" aria-labelledby="q0"><p>Yes. You can start with a private conversation, even if you’re still deciding whether to make a move. We’ll ask for your permission before sharing your CV with an employer.</p></div></li><li class="qa"><button class="q f-black" aria-expanded="false" aria-controls="a1" id="q1"><span>Can I reach out if I don’t see a role that fits?</span><i class="plus" aria-hidden="true"></i></button><div class="a f-reg" id="a1" role="region" aria-labelledby="q1"><p>Yes. Tell us what you’d consider next. We can keep you in mind as new opportunities come up.</p></div></li><li class="qa"><button class="q f-black" aria-expanded="false" aria-controls="a2" id="q2"><span>What happens after I apply for an open role?</span><i class="plus" aria-hidden="true"></i></button><div class="a f-reg" id="a2" role="region" aria-labelledby="q2"><p>A recruiter reviews your application individually. If your experience aligns with the role, we’ll reach out to discuss the position and answer your questions before arranging an interview.</p></div></li><li class="qa"><button class="q f-black" aria-expanded="false" aria-controls="a3" id="q3"><span>What do you need from us to start a hiring search?</span><i class="plus" aria-hidden="true"></i></button><div class="a f-reg" id="a3" role="region" aria-labelledby="q3"><p>Start with the role, where it’s based, and the professional responsibilities. We’ll use that first conversation to clarify which qualifications are essential and where there’s room for flexibility.</p></div></li><li class="qa"><button class="q f-black" aria-expanded="false" aria-controls="a4" id="q4"><span>Can you help us fill a role outside the categories listed?</span><i class="plus" aria-hidden="true"></i></button><div class="a f-reg" id="a4" role="region" aria-labelledby="q4"><p>Tell us what you’re hiring for. We’ll let you know whether we can take on the search and what we’d need to get started.</p></div></li><li class="qa mail"><div class="q f-black"><span>Additional questions? Email us at <a href="mailto:info@uppertunity.health">info@uppertunity.health</a></span></div></li></ul>
 </section>
 <svg class="art art2 d-only" viewBox="0 8290 1821.38 2053.5" style="top:7990px;height:2053.5px" aria-hidden="true"><g clip-path="url(#nextClip)"><use href="#artAll"/></g></svg>
 <section class="sec s-next" id="next" data-y="8299" data-h="1152">
 <div class="nglow d-only" style="left:484px;top:8713px;width:412px;height:522px"></div><div class="nglow d-only" style="left:927px;top:8713px;width:412px;height:522px"></div>
 
-<h2 class="tx f-xbc upper next-h" style="left:483.78px;font-size:110.91px;line-height:110.91px;color:#70bea8" data-bl="8615.71" ><span class="ln" style="margin-left:0.0px" data-w="853.85"><i class="bl"></i>What’s next for you?</span></h2>
-<div class="ncard frv d1"><h3 class="tx f-ken upper" style="left:541.89px;font-size:59px;line-height:61.01px;color:#e4f6f7" data-bl="8840.32" ><span class="ln" style="margin-left:0.0px" data-w="296.08"><i class="bl"></i>Considering a</span><span class="ln" style="margin-left:4.16px" data-w="287.93">career move?</span></h3><p class="tx f-bold center" style="left:581.08px;font-size:36px;line-height:36.0px;color:#e4f6f7" data-bl="8978.94" ><span class="ln" style="margin-left:22.0px" data-w="173.81"><i class="bl"></i>Tell us what</span><span class="ln" style="margin-left:5.87px" data-w="206.07">would make a</span><span class="ln" style="margin-left:0.0px" data-w="217.8">new role worth</span><span class="ln" style="margin-left:40.14px" data-w="137.52">exploring</span></p><a class="btn b-teal sq" href="#next" data-form="talk" style="left:500px;top:9149px;width:379px;height:71px;border-radius:12px"><span>Talk to a healthcare recruiter</span></a></div>
-<div class="ncard frv d2"><h3 class="tx f-ken upper" style="left:1012.87px;font-size:59px;line-height:61.01px;color:#e4f6f7" data-bl="8840.32" ><span class="ln" style="margin-left:12.16px" data-w="217.09"><i class="bl"></i>Hiring for</span><span class="ln" style="margin-left:0.0px" data-w="241.55">your team?</span></h3><p class="tx f-bold center" style="left:1013.66px;font-size:36px;line-height:36.0px;color:#e4f6f7" data-bl="8978.94" ><span class="ln" style="margin-left:33.04px" data-w="173.81"><i class="bl"></i>Tell us what</span><span class="ln" style="margin-left:16.84px" data-w="206.07">would make a</span><span class="ln" style="margin-left:0.0px" data-w="239.86">candidate worth</span><span class="ln" style="margin-left:79.12px" data-w="81.58">hiring</span></p><a class="btn b-teal sq" href="#next" data-form="hire" style="left:944px;top:9149px;width:379px;height:71px;border-radius:12px"><span>Fill a role</span></a></div>
+<h2 class="tx f-xbc upper next-h" style="left:483.78px;font-size:104px;line-height:104px;color:#70bea8" data-bl="8615.71" ><span class="ln" style="margin-left:0.0px"><i class="bl"></i>What’s next for you?</span></h2>
+<div class="ncard frv d1"><h3 class="tx f-ken upper" style="left:541.89px;font-size:52px;line-height:54px;color:#e4f6f7" data-bl="8840.32" ><span class="ln" style="margin-left:0.0px"><i class="bl"></i>Considering a</span><span class="ln" style="margin-left:4.16px">career move?</span></h3><p class="tx f-reg center" style="left:581.08px;font-size:30px;line-height:36.0px;color:#e4f6f7" data-bl="8978.94" ><span class="ln" style="margin-left:22.0px"><i class="bl"></i>Tell us what</span><span class="ln" style="margin-left:5.87px">would make a</span><span class="ln" style="margin-left:0.0px">new role worth</span><span class="ln" style="margin-left:40.14px">exploring</span></p><a class="btn b-teal sq" href="#next" data-form="talk" style="left:500px;top:9149px;width:379px;height:71px;border-radius:12px"><span>Talk to a healthcare recruiter</span></a></div>
+<div class="ncard frv d2"><h3 class="tx f-ken upper" style="left:1012.87px;font-size:52px;line-height:54px;color:#e4f6f7" data-bl="8840.32" ><span class="ln" style="margin-left:12.16px"><i class="bl"></i>Hiring for</span><span class="ln" style="margin-left:0.0px">your team?</span></h3><p class="tx f-reg center" style="left:1013.66px;font-size:30px;line-height:36.0px;color:#e4f6f7" data-bl="8978.94" ><span class="ln" style="margin-left:33.04px"><i class="bl"></i>Tell us what</span><span class="ln" style="margin-left:16.84px">would make a</span><span class="ln" style="margin-left:0.0px">candidate worth</span><span class="ln" style="margin-left:79.12px">hiring</span></p><a class="btn b-teal sq" href="#next" data-form="hire" style="left:944px;top:9149px;width:379px;height:71px;border-radius:12px"><span>Fill a role</span></a></div>
 </section>
 <footer class="sec s-foot" id="contact" data-y="9451" data-h="893">
 <svg class="m-only m-icon" viewBox="205 126 111 57" aria-hidden="true"><use href="#mIcon"/></svg>
-<p class="tx f-bold fcol1 rv" style="left:248.43px;font-size:26px;line-height:26.0px;color:#e4f6f7" data-bl="9742.84" ><span class="ln" style="margin-left:0.0px" data-w="153.82"><i class="bl"></i>Recruiting and </span><span class="ln" style="margin-left:0.0px" data-w="148.49">placement for </span><span class="ln" style="margin-left:0.0px" data-w="260.86">healthcare professionals </span><span class="ln" style="margin-left:0.0px" data-w="157.09">and employers</span></p>
-<nav class="fcol frv d1" aria-label="Quick links"><h3 class="tx f-heavy " style="left:612.14px;font-size:26px;line-height:26px;color:#fff" data-bl="9664.59" ><span class="ln" style="margin-left:0.0px" data-w="142"><i class="bl"></i>Quick Links</span></h3><a class="tx f-bold flink" href="#roles" style="left:612.14px;font-size:24px;color:#70bea8" data-bl="9742.55"><i class="bl"></i>Open Roles</a><a class="tx f-bold flink" href="#employers" data-form="hire" style="left:612.14px;font-size:24px;color:#70bea8" data-bl="9778.55"><i class="bl"></i>Available Candidates</a><a class="tx f-bold flink" href="#next" data-form="cv" style="left:612.14px;font-size:24px;color:#70bea8" data-bl="9814.55"><i class="bl"></i>Submit your CV</a></nav>
-<div class="fcol frv d2"><h3 class="tx f-heavy " style="left:970.1px;font-size:26px;line-height:26px;color:#fff" data-bl="9664.59" ><span class="ln" style="margin-left:0.0px" data-w="90.4"><i class="bl"></i>Contact</span></h3><a class="tx f-bold flink" href="mailto:info@uppertunity.health" style="left:968.59px;font-size:24px;color:#70bea8" data-bl="9742.55"><i class="bl"></i>info@uppertunity.health</a><a class="tx f-bold flink" href="tel:12122523001" style="left:968.59px;font-size:24px;color:#70bea8" data-bl="9778.55"><i class="bl"></i>1212 252 3001</a></div>
-<form class="fcol alerts frv d3" id="alerts" novalidate><h3 class="tx f-heavy " style="left:1308.11px;font-size:26px;line-height:26px;color:#fff" data-bl="9664.59" ><span class="ln" style="margin-left:0.0px" data-w="296.43"><i class="bl"></i>Get Healthcare Job Alerts</span></h3><p class="tx f-bold " style="left:1305.04px;font-size:24px;line-height:27.0px;color:#70bea8" data-bl="9742.55" ><span class="ln" style="margin-left:0.0px" data-w="250.01"><i class="bl"></i>Get new openings in your </span><span class="ln" style="margin-left:0.0px" data-w="182.25">specialty by email.</span></p><div class="notify" id="notify" style="left:1302px;top:9796px;width:150px;height:41px"><span class="nlabel f-black" aria-hidden="true">Notify Me</span><input id="alertEmail" type="email" placeholder="Your email here" autocomplete="email" aria-label="Email address for job alerts"><button class="ngo" type="submit" aria-label="Notify me"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div><p class="tx f-bold formmsg" id="alertMsg" role="status" style="left:1305px;top:9852px;font-size:18px"></p></form>
+<p class="tx f-reg fcol1 rv" style="left:248.43px;font-size:24px;line-height:26.0px;color:#e4f6f7" data-bl="9742.84" ><span class="ln" style="margin-left:0.0px"><i class="bl"></i>Recruiting and </span><span class="ln" style="margin-left:0.0px">placement for </span><span class="ln" style="margin-left:0.0px">healthcare professionals </span><span class="ln" style="margin-left:0.0px">and employers</span></p>
+<nav class="fcol frv d1" aria-label="Quick links"><h3 class="tx f-black " style="left:612.14px;font-size:26px;line-height:26px;color:#fff" data-bl="9664.59" ><span class="ln" style="margin-left:0.0px" data-w="142"><i class="bl"></i>Quick Links</span></h3><a class="tx f-reg flink" href="#roles" style="left:612.14px;font-size:24px;color:#70bea8" data-bl="9742.55"><i class="bl"></i>Open Roles</a><a class="tx f-reg flink" href="#employers" data-form="hire" style="left:612.14px;font-size:24px;color:#70bea8" data-bl="9778.55"><i class="bl"></i>Available Candidates</a><a class="tx f-reg flink" href="#next" data-form="cv" style="left:612.14px;font-size:24px;color:#70bea8" data-bl="9814.55"><i class="bl"></i>Submit your CV</a></nav>
+<div class="fcol frv d2"><h3 class="tx f-black " style="left:970.1px;font-size:26px;line-height:26px;color:#fff" data-bl="9664.59" ><span class="ln" style="margin-left:0.0px" data-w="90.4"><i class="bl"></i>Contact</span></h3><a class="tx f-reg flink" href="mailto:info@uppertunity.health" style="left:968.59px;font-size:24px;color:#70bea8" data-bl="9742.55"><i class="bl"></i>info@uppertunity.health</a><a class="tx f-reg flink" href="tel:12122523001" style="left:968.59px;font-size:24px;color:#70bea8" data-bl="9778.55"><i class="bl"></i>1212 252 3001</a></div>
+<form class="fcol alerts frv d3" id="alerts" novalidate><h3 class="tx f-black " style="left:1308.11px;font-size:26px;line-height:26px;color:#fff" data-bl="9664.59" ><span class="ln" style="margin-left:0.0px" data-w="296.43"><i class="bl"></i>Get Healthcare Job Alerts</span></h3><p class="tx f-reg " style="left:1305.04px;font-size:24px;line-height:27.0px;color:#70bea8" data-bl="9742.55" ><span class="ln" style="margin-left:0.0px"><i class="bl"></i>Get new openings in your </span><span class="ln" style="margin-left:0.0px">specialty by email.</span></p><div class="notify" id="notify" style="left:1302px;top:9796px;width:150px;height:41px"><span class="nlabel f-black" aria-hidden="true">Notify Me</span><input id="alertEmail" type="email" placeholder="Your email here" autocomplete="email" aria-label="Email address for job alerts"><button class="ngo" type="submit" aria-label="Notify me"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div><p class="tx f-bold formmsg" id="alertMsg" role="status" style="left:1305px;top:9852px;font-size:18px"></p></form>
 <div class="m-only m-biglogo"><svg viewBox="203 124 498 85" aria-hidden="true"><use href="#mLogo"/></svg></div>
 </footer>
 </div><!-- /lower -->
@@ -1960,7 +1991,7 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
     return '<li style="--i:' + i + '">' +
       '<span class="t f-black" data-bl="' + (first ? 109.77 : 60.77) + '"><i class="bl"></i>' + esc(r.title) + '</span>' +
       '<span class="loc f-reg" data-bl="' + (first ? 109.77 : 60.77) + '"><i class="bl"></i>' + esc(r.location) + '</span>' +
-      '<a class="go f-bold" href="' + esc(r.url && r.url !== '#' ? r.url : '#roles') + '"' + (r.url && r.url !== '#' ? '' : ' data-form="talk" data-role="' + esc(r.title + (r.location ? ' (' + r.location + ')' : '')) + '"') + ' data-bl="' + (first ? 103.68 : 51.69) + '"><i class="bl"></i>View Role Details</a></li>';
+      '<a class="go f-reg" href="' + esc(r.url && r.url !== '#' ? r.url : '#roles') + '"' + (r.url && r.url !== '#' ? '' : ' data-form="talk" data-role="' + esc(r.title + (r.location ? ' (' + r.location + ')' : '')) + '"') + ' data-bl="' + (first ? 103.68 : 51.69) + '"><i class="bl"></i>View Role Details</a></li>';
   }).join('') : '<li><span class="t f-black" data-bl="109.77"><i class="bl"></i>New roles are posted here soon.</span></li>';
   if (roles.length > 4) document.getElementById('moreRoles').hidden = false;
 
@@ -1973,12 +2004,14 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
   });
 
   /* ---- fit the artboard to the window, put text on its baselines ---- */
+  const PAGE_MAX = .84;
+  let HU = 1;
   let DY = 0;
   /* the stage's box as the sections below the hero see it (they sit DY artboard units lower) */
   function lowBox() { const r = stage.getBoundingClientRect(), s = r.width / 1821.38; return { left: r.left, top: r.top + DY * s, width: r.width }; }
   /* hero lines keep the width they have in the design, whatever font is loading */
   function fitHero() {
-    const on = wide.matches, hu = document.querySelector('.hx').offsetWidth ? parseFloat(getComputedStyle(document.querySelector('.hx-wrap')).width) / 1821.38 : 0;
+    const on = wide.matches, hu = parseFloat(getComputedStyle(document.querySelector('.hx-h')).fontSize) / 103;
     document.querySelectorAll('.hx [data-hw]').forEach(l => {
       l.style.transform = 'none';
       if (!on || !hu) return;
@@ -1990,13 +2023,20 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
     fitHero();
     const all = document.querySelectorAll('[data-bl]');
     if (!wide.matches) {
+      document.documentElement.style.setProperty('--sx', '0px');
       DY = 0; document.documentElement.style.setProperty('--dy', 0); document.documentElement.style.setProperty('--hc', 1305);
       all.forEach(el => el.style.top = '');
       document.querySelectorAll('.ln').forEach(l => l.style.transform = '');
       document.querySelectorAll('.btn>span').forEach(s => s.style.fontSize = '');
       return;
     }
-    document.documentElement.style.setProperty('--s', innerWidth / 1821.38);
+    /* page scale: the artboard fills the window, but never more than 0.84 (on wide screens it sits centered) */
+    const S = Math.min(innerWidth / 1821.38, PAGE_MAX);
+    HU = Math.min(S, innerHeight / 1075);
+    document.documentElement.style.setProperty('--hun', HU);
+    document.documentElement.style.setProperty('--s', S);
+    document.documentElement.style.setProperty('--sx', ((innerWidth - 1821.38 * S) / 2).toFixed(2) + 'px');
+    document.documentElement.style.setProperty('--ex', Math.max(0, (innerWidth - 1821.38 * S) / 2 / 2 + .5).toFixed(3));
     /* the hero is its own flexible block above; the artboard starts at the career section (y 1305) */
     DY = -1305;
     document.documentElement.style.setProperty('--dy', DY);
@@ -2006,10 +2046,14 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
       const nat = l.offsetWidth;
       if (nat) l.style.transform = 'scaleX(' + Math.min(1.35, Math.max(.7, +l.dataset.w / nat)).toFixed(4) + ')';
     });
-    document.querySelectorAll('.stage .btn>span').forEach(sp => {
-      sp.style.fontSize = '';
-      const room = sp.parentElement.clientWidth - 30;
-      if (sp.offsetWidth > room) sp.style.fontSize = (parseFloat(getComputedStyle(sp).fontSize) * room / sp.offsetWidth).toFixed(2) + 'px';
+    /* all buttons share one text size (the hero's); a pill grows if its text needs more room, keeping its centre */
+    document.querySelectorAll('.stage .btn').forEach(b => {
+      if (!b.dataset.w0) { b.dataset.w0 = parseFloat(b.style.width) || b.offsetWidth; b.dataset.l0 = parseFloat(b.style.left) || 0; }
+      const w0 = +b.dataset.w0, l0 = +b.dataset.l0, sp = b.firstElementChild;
+      const need = sp ? sp.offsetWidth + 44 / S : w0;
+      const w = Math.max(w0, need);
+      b.style.width = w + 'px';
+      if (b.style.left) b.style.left = (l0 - (w - w0) / 2) + 'px';
     });
     all.forEach(el => {
       const m = el.querySelector('.bl');
@@ -2021,6 +2065,17 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
   addEventListener('resize', layout);
   wide.addEventListener('change', layout);
 
+  /* career toggle: the knob slides a little with the scroll (hover and click still take over) */
+  const knobEl = document.getElementById('knob');
+  function onKnob() {
+    if (!knobEl || reduce || !wide.matches) return;
+    const b = lowBox(), sc = b.width / 1821.38;
+    const mid = b.top + 1570 * sc;
+    const p = Math.max(0, Math.min(1, (innerHeight - mid) / innerHeight));
+    knobEl.classList.add('scr');
+    knobEl.style.setProperty('--kx', (-26 * p).toFixed(1) + 'px');
+  }
+  addEventListener('scroll', onKnob, { passive: true }); onKnob();
   /* ---- reveal on scroll ---- */
   const onIn = (el, fn) => {
     if (reduce || !('IntersectionObserver' in window)) { fn(); return; }
@@ -2068,17 +2123,20 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
   addEventListener('scroll', onGlow, { passive: true });
   onGlow();
   /* what to expect: background photo moves slower than the page (parallax) */
-  const px = document.querySelector('#source-105 use');
+  const px = document.getElementById('xPhoto');
   let po = 0, poT = 0, pxRun = false;
   function pxTick() {
     po += (poT - po) * .12;
-    px.setAttribute('transform', 'matrix(1.279622, 0, 0, 1.279622, -435.870565, ' + (0.932326 + po).toFixed(2) + ')');
+    px.style.setProperty('--po', po.toFixed(2));
     if (Math.abs(poT - po) > .1) requestAnimationFrame(pxTick); else pxRun = false;
   }
   function onPx() {
-    if (reduce || !wide.matches || !px) return;
+    if (!px) return;
     const b = lowBox(), s = b.width / 1821.38;
     const top = b.top + 3009 * s, h = 977 * s;
+    /* the photo glides in from the top left once the section comes into view */
+    if (top < innerHeight * .85) px.classList.add('in');
+    if (reduce || !wide.matches) return;
     const p = Math.max(0, Math.min(1, (innerHeight - top) / (innerHeight + h)));
     poT = (p - .5) * 260;
     if (!pxRun) { pxRun = true; requestAnimationFrame(pxTick); }
