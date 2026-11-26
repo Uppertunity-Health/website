@@ -48,7 +48,7 @@ em{font-style:normal}
 
 /* ===== header + hero (flexible) =====
    --hu is one artboard unit: never bigger than 0.75px, and small enough that the hero fits the screen's height */
-.hx{--hs:min(calc(100vw / 1821.38), .76px);--hu:min(var(--hs), calc(100svh / 1150));--hk:1;--g:0;
+.hx{--hs:min(calc(100vw / 1821.38), .84px);--hu:min(var(--hs), calc(100svh / 1075));--hk:1;--g:0;
   position:relative;height:100svh;min-height:calc(1000 * var(--hu));overflow:hidden;color:var(--ice);
   background:radial-gradient(circle calc(2062 * var(--hk) * var(--hu)) at calc(50% + 801 * var(--hu)) calc(100% + 155 * var(--hu)),
     rgb(111,187,167) 0, rgb(84,127,130) 6.25%, rgb(68,93,107) 12.5%, rgb(58,72,92) 18.75%, rgb(52,60,82) 25%, rgb(48,53,77) 31.25%, var(--navy) 100%)}
@@ -107,8 +107,31 @@ em{font-style:normal}
   .hx-badge{display:none}
 }
 
+
+/* ===== footer: full width (edge to edge), text kept at its small size ===== */
+.fx{--fp:clamp(24px,4.5vw,96px);background:radial-gradient(36% calc(300px * var(--s,1)) at 50% 0,rgba(196,189,200,.97),rgba(150,142,162,.6) 40%,rgba(62,61,86,0) 100%),linear-gradient(to bottom,rgb(62,61,86),var(--navy) calc(260px * var(--s,1)));color:var(--ice);position:relative}
+.fx .tx,.fx .notify,.fx input,.fx .formmsg{position:static!important;left:auto!important;top:auto!important;margin:0!important;white-space:normal}
+.fx .ln{display:inline;transform:none!important;margin:0!important}
+.fx .ln::after{content:" "}
+.fx .fcol{display:flex;flex-direction:column;gap:calc(10px * var(--s,1))}
+.fx h3.tx{font-size:calc(26px * var(--s,1))!important;line-height:1.2!important;margin:0 0 calc(14px * var(--s,1))!important}
+.fx .flink,.fx p.tx{font-size:calc(24px * var(--s,1))!important;line-height:1.4!important}
+.fx .m-icon,.fx .m-biglogo{display:block}
+@media (min-width:900px){
+  .fx{display:grid!important;grid-template-columns:1.1fr 1fr 1fr 1.2fr;padding:calc(110px * var(--s)) var(--fp) calc(60px * var(--s))}
+  .fx>.m-icon{grid-column:1;grid-row:1;width:calc(70px * var(--s));height:auto;margin-bottom:calc(18px * var(--s))}
+  .fx>.fcol1{grid-column:1;grid-row:2;max-width:calc(300px * var(--s))}
+  .fx>nav.fcol{grid-column:2;grid-row:1/3}.fx>div.fcol{grid-column:3;grid-row:1/3}.fx>.alerts{grid-column:4;grid-row:1/3}
+  .fx>.fcol:not(.fcol1){border-left:1px solid rgba(228,246,247,.3);padding-left:clamp(20px,2.5vw,48px)}
+  .fx .notify{width:calc(150px * var(--s))!important;height:calc(41px * var(--s))!important;margin-top:calc(8px * var(--s))!important;position:relative!important}
+  .fx .notify:hover,.fx .notify:focus-within,.fx .notify.has{width:calc(313px * var(--s))!important}
+  .fx .notify .nlabel{font-size:calc(25px * var(--s))}
+  .fx .notify input#alertEmail{position:absolute!important;font-size:calc(19px * var(--s))!important}
+  .fx>.m-biglogo{grid-column:1/-1;grid-row:3;margin-top:calc(110px * var(--s))}
+  .fx>.m-biglogo svg{display:block;width:100%;height:auto}
+}
 /* ---------- desktop: the artboard ---------- */
-.page{position:relative;width:100%;height:calc((10043.5px + var(--dy,0) * 1px) * var(--s));overflow:hidden}
+.page{position:relative;width:100%;height:calc((10043.5px - 893px + var(--dy,0) * 1px) * var(--s));overflow:hidden}
 /* header + hero fill exactly one screen: the hero art is cut (or extended in navy) at the screen's bottom,
    and everything below sits in #lower, moved up or down by --dy artboard units (set in layout()) */
 #art{clip-path:inset(0 0 calc(10343.5px - var(--hc,1305) * 1px) 0)}
@@ -131,13 +154,17 @@ em{font-style:normal}
 @media (prefers-reduced-motion:reduce){.xbg-photo i{transition:none;opacity:.37;transform:none}}
 #e0,#e146{display:none}
 /* "Before we work together": the navy box wipes open from the left, then the words rise in */
+@media (min-width:900px){
+  .s-faq h2.tx{background:transparent!important;isolation:isolate}
+  .s-faq h2.tx::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--navy);border-radius:6px;transform-origin:0 50%}
+}
 @media (min-width:900px) and (prefers-reduced-motion:no-preference){
-  .s-faq h2.tx{clip-path:inset(0 100% 0 0 round 6px);transition:clip-path 1.1s cubic-bezier(.77,0,.18,1),opacity .4s ease,translate .9s cubic-bezier(.2,.75,.15,1)}
-  .s-faq h2.tx.in{clip-path:inset(0 0 0 0 round 6px)}
+  .s-faq h2.tx::before{transform:scaleX(0);transition:transform 1.1s cubic-bezier(.77,0,.18,1)}
+  .s-faq h2.tx.in::before{transform:none}
   .s-faq h2.tx .ln{opacity:0;translate:0 .45em;transition:opacity .7s ease .55s,translate .9s cubic-bezier(.2,.75,.15,1) .55s}
   .s-faq h2.tx.in .ln{opacity:1;translate:0 0}
 }
-@media (min-width:900px){.s-faq h2.tx{background:var(--navy);color:var(--ice)!important;left:249px!important;width:1360px;box-sizing:border-box;padding:44px 56px 40px;border-radius:6px}}
+@media (min-width:900px){.s-faq h2.tx{color:var(--ice)!important;left:249px!important;width:1360px;box-sizing:border-box;padding:44px 56px 40px;border-radius:6px}}
 @media (max-width:899px){.s-faq h2.m-h,.s-faq h2.tx{background:var(--navy);color:var(--ice)!important;padding:22px 20px;border-radius:6px}}
 #faqArt{display:none}
 .edge svg{position:absolute;left:0;width:100%;display:block}
@@ -346,9 +373,9 @@ a,button,.tgl,.pillhit,label[for],.rl .go,button.q{cursor:pointer}
 .notify:hover,.notify:focus-within,.notify.has{width:313px!important;background:rgba(112,190,168,.08)}
 .notify .nlabel{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--teal);font-size:25px;font-weight:700;pointer-events:none;transition:opacity .25s}
 .notify:hover .nlabel,.notify:focus-within .nlabel,.notify.has .nlabel{opacity:0}
-.stage .notify input#alertEmail{position:absolute;left:0;top:0;width:100%;height:100%;margin:0;border:0!important;background:transparent;
+.fx .notify input#alertEmail{position:absolute;left:0;top:0;width:100%;height:100%;margin:0;border:0!important;background:transparent;
   padding:0 52px 0 18px!important;font-size:19px!important;color:var(--ice);opacity:0;transition:opacity .25s .1s}
-.stage .notify input#alertEmail::placeholder{color:rgba(228,246,247,.6)}
+.fx .notify input#alertEmail::placeholder{color:rgba(228,246,247,.6)}
 .notify:hover input#alertEmail,.notify:focus-within input#alertEmail,.notify.has input#alertEmail{opacity:1!important}
 .notify .ngo{position:absolute;right:4px;top:50%;translate:0 -50%;width:32px;height:32px;border:0;border-radius:6px;background:var(--teal);color:var(--navy);
   display:grid;place-items:center;padding:0;cursor:pointer;opacity:0;scale:.7;transition:opacity .25s .12s,scale .3s .12s,background-color .2s}
@@ -357,10 +384,10 @@ a,button,.tgl,.pillhit,label[for],.rl .go,button.q{cursor:pointer}
 .notify:hover .ngo,.notify:focus-within .ngo,.notify.has .ngo{opacity:1;scale:1}
 @media (min-width:900px){.s-foot .notify{margin-top:-300px}}
 @media (max-width:899.98px){
-  .stage .notify{position:relative!important;left:auto!important;top:auto!important;width:100%!important;height:48px!important;margin:10px 0}
+  .fx .notify{position:relative!important;left:auto!important;top:auto!important;width:100%!important;height:48px!important;margin:10px 0}
   .notify .nlabel{display:none}
-  .stage .notify input#alertEmail,.notify .ngo{opacity:1!important;scale:1}
-  .stage .notify input#alertEmail{font-size:16px!important;border-bottom:0!important;height:100%!important;width:100%!important;margin:0!important;position:absolute!important;left:0!important;top:0!important}
+  .fx .notify input#alertEmail,.notify .ngo{opacity:1!important;scale:1}
+  .fx .notify input#alertEmail{font-size:16px!important;border-bottom:0!important;height:100%!important;width:100%!important;margin:0!important;position:absolute!important;left:0!important;top:0!important}
 }
 
 /* ---------- forms (CV, recruiter, employer) ---------- */
@@ -1935,17 +1962,18 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
 <div class="ncard frv d1"><h3 class="tx f-ken upper" style="left:541.89px;font-size:52px;line-height:54px;color:#e4f6f7" data-bl="8840.32" ><span class="ln" style="margin-left:0.0px"><i class="bl"></i>Considering a</span><span class="ln" style="margin-left:4.16px">career move?</span></h3><p class="tx f-reg center" style="left:581.08px;font-size:30px;line-height:36.0px;color:#e4f6f7" data-bl="8978.94" ><span class="ln" style="margin-left:22.0px"><i class="bl"></i>Tell us what</span><span class="ln" style="margin-left:5.87px">would make a</span><span class="ln" style="margin-left:0.0px">new role worth</span><span class="ln" style="margin-left:40.14px">exploring</span></p><a class="btn b-teal sq" href="#next" data-form="talk" style="left:500px;top:9149px;width:379px;height:71px;border-radius:12px"><span>Talk to a healthcare recruiter</span></a></div>
 <div class="ncard frv d2"><h3 class="tx f-ken upper" style="left:1012.87px;font-size:52px;line-height:54px;color:#e4f6f7" data-bl="8840.32" ><span class="ln" style="margin-left:12.16px"><i class="bl"></i>Hiring for</span><span class="ln" style="margin-left:0.0px">your team?</span></h3><p class="tx f-reg center" style="left:1013.66px;font-size:30px;line-height:36.0px;color:#e4f6f7" data-bl="8978.94" ><span class="ln" style="margin-left:33.04px"><i class="bl"></i>Tell us what</span><span class="ln" style="margin-left:16.84px">would make a</span><span class="ln" style="margin-left:0.0px">candidate worth</span><span class="ln" style="margin-left:79.12px">hiring</span></p><a class="btn b-teal sq" href="#next" data-form="hire" style="left:944px;top:9149px;width:379px;height:71px;border-radius:12px"><span>Fill a role</span></a></div>
 </section>
-<footer class="sec s-foot" id="contact" data-y="9451" data-h="893">
-<svg class="m-only m-icon" viewBox="205 126 111 57" aria-hidden="true"><use href="#mIcon"/></svg>
-<p class="tx f-reg fcol1 rv" style="left:248.43px;font-size:24px;line-height:26.0px;color:#e4f6f7" data-bl="9742.84" ><span class="ln" style="margin-left:0.0px"><i class="bl"></i>Recruiting and </span><span class="ln" style="margin-left:0.0px">placement for </span><span class="ln" style="margin-left:0.0px">healthcare professionals </span><span class="ln" style="margin-left:0.0px">and employers</span></p>
-<nav class="fcol frv d1" aria-label="Quick links"><h3 class="tx f-black " style="left:612.14px;font-size:26px;line-height:26px;color:#fff" data-bl="9664.59" ><span class="ln" style="margin-left:0.0px" data-w="142"><i class="bl"></i>Quick Links</span></h3><a class="tx f-reg flink" href="#roles" style="left:612.14px;font-size:24px;color:#70bea8" data-bl="9742.55"><i class="bl"></i>Open Roles</a><a class="tx f-reg flink" href="#employers" data-form="hire" style="left:612.14px;font-size:24px;color:#70bea8" data-bl="9778.55"><i class="bl"></i>Available Candidates</a><a class="tx f-reg flink" href="#next" data-form="cv" style="left:612.14px;font-size:24px;color:#70bea8" data-bl="9814.55"><i class="bl"></i>Submit your CV</a></nav>
-<div class="fcol frv d2"><h3 class="tx f-black " style="left:970.1px;font-size:26px;line-height:26px;color:#fff" data-bl="9664.59" ><span class="ln" style="margin-left:0.0px" data-w="90.4"><i class="bl"></i>Contact</span></h3><a class="tx f-reg flink" href="mailto:info@uppertunity.health" style="left:968.59px;font-size:24px;color:#70bea8" data-bl="9742.55"><i class="bl"></i>info@uppertunity.health</a><a class="tx f-reg flink" href="tel:12122523001" style="left:968.59px;font-size:24px;color:#70bea8" data-bl="9778.55"><i class="bl"></i>1212 252 3001</a></div>
-<form class="fcol alerts frv d3" id="alerts" novalidate><h3 class="tx f-black " style="left:1308.11px;font-size:26px;line-height:26px;color:#fff" data-bl="9664.59" ><span class="ln" style="margin-left:0.0px" data-w="296.43"><i class="bl"></i>Get Healthcare Job Alerts</span></h3><p class="tx f-reg " style="left:1305.04px;font-size:24px;line-height:27.0px;color:#70bea8" data-bl="9742.55" ><span class="ln" style="margin-left:0.0px"><i class="bl"></i>Get new openings in your </span><span class="ln" style="margin-left:0.0px">specialty by email.</span></p><div class="notify" id="notify" style="left:1302px;top:9796px;width:150px;height:41px"><span class="nlabel f-black" aria-hidden="true">Notify Me</span><input id="alertEmail" type="email" placeholder="Your email here" autocomplete="email" aria-label="Email address for job alerts"><button class="ngo" type="submit" aria-label="Notify me"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div><p class="tx f-bold formmsg" id="alertMsg" role="status" style="left:1305px;top:9852px;font-size:18px"></p></form>
-<div class="m-only m-biglogo"><svg viewBox="203 124 498 85" aria-hidden="true"><use href="#mLogo"/></svg></div>
-</footer>
+
 </div><!-- /lower -->
 </div>
 </div>
+<footer class="sec s-foot fx" id="contact" data-y="9451" data-h="893">
+<svg class="m-only m-icon" viewBox="205 126 111 57" aria-hidden="true"><use href="#mIcon"/></svg>
+<p class="tx f-reg fcol1 rv" style="left:248.43px;font-size:24px;line-height:26.0px;color:#e4f6f7" data-bl="9742.84" ><span class="ln" style="margin-left:0.0px"><i class="bl"></i>Recruiting and </span><span class="ln" style="margin-left:0.0px">placement for </span><span class="ln" style="margin-left:0.0px">healthcare professionals </span><span class="ln" style="margin-left:0.0px">and employers</span></p>
+<nav class="fcol frv d1" aria-label="Quick links"><h3 class="tx f-black " style="left:612.14px;font-size:26px;line-height:26px;color:#fff" data-bl="9664.59" ><span class="ln" style="margin-left:0.0px"><i class="bl"></i>Quick Links</span></h3><a class="tx f-reg flink" href="#roles" style="left:612.14px;font-size:24px;color:#70bea8" data-bl="9742.55"><i class="bl"></i>Open Roles</a><a class="tx f-reg flink" href="#employers" data-form="hire" style="left:612.14px;font-size:24px;color:#70bea8" data-bl="9778.55"><i class="bl"></i>Available Candidates</a><a class="tx f-reg flink" href="#next" data-form="cv" style="left:612.14px;font-size:24px;color:#70bea8" data-bl="9814.55"><i class="bl"></i>Submit your CV</a></nav>
+<div class="fcol frv d2"><h3 class="tx f-black " style="left:970.1px;font-size:26px;line-height:26px;color:#fff" data-bl="9664.59" ><span class="ln" style="margin-left:0.0px"><i class="bl"></i>Contact</span></h3><a class="tx f-reg flink" href="mailto:info@uppertunity.health" style="left:968.59px;font-size:24px;color:#70bea8" data-bl="9742.55"><i class="bl"></i>info@uppertunity.health</a><a class="tx f-reg flink" href="tel:12122523001" style="left:968.59px;font-size:24px;color:#70bea8" data-bl="9778.55"><i class="bl"></i>1212 252 3001</a></div>
+<form class="fcol alerts frv d3" id="alerts" novalidate><h3 class="tx f-black " style="left:1308.11px;font-size:26px;line-height:26px;color:#fff" data-bl="9664.59" ><span class="ln" style="margin-left:0.0px"><i class="bl"></i>Get Healthcare Job Alerts</span></h3><p class="tx f-reg " style="left:1305.04px;font-size:24px;line-height:27.0px;color:#70bea8" data-bl="9742.55" ><span class="ln" style="margin-left:0.0px"><i class="bl"></i>Get new openings in your </span><span class="ln" style="margin-left:0.0px">specialty by email.</span></p><div class="notify" id="notify" style="left:1302px;top:9796px;width:150px;height:41px"><span class="nlabel f-black" aria-hidden="true">Notify Me</span><input id="alertEmail" type="email" placeholder="Your email here" autocomplete="email" aria-label="Email address for job alerts"><button class="ngo" type="submit" aria-label="Notify me"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div><p class="tx f-bold formmsg" id="alertMsg" role="status" style="left:1305px;top:9852px;font-size:18px"></p></form>
+<div class="m-only m-biglogo"><svg viewBox="203 124 498 85" aria-hidden="true"><use href="#mLogo"/></svg></div>
+</footer>
 
 <!-- CMS content: on the live site this list is content/roles.json, edited by the client in Pages CMS -->
 <script type="application/json" id="rolesData">
@@ -2034,7 +2062,7 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
     }
     /* page scale: the artboard fills the window, but never more than 0.84 (on wide screens it sits centered) */
     const S = Math.min(innerWidth / 1821.38, PAGE_MAX);
-    HU = Math.min(S, innerHeight / 1150);
+    HU = Math.min(innerWidth / 1821.38, .84, innerHeight / 1075);
     document.documentElement.style.setProperty('--hun', HU);
     document.documentElement.style.setProperty('--s', S);
     document.documentElement.style.setProperty('--sx', ((innerWidth - 1821.38 * S) / 2).toFixed(2) + 'px');
