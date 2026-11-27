@@ -20,4 +20,5 @@ await rm('dist', { recursive: true, force: true });
 await mkdir('dist', { recursive: true });
 await writeFile('dist/index.html', out);
 await cp('images', 'dist/images', { recursive: true });
+await cp('fonts', 'dist/fonts', { recursive: true });
 console.log('Built dist/ with ' + roles.length + ' open role(s).');
