@@ -2596,7 +2596,7 @@ html.thumb-drag,html.thumb-drag *{cursor:grabbing!important;user-select:none}
   /* ---------- forms: CV, talk to a recruiter, fill a role ----------
      Everything goes to info@uppertunity.health. In this preview the form only checks the fields and shows the
      thank-you popup; on the live site FORM_ENDPOINT points at the site's own /api/forms function, which emails it. */
-  const FORM_ENDPOINT = null;
+  const FORM_ENDPOINT = location.protocol.startsWith('http') ? '/api/forms' : null;
   const toastEl = document.getElementById('toast');
   const showToast = () => { toastEl.classList.add('on'); clearTimeout(toastEl._h); toastEl._h = setTimeout(() => toastEl.classList.remove('on'), 3200); };
   document.querySelectorAll('[data-form]').forEach(a => a.addEventListener('click', e => {
@@ -2654,8 +2654,10 @@ html.thumb-drag,html.thumb-drag *{cursor:grabbing!important;user-select:none}
   form.addEventListener('submit', e => {
     e.preventDefault();
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inp.value.trim())) { msg.textContent = 'Please enter a valid email.'; inp.focus(); return; }
+    const email = inp.value.trim();
     msg.textContent = ''; inp.value = ''; notify.classList.remove('has'); inp.blur();
     showToast();
+    if (FORM_ENDPOINT) { const d = new FormData(); d.append('form', 'Job alerts'); d.append('email', email); fetch(FORM_ENDPOINT, { method: 'POST', body: d }).catch(() => {}); }
   });
 }
 </script>
