@@ -12,7 +12,7 @@ const FORMS = {
   'Submit your CV': 'New CV submitted',
   'Talk to a recruiter': 'New request to talk to a recruiter',
   'Fill a role': 'New request to fill a role',
-  'Job alerts': 'New job alerts signup',
+  'Job alerts': 'Job alerts signup',
 };
 
 const LABELS = {
@@ -62,6 +62,11 @@ export async function POST(request) {
     '</table>' + (attachments.length ? '<p style="font-family:Arial,sans-serif;color:#5b5e74">Attached: ' + attachments.map(a => esc(a.filename)).join(', ') + '</p>' : '') +
     '<p style="font-family:Arial,sans-serif;font-size:12px;color:#8a8ca0">Sent from the form on uppertunity.health. Reply to this email to answer them directly.</p>';
 
+  // job alerts: a short note that this person wants to be added to the client's email list
+  const alertHtml = '<p style="font-family:Arial,sans-serif;font-size:16px;color:#2d2f47"><b>' + esc(email) +
+    '</b> wants to sign up for Uppertunity Health job alerts.</p><p style="font-family:Arial,sans-serif;font-size:14px;color:#5b5e74">Please add them to your email list. Sent from the Job Alerts box on uppertunity.health.</p>';
+  const isAlert = formName === 'Job alerts';
+
   const key = process.env.RESEND_API_KEY;
   if (!key) { console.warn('RESEND_API_KEY not set: form accepted but not emailed (test site).'); return json({ ok: true, test: true }); }
 
@@ -72,8 +77,8 @@ export async function POST(request) {
       from: process.env.FORMS_FROM || 'Uppertunity Health Website <website@uppertunity.health>',
       to: (process.env.FORMS_TO || 'info@uppertunity.health').split(',').map(s => s.trim()),
       reply_to: email,
-      subject,
-      html,
+      subject: isAlert ? 'Job alerts signup – ' + email : subject,
+      html: isAlert ? alertHtml : html,
       attachments: attachments.length ? attachments : undefined,
     }),
   });

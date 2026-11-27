@@ -22,3 +22,11 @@ Hosted on Vercel: every change pushed to `main` goes live automatically.
 3. Connect the domain (registered in the client's name).
 4. Remove `noindex`, test the forms, then delete the preview project from Art&Soul's Vercel account.
 5. **Switch this GitHub repository back to Private** (Settings → General → Danger Zone → Change repository visibility). It is public only so the free Vercel plan can show previews.
+
+## Open roles (Pages CMS)
+- The client edits the homepage's open roles at app.pagescms.org (config: `.pages.yml`, data: `content/roles.json`).
+- Each save commits to GitHub; Vercel runs `scripts/build.mjs`, which copies the roles into the page (`dist/`).
+- The homepage shows up to 4 roles.
+
+## Forms
+- `api/forms.mjs` emails every form (CV, recruiter, fill a role, job alerts) to `FORMS_TO` through Resend. See `.env.example`.

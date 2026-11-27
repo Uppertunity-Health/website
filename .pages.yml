@@ -1,0 +1,17 @@
+# Pages CMS (app.pagescms.org): what the client can edit.
+# Only the open roles on the homepage. Each save commits to GitHub and Vercel republishes the site.
+content:
+  - name: roles
+    label: Open roles
+    type: file
+    path: content/roles.json
+    format: json
+    list: true
+    fields:
+      - name: title
+        label: Role
+        type: string
+        required: true
+      - name: location
+        label: Location (City, State)
+        type: string
