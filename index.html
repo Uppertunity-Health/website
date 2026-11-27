@@ -58,6 +58,8 @@ em{font-style:normal}
 .hx .btn,.hx .acu{position:absolute}
 /* top bar: spans the window (wider than the hero column), with its line underneath */
 .hx-head{position:absolute;z-index:2;left:0;right:0;top:calc(64 * var(--hu));padding:0 var(--hpad);height:calc(85 * var(--hu));display:flex;align-items:center;gap:calc(14 * var(--hu));--hpad:clamp(24px,4.5vw,96px)}
+.hx-menu{display:none}
+.hx-nav{display:contents}
 .hx-head .btn,.hx-head .acu{position:static}
 .hx-logo{position:static;flex:none;margin-right:auto;width:calc(498 * var(--hu));height:calc(85 * var(--hu))}
 .hx-logo svg{display:block;width:100%;height:100%}
@@ -95,8 +97,19 @@ em{font-style:normal}
   .hx-head{position:static;height:auto;padding:0 0 16px;display:flex;flex-wrap:wrap;align-items:center;gap:8px;border-bottom:1px solid rgba(255,255,255,.7);margin-bottom:30px}
   .hx-head::after{display:none}
   .hx-logo,.hx .btn,.hx .acu{position:static;width:auto;height:auto}
-  .hx-logo{flex:1 0 100%;margin-bottom:10px}.hx-logo svg{width:150px;height:auto}
-  .hx-phone{display:none}
+  .hx-logo{flex:1 1 auto;margin:0}.hx-logo svg{width:150px;height:auto}
+  /* phone: the two header buttons (and the phone number) fold into a menu behind the icon on the right */
+  .hx-menu{display:grid;align-content:center;gap:6px;width:46px;height:46px;padding:0 11px;border:1px solid rgba(228,246,247,.5);border-radius:12px;background:transparent;cursor:pointer}
+  .hx-menu i{display:block;height:2px;border-radius:2px;background:var(--ice);transition:transform .3s,opacity .2s}
+  .hx-head.open .hx-menu i:nth-child(1){transform:translateY(8px) rotate(45deg)}
+  .hx-head.open .hx-menu i:nth-child(2){opacity:0}
+  .hx-head.open .hx-menu i:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+  .hx-nav{display:none;flex:1 0 100%;flex-direction:column;align-items:stretch;gap:10px;padding:14px 0 2px}
+  .hx-head.open .hx-nav{display:flex;animation:navIn .3s ease}
+  @keyframes navIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+  .hx-nav .hdr{justify-content:center;width:100%!important;margin:0!important}
+  .hx-phone{display:block;text-align:center;font-size:17px;padding:6px 0;color:var(--ice);margin:0}
+  .s-hero.green .hx-menu{border-color:rgba(45,47,71,.5)}.s-hero.green .hx-menu i{background:var(--navy)}
   .hx .hdr{height:44px;padding:0 18px;font-size:16px}
   .hx-main,.hx-box{position:static;height:auto;display:block}
   .hx-h,.hx-lede,.hx-btns{position:static;width:auto;height:auto}
@@ -588,9 +601,12 @@ html.thumb-drag,html.thumb-drag *{cursor:grabbing!important;user-select:none}
 <div class="hx-green" aria-hidden="true"></div>
   <header class="hx-head">
     <a class="hx-logo" href="#top" aria-label="Uppertunity Health home"><svg viewBox="203 124 498 85" aria-hidden="true"><use href="#mLogo"/></svg></a>
+    <button class="hx-menu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="hxNav"><i></i><i></i><i></i></button>
+    <nav class="hx-nav" id="hxNav" aria-label="Main">
     <a class="acu hx-phone" href="tel:+12122523001">1212-252-3001</a>
     <a class="btn b-ice hdr hx-hire" href="#employers" data-form="hire"><span>Hire talent</span></a>
     <a class="btn b-ice hdr hx-cv" href="#next" data-form="cv"><span>Upload CV</span></a>
+    </nav>
   </header>
 <div class="hx-wrap">
   <div class="hx-main"><div class="hx-box">
@@ -2476,6 +2492,14 @@ html.thumb-drag,html.thumb-drag *{cursor:grabbing!important;user-select:none}
 
   /* ---- badge turns as you scroll (person stays still) ---- */
   const spin = document.getElementById('badgeSpin');
+  /* phone menu: the icon top right opens and closes the header buttons */
+  const hxHead = document.querySelector('.hx-head'), hxMenu = document.querySelector('.hx-menu');
+  if (hxMenu) {
+    const setMenu = open => { hxHead.classList.toggle('open', open); hxMenu.setAttribute('aria-expanded', open); hxMenu.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); };
+    hxMenu.addEventListener('click', () => setMenu(!hxHead.classList.contains('open')));
+    document.querySelectorAll('.hx-nav a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+  }
   /* ---- cards panel: custom scrollbar thumb follows the cards ---- */
   const cards = document.getElementById('cards'), thumb = document.getElementById('thumb');
   function onCards() {
