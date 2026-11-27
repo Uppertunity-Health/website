@@ -146,24 +146,29 @@ em{font-style:normal}
   .fx>.m-biglogo svg{display:block;width:100%;height:auto}
 }
 /* ---------- desktop: the artboard ---------- */
-.page{position:relative;width:100%;height:calc((10043.5px - 893px + var(--dy,0) * 1px) * var(--s));overflow:hidden}
+.page{position:relative;width:100%;height:calc((10043.5px - 893px + var(--dy,0) * 1px + var(--rx,0) * 1px) * var(--s));overflow:hidden}
 /* header + hero fill exactly one screen: the hero art is cut (or extended in navy) at the screen's bottom,
    and everything below sits in #lower, moved up or down by --dy artboard units (set in layout()) */
 #art{clip-path:inset(0 0 calc(10343.5px - var(--hc,1305) * 1px) 0)}
 #lower{position:absolute;left:0;top:calc(var(--dy,0) * 1px);width:1821.38px;height:10043.5px}
+/* open roles: the roles section grows by --rx artboard units (85 per role beyond 4) and everything below moves down with it */
+#below{position:absolute;left:0;top:calc(var(--rx,0) * 1px);width:1821.38px;height:10043.5px}
+.artA{clip-path:inset(0 0 1941px 0)}
+.edge .eA{clip-path:inset(0 0 calc(1941px * var(--s)) 0)}
+.xbg-roles{position:absolute;left:0;right:0;top:calc((3009px - 1305px - 2px) * var(--s));height:calc((var(--rx,0) * 1px + 4px) * var(--s));background:var(--rolesbg,#2d2f47)}
 
 .stage{position:absolute;left:var(--sx,0px);top:0;width:1821.38px;height:10043.5px;transform:scale(var(--s));transform-origin:0 0}
 /* the page's own edges: each side repeats the outermost sliver of the artwork, so backgrounds run edge to edge */
 .edge{position:absolute;top:0;bottom:0;width:calc(var(--sx,0px) + 2px);pointer-events:none}
 .edge.l{left:0}.edge.r{right:0}
 .xbg{position:absolute;left:0;right:0;top:0;pointer-events:none}
-.xbg-photo{position:absolute;left:0;right:0;top:calc((3006px - 1305px) * var(--s));height:calc(985px * var(--s));background:#e4f6f7;overflow:hidden}
+.xbg-photo{position:absolute;left:0;right:0;top:calc((3006px - 1305px + var(--rx,0) * 1px) * var(--s));height:calc(985px * var(--s));background:#e4f6f7;overflow:hidden}
 .xbg-photo i{position:absolute;left:var(--pl,0px);top:var(--pt,0px);width:var(--pw,100%);height:calc(var(--pw,100%) * 1.24138);background:url(/images/art-5.jpg) 0 0/100% 100% no-repeat;opacity:0;
   transform:translate(-30px,-24px) scale(1.02);transition:opacity 1.6s ease,transform 2.2s cubic-bezier(.2,.75,.15,1);translate:0 calc(var(--po,0) * .5px * var(--s))}
 .xbg-photo.in i{opacity:1;transform:none}
 /* an even light veil over the whole photo keeps the heading readable */
 .xbg-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(228,246,247,.62),rgba(228,246,247,.45) 55%,rgba(228,246,247,.7))}
-.xbg-grad{position:absolute;left:0;right:0;top:calc((3971px - 1305px) * var(--s));height:calc(1884px * var(--s));overflow:hidden;
+.xbg-grad{position:absolute;left:0;right:0;top:calc((3971px - 1305px + var(--rx,0) * 1px) * var(--s));height:calc(1884px * var(--s));overflow:hidden;
   background:linear-gradient(to bottom,#e4f6f7,#fff)}
 
 @media (prefers-reduced-motion:reduce){.xbg-photo i{transition:none;opacity:1;transform:none}}
@@ -460,7 +465,7 @@ html.thumb-drag,html.thumb-drag *{cursor:grabbing!important;user-select:none}
 @media (max-width:899px){
   .page{height:auto;overflow:visible}
   .stage{position:static;transform:none;width:auto;height:auto}
-  #lower{display:contents}
+  #lower,#below{display:contents}
   .art,.d-only,.hit{display:none!important}
   .m-only{display:block}
   .stage .tx,.stage .btn,.stage .rl,.stage .faq,.stage .cards-scroll,.stage input{position:static!important;left:auto!important;top:auto!important;width:auto!important;height:auto!important}
@@ -622,8 +627,8 @@ html.thumb-drag,html.thumb-drag *{cursor:grabbing!important;user-select:none}
 </div>
 </section>
 <div class="page" id="page">
-<div class="xbg" aria-hidden="true"><div class="xbg-photo" id="xPhoto"><i></i></div><div class="xbg-faq" id="xFaq"></div></div>
-<div class="edge l" aria-hidden="true"><svg viewBox="6 1305 2 3645" preserveAspectRatio="none" style="top:0;height:calc(3645px * var(--s))"><use href="#artAll"/></svg><svg class="eB" viewBox="6 5130 2 5213.5" preserveAspectRatio="none" style="top:calc(3525px * var(--s));height:calc(5213.5px * var(--s))"><use href="#artAll"/></svg></div><div class="edge r" aria-hidden="true"><svg viewBox="1813 1305 2 3645" preserveAspectRatio="none" style="top:0;height:calc(3645px * var(--s))"><use href="#artAll"/></svg><svg class="eB" viewBox="1813 5130 2 5213.5" preserveAspectRatio="none" style="top:calc(3525px * var(--s));height:calc(5213.5px * var(--s))"><use href="#artAll"/></svg></div>
+<div class="xbg" aria-hidden="true"><div class="xbg-roles"></div><div class="xbg-photo" id="xPhoto"><i></i></div><div class="xbg-faq" id="xFaq"></div></div>
+<div class="edge l" aria-hidden="true"><svg class="eA" viewBox="6 1305 2 3645" preserveAspectRatio="none" style="top:0;height:calc(3645px * var(--s))"><use href="#artAll"/></svg><svg viewBox="6 3009 2 1941" preserveAspectRatio="none" style="top:calc((1704px + var(--rx,0) * 1px) * var(--s));height:calc(1941px * var(--s))"><use href="#artAll"/></svg><svg class="eB" viewBox="6 5130 2 5213.5" preserveAspectRatio="none" style="top:calc((3525px + var(--rx,0) * 1px) * var(--s));height:calc(5213.5px * var(--s))"><use href="#artAll"/></svg></div><div class="edge r" aria-hidden="true"><svg class="eA" viewBox="1813 1305 2 3645" preserveAspectRatio="none" style="top:0;height:calc(3645px * var(--s))"><use href="#artAll"/></svg><svg viewBox="1813 3009 2 1941" preserveAspectRatio="none" style="top:calc((1704px + var(--rx,0) * 1px) * var(--s));height:calc(1941px * var(--s))"><use href="#artAll"/></svg><svg class="eB" viewBox="1813 5130 2 5213.5" preserveAspectRatio="none" style="top:calc((3525px + var(--rx,0) * 1px) * var(--s));height:calc(5213.5px * var(--s))"><use href="#artAll"/></svg></div>
 <div class="stage" id="stage">
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1821.38 10343.5" id="art" class="art" aria-hidden="true">
 <defs>
@@ -1935,8 +1940,7 @@ html.thumb-drag,html.thumb-drag *{cursor:grabbing!important;user-select:none}
 
 
 <div id="lower">
-<svg class="art" viewBox="0 1305 1821.38 3645" style="top:1305px;height:3645px" aria-hidden="true"><use href="#artAll"/></svg>
-<svg class="art artB" viewBox="0 5130 1821.38 5213.5" style="top:4830px;height:5213.5px" aria-hidden="true"><use href="#artAll"/><g id="faqArt"><path fill="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="round" stroke="rgb(63.699341%, 63.334656%, 84.858704%)" stroke-opacity="1" stroke-miterlimit="4" d="M 0.0000432839 0.000867922 L 1360.341854 0.000867922 " transform="matrix(0.99966, 0, 0, -0.99966, 249.042925, 7304.934461)" id="e149"/><path id="faqLine" d="M 0 0 L 1360.34 0" transform="matrix(0.99966, 0, 0, -0.99966, 249.042925, 7304.934461)" fill="none" stroke="#70bea8" stroke-width="2" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></g></svg>
+<svg class="art artA" viewBox="0 1305 1821.38 3645" style="top:1305px;height:3645px" aria-hidden="true"><use href="#artAll"/></svg>
 <section class="sec s-career" id="career" data-y="1305" data-h="875">
 <div class="tx f-bold h-xl words d-only" style="left:249.15px;font-size:104px;line-height:104px;color:#2d2f47" data-bl="1594.63" ><span class="ln" style="margin-left:0.0px" data-w="329.1"><i class="bl"></i>A career</span></div>
 <div class="tx f-bold h-xl words d-only" style="left:749.9px;font-size:104px;line-height:104px;color:#2d2f47" data-bl="1594.63" ><span class="ln" style="margin-left:0.0px" data-w="822.3"><i class="bl"></i>move should improve</span></div>
@@ -1954,6 +1958,11 @@ html.thumb-drag,html.thumb-drag *{cursor:grabbing!important;user-select:none}
 <ul class="rl" id="roleList" style="left:245.83px;top:2428px;width:1366px" aria-label="Open health care roles"></ul>
 <a class="tx f-reg more" id="moreRoles" href="#" hidden style="left:245.83px;top:2860px;font-size:30px;color:#70bea8">See all open roles →</a>
 </section>
+<!-- everything below the open roles: moves down when there are more than 4 roles (--rx, set in the roles code) -->
+<div id="below">
+<svg class="art artA2" viewBox="0 3009 1821.38 1941" style="top:3009px;height:1941px" aria-hidden="true"><use href="#artAll"/></svg>
+<svg class="art artB" viewBox="0 5130 1821.38 5213.5" style="top:4830px;height:5213.5px" aria-hidden="true"><use href="#artAll"/><g id="faqArt"><path fill="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="round" stroke="rgb(63.699341%, 63.334656%, 84.858704%)" stroke-opacity="1" stroke-miterlimit="4" d="M 0.0000432839 0.000867922 L 1360.341854 0.000867922 " transform="matrix(0.99966, 0, 0, -0.99966, 249.042925, 7304.934461)" id="e149"/><path id="faqLine" d="M 0 0 L 1360.34 0" transform="matrix(0.99966, 0, 0, -0.99966, 249.042925, 7304.934461)" fill="none" stroke="#70bea8" stroke-width="2" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></g></svg>
+
 <section class="sec s-expect" id="expect" data-y="3009" data-h="2121">
 <div class="m-only m-photo"><img src="/images/art-5.jpg" alt=""></div>
 <h2 class="tx f-bold h-xl center outl rv" style="left:506.18px;font-size:104px;line-height:102.0px;color:#2d2f47" data-bl="3281.74" ><span class="ln" style="margin-left:0.0px"><i class="bl"></i>What to expect from</span><span class="ln" style="margin-left:44.25px">Uppertunity Health</span></h2>
@@ -1996,6 +2005,7 @@ html.thumb-drag,html.thumb-drag *{cursor:grabbing!important;user-select:none}
 <div class="ncard frv d2"><h3 class="tx f-ken upper" style="left:1012.87px;font-size:52px;line-height:54px;color:#e4f6f7" data-bl="8840.32" ><span class="ln" style="margin-left:12.16px"><i class="bl"></i>Hiring for</span><span class="ln" style="margin-left:0.0px">your team?</span></h3><p class="tx f-reg center" style="left:1013.66px;font-size:30px;line-height:36.0px;color:#e4f6f7" data-bl="8978.94" ><span class="ln" style="margin-left:33.04px"><i class="bl"></i>Tell us what</span><span class="ln" style="margin-left:16.84px">would make a</span><span class="ln" style="margin-left:0.0px">candidate worth</span><span class="ln" style="margin-left:79.12px">hiring</span></p><a class="btn b-teal sq" href="#next" data-form="hire" style="left:944px;top:9149px;width:379px;height:71px;border-radius:12px"><span>Fill a role</span></a></div>
 </section>
 
+</div><!-- /below -->
 </div><!-- /lower -->
 </div>
 </div>
@@ -2042,13 +2052,15 @@ html.thumb-drag,html.thumb-drag *{cursor:grabbing!important;user-select:none}
   const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
   /* ---- open roles from CMS data (homepage shows up to 4) ---- */
-  let roles = [];
+  let roles = [], RX = 0;
   try { roles = JSON.parse(document.getElementById('rolesData').textContent); } catch (e) {}
   /* "View Role Details" opens a new email to info@ that already says which role; the visitor writes the rest */
   const roleMail = r => 'mailto:info@uppertunity.health?subject=' + encodeURIComponent('Interested in the ' + r.title + ' position' + (r.location ? ' (' + r.location + ')' : '')) +
     '&body=' + encodeURIComponent('Hi Uppertunity Health team,\n\nI want to hear more about the ' + r.title + ' position' + (r.location ? ' in ' + r.location : '') + '.\n\n');
   const list = document.getElementById('roleList');
-  const shown = roles.slice(0, 4);
+  const shown = roles;
+  RX = Math.max(0, roles.length - 4) * 85;
+  document.documentElement.style.setProperty('--rx', RX);
   list.innerHTML = shown.length ? shown.map((r, i) => {
     const first = i === 0;
     return '<li style="--i:' + i + '">' +
@@ -2056,7 +2068,6 @@ html.thumb-drag,html.thumb-drag *{cursor:grabbing!important;user-select:none}
       '<span class="loc f-reg" data-bl="' + (first ? 109.77 : 60.77) + '"><i class="bl"></i>' + esc(r.location) + '</span>' +
       '<a class="go f-reg" href="' + esc(r.url && r.url !== '#' ? r.url : '#roles') + '"' + (r.url && r.url !== '#' ? '' : ' data-form="talk" data-role="' + esc(r.title + (r.location ? ' (' + r.location + ')' : '')) + '"') + ' data-bl="' + (first ? 103.68 : 51.69) + '"><i class="bl"></i>View Role Details</a></li>';
   }).join('') : '<li><span class="t f-black" data-bl="109.77"><i class="bl"></i>New roles are posted here soon.</span></li>';
-  if (roles.length > 4) document.getElementById('moreRoles').hidden = false;
 
   /* ---- section 2 headline: split into words ---- */
   let k = 0;
@@ -2072,6 +2083,8 @@ html.thumb-drag,html.thumb-drag *{cursor:grabbing!important;user-select:none}
   let DY = 0;
   /* the stage's box as the sections below the hero see it (they sit DY artboard units lower) */
   function lowBox() { const r = stage.getBoundingClientRect(), s = r.width / 1821.38; return { left: r.left, top: r.top + DY * s, width: r.width }; }
+  /* the same, for the sections under the open roles (they sit RX more units lower when there are over 4 roles) */
+  function belowBox() { const b = lowBox(); b.top += RX * b.width / 1821.38; return b; }
   /* hero lines keep the width they have in the design, whatever font is loading */
   function fitHero() {
     const on = wide.matches, hu = parseFloat(getComputedStyle(document.querySelector('.hx-h')).fontSize) / 103;
@@ -2205,7 +2218,7 @@ html.thumb-drag,html.thumb-drag *{cursor:grabbing!important;user-select:none}
   }
   function onGlow() {
     if (reduce || !wide.matches) return;
-    const b = lowBox(), s = b.width / 1821.38;
+    const b = belowBox(), s = b.width / 1821.38;
     const top = b.top + 7999 * s, h = 1152 * s;
     const p = Math.max(0, Math.min(1, (innerHeight - top) / (h + innerHeight * .4)));
     gkT = .7 + p * .7;
@@ -2223,7 +2236,7 @@ html.thumb-drag,html.thumb-drag *{cursor:grabbing!important;user-select:none}
   }
   function onPx() {
     if (!px) return;
-    const b = lowBox(), s = b.width / 1821.38;
+    const b = belowBox(), s = b.width / 1821.38;
     const top = b.top + 3009 * s, h = 977 * s;
     /* the photo glides in from the top left once the section comes into view */
     if (top < innerHeight * .85 && top + h > 0) px.classList.add('in');
@@ -2277,7 +2290,7 @@ html.thumb-drag,html.thumb-drag *{cursor:grabbing!important;user-select:none}
   const cardBoxes = [[484, 8413, 412, 522], [927, 8413, 412, 522]];
   addEventListener('pointermove', e => {
     if (e.pointerType !== 'mouse' || !wide.matches) return;
-    const b = lowBox(), s = b.width / 1821.38;
+    const b = belowBox(), s = b.width / 1821.38;
     const x = (e.clientX - b.left) / s, y = (e.clientY - b.top) / s;
     cardBoxes.forEach((c, i) => glows[i].classList.toggle('on', x > c[0] && x < c[0] + c[2] && y > c[1] && y < c[1] + c[3]));
   }, { passive: true });
@@ -2298,7 +2311,7 @@ html.thumb-drag,html.thumb-drag *{cursor:grabbing!important;user-select:none}
   function onQ() {
     if (!qShape) return;
     if (reduce || !wide.matches) { qShape.removeAttribute('transform'); qShape.removeAttribute('opacity'); return; }
-    const b = lowBox(), sc = b.width / 1821.38;
+    const b = belowBox(), sc = b.width / 1821.38;
     const top = b.top + 5923 * sc;
     /* fully off screen: reset so the photo grows in again next time */
     if (top > innerHeight || top + 1000 * sc < 0) { qDone = false; qSet(0); return; }
@@ -2312,7 +2325,7 @@ html.thumb-drag,html.thumb-drag *{cursor:grabbing!important;user-select:none}
   function onArc() {
     if (!arc) return;
     if (reduce || !wide.matches) { arc.setAttribute('stroke-dashoffset', 0); return; }
-    const b = lowBox(), sc = b.width / 1821.38;
+    const b = belowBox(), sc = b.width / 1821.38;
     const top = b.top + 6284 * sc;
     const p = Math.max(0, Math.min(1, (innerHeight * .9 - top) / (innerHeight * .6)));
     arc.setAttribute('stroke-dashoffset', (1 - p).toFixed(3));
@@ -2324,7 +2337,7 @@ html.thumb-drag,html.thumb-drag *{cursor:grabbing!important;user-select:none}
   function onFaqLine() {
     if (!faqLine) return;
     if (reduce || !wide.matches) { faqLine.setAttribute('stroke-dashoffset', 0); return; }
-    const b = lowBox(), sc = b.width / 1821.38;
+    const b = belowBox(), sc = b.width / 1821.38;
     const top = b.top + 7005 * sc;
     const p = Math.max(0, Math.min(1, (innerHeight * .95 - top) / (innerHeight * .5)));
     faqLine.setAttribute('stroke-dashoffset', (1 - p).toFixed(3));
@@ -2337,7 +2350,7 @@ html.thumb-drag,html.thumb-drag *{cursor:grabbing!important;user-select:none}
     if (!curve) return;
     let off = 0;
     if (!reduce && wide.matches) {
-      const b = lowBox(), sc = b.width / 1821.38;
+      const b = belowBox(), sc = b.width / 1821.38;
       const top = b.top + 7996 * sc;
       const p = Math.max(0, Math.min(1, (innerHeight - top) / (innerHeight * .7)));
       off = (1 - p) * 160;
@@ -2456,7 +2469,7 @@ html.thumb-drag,html.thumb-drag *{cursor:grabbing!important;user-select:none}
     let y;
     if (getComputedStyle(t).display === 'contents' && t.dataset.y) {
       let py = +t.dataset.y; if (py > 4830) py -= 300;
-      const st = py > 0 ? lowBox() : stage.getBoundingClientRect(), sc = st.width / 1821.38;
+      const st = py >= 3009 ? belowBox() : py > 0 ? lowBox() : stage.getBoundingClientRect(), sc = st.width / 1821.38;
       y = scrollY + st.top + py * sc;
     } else y = scrollY + t.getBoundingClientRect().top;
     scrollTo({ top: Math.max(0, y), behavior: reduce ? 'auto' : 'smooth' });
@@ -2478,14 +2491,14 @@ html.thumb-drag,html.thumb-drag *{cursor:grabbing!important;user-select:none}
   /* the heartbeat line draws itself when it comes on screen, and resets only once it's fully off screen */
   { const beats = [...document.querySelectorAll('.beat')];
     if (beats.length) { if (reduce) beats.forEach(b => b.classList.add('on'));
-      else { const onBeat = () => { const b = lowBox(), sc = b.width / 1821.38, top = b.top + 5520 * sc, bot = b.top + 5700 * sc;
+      else { const onBeat = () => { const b = belowBox(), sc = b.width / 1821.38, top = b.top + 5520 * sc, bot = b.top + 5700 * sc;
           if (top < innerHeight * .85 && bot > 0) beats.forEach(x => x.classList.add('on'));
           else if (top > innerHeight || bot < 0) beats.forEach(x => x.classList.remove('on')); };
         addEventListener('scroll', onBeat, { passive: true }); addEventListener('resize', onBeat); onBeat(); } } }
   /* the line beside the HEALTHCARE EMPLOYERS pill draws in from the left as soon as the pill comes on screen */
   { const rule = document.getElementById('rule');
     if (rule) { if (reduce || !('IntersectionObserver' in window)) rule.classList.add('on');
-      else { const pillY = () => { const b = lowBox(); return b.top + 4979 * b.width / 1821.38; };
+      else { const pillY = () => { const b = belowBox(); return b.top + 4979 * b.width / 1821.38; };
         const onRule = () => { const y = pillY(); if (y < innerHeight * .9 && y > -40) rule.classList.add('on'); else if (y > innerHeight + 40 || y < -innerHeight) rule.classList.remove('on'); };
         addEventListener('scroll', onRule, { passive: true }); addEventListener('resize', onRule); onRule(); } } }
   if (reduce) { document.querySelectorAll('.words').forEach(w => w.classList.add('in')); }
