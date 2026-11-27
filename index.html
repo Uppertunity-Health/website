@@ -438,6 +438,11 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
 .fm-drop{background:#f1f5f7;border:0;padding:14px}
 .fm-file:hover .fm-drop,.fm-file.drag .fm-drop,.fm-file.has .fm-drop{border:0;background:#e6eef1}
 .fm-go{font:600 17px/1 "acumin-variable","Barlow Semi Condensed","Arial Narrow",sans-serif;letter-spacing:.04em}
+
+/* draggable slider handle in "What to expect" */
+html.thumb-hover,html.thumb-hover *{cursor:grab!important}
+html.track-hover,html.track-hover *{cursor:pointer!important}
+html.thumb-drag,html.thumb-drag *{cursor:grabbing!important;user-select:none}
 /* ---------- stacked layout for phones ---------- */
 @media (max-width:899px){
   .page{height:auto;overflow:visible}
@@ -583,7 +588,7 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
 <div class="hx-green" aria-hidden="true"></div>
   <header class="hx-head">
     <a class="hx-logo" href="#top" aria-label="Uppertunity Health home"><svg viewBox="203 124 498 85" aria-hidden="true"><use href="#mLogo"/></svg></a>
-    <a class="acu hx-phone" href="tel:18008773788">1-800-UPP-ERTU</a>
+    <a class="acu hx-phone" href="tel:+12122523001">1212 252 3001</a>
     <a class="btn b-ice hdr hx-hire" href="#employers" data-form="hire"><span>Hire talent</span></a>
     <a class="btn b-ice hdr hx-cv" href="#next" data-form="cv"><span>Upload CV</span></a>
   </header>
@@ -2480,6 +2485,47 @@ dialog.fm[open]{animation:fmIn .4s cubic-bezier(.2,.75,.15,1)}
     thumb.setAttribute('transform', 'translate(0 ' + (-106.6 + p * 830.2).toFixed(1) + ')');
   }
   cards.addEventListener('scroll', onCards, { passive: true });
+  /* the slider handle can be dragged (and the track clicked) to move through the cards */
+  const track = document.getElementById('e158');
+  /* the visible slider is drawn by a copy of the artwork, so map the handle's shape onto whichever copy shows it */
+  const artSvg = document.getElementById('art');
+  const copies = [...document.querySelectorAll('svg.art')].filter(c => c !== artSvg && c.querySelector('use[href="#artAll"]'));
+  const visRect = el => {
+    const m = artSvg.getScreenCTM().inverse().multiply(el.getScreenCTM()), bb = el.getBBox();
+    const pts = [[bb.x, bb.y], [bb.x + bb.width, bb.y + bb.height]].map(([x, y]) => new DOMPoint(x, y).matrixTransform(m));
+    const cy = (pts[0].y + pts[1].y) / 2;
+    const c = copies.find(c => { const v = c.viewBox.baseVal; return cy >= v.y && cy <= v.y + v.height; });
+    if (!c) return { left: 0, right: 0, top: 0, bottom: 0, height: 0 };
+    const sp = pts.map(p => p.matrixTransform(c.getScreenCTM()));
+    return { left: Math.min(sp[0].x, sp[1].x), right: Math.max(sp[0].x, sp[1].x), top: Math.min(sp[0].y, sp[1].y), bottom: Math.max(sp[0].y, sp[1].y), height: Math.abs(sp[1].y - sp[0].y) };
+  };
+  const overEl = (el, x, y, pad) => { if (!el) return false; const r = visRect(el); return r.bottom > r.top && x >= r.left - pad && x <= r.right + pad && y >= r.top - pad && y <= r.bottom + pad; };
+  let drag = null;
+  document.addEventListener('pointermove', e => {
+    if (drag) {
+      const max = cards.scrollHeight - cards.clientHeight, sc = lowBox().width / 1821.38;
+      cards.scrollTop = drag.top + (e.clientY - drag.y) / (830.2 * sc) * max;
+      e.preventDefault(); return;
+    }
+    if (!wide.matches) return;
+    const on = overEl(thumb, e.clientX, e.clientY, 6), onT = !on && overEl(track, e.clientX, e.clientY, 14);
+    document.documentElement.classList.toggle('thumb-hover', on);
+    document.documentElement.classList.toggle('track-hover', onT);
+  });
+  document.addEventListener('pointerdown', e => {
+    if (!wide.matches || e.button !== 0) return;
+    if (overEl(thumb, e.clientX, e.clientY, 6)) {
+      drag = { y: e.clientY, top: cards.scrollTop };
+      document.documentElement.classList.add('thumb-drag'); e.preventDefault();
+    } else if (overEl(track, e.clientX, e.clientY, 14)) {
+      /* click on the line: glide so the handle centres where you clicked */
+      const tr = visRect(thumb), max = cards.scrollHeight - cards.clientHeight, sc = lowBox().width / 1821.38;
+      cards.scrollTo({ top: cards.scrollTop + (e.clientY - (tr.top + tr.height / 2)) / (830.2 * sc) * max, behavior: reduce ? 'auto' : 'smooth' });
+      e.preventDefault();
+    }
+  });
+  const endDrag = () => { if (drag) { drag = null; document.documentElement.classList.remove('thumb-drag'); } };
+  document.addEventListener('pointerup', endDrag); document.addEventListener('pointercancel', endDrag);
   /* the cards always start at the top */
   const cardsTop = () => { cards.scrollTop = 0; onCards(); };
   cardsTop(); addEventListener('load', cardsTop); addEventListener('pageshow', cardsTop);
